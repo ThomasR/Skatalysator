@@ -1,6 +1,6 @@
 # Skatalysator ♣️♠️♥️♦️
 
-<img src="docs/3%20Jacks.png" style="width:142px;"></img>
+<img alt="Skatalysator logo" src="docs/3%20Jacks.png" style="width:142px;">
 
 A free analysis engine for the game of [Skat](https://en.wikipedia.org/wiki/Skat_(card_game)).
 
