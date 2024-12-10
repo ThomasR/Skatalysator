@@ -47,6 +47,9 @@ game.playCard('D9');
 // 3
 game.playCard('HJ');
 game.playCard('SJ');
+import { RecursiveGameEvaluator } from '../../../engine/analysis/RecursiveGameEvaluator.mjs';
+console.log(new RecursiveGameEvaluator({ game, logDepth: 2 }).evaluateGame());
+
 game.playCard('DK');
 
 // 4
