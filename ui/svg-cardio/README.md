@@ -2,6 +2,8 @@
 
 A template based SVG playing card generator.
 
+[**<img style="height: 3em;" src="docs/github-mark.svg" alt="github logo"> View on GitHub**](https://github.com/ThomasR/Skatalysator/blob/main/ui/svg-cardio/README.md)
+
 This tool can generate playing card SVG images from a template and various parameters.
 
 You can change the card width/height, the vertical/horizontal padding, the border width, border radius and inner frame width to receive different outputs like these:

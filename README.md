@@ -4,6 +4,8 @@
 
 A free analysis engine for the game of [Skat](https://en.wikipedia.org/wiki/Skat_(card_game)).
 
+[**<img style="height: 3em;" src="docs/github-mark.svg" alt="github logo"> View on GitHub**](https://github.com/ThomasR/Skatalysator)
+
 What this engine can do:
 
 * Model entire games of Skat, including Null and Grand games
@@ -32,13 +34,11 @@ npm install
 
 ### UI
 
-This package includes a prototype, which you can try out using
+This package includes a prototype, which you can try out on
 
-```bash
-npx serve .
-```
+[https://thomasr.github.io/Skatalysator/ui/fullGameAnalysis/prototype/game.html]().
 
-and then opening [localhost:3000/ui/fullGameAnalysis/prototype/game](http://localhost:3000/ui/fullGameAnalysis/prototype/game.html).
+
 It is currently available in German only. There is only one predefined game that can be analyzed.
 
 **⚠️ This prototype is nowhere near finished. ⚠️**
