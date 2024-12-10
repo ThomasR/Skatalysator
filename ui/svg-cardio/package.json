@@ -1,0 +1,16 @@
+{
+  "name": "svg-cardio",
+  "version": "1.0.0",
+  "description": "A template based SVG playing card generator.",
+  "scripts": {
+    "generate": "node generateAll.mjs",
+    "install": "npm run generate",
+    "prepare": "npm run generate"
+  },
+  "exports": {
+    ".": "./generator/generateCardDeckFromTemplate.mjs",
+    "./templates/*": "./templates/*.mjs"
+  },
+  "author": "Thomas Rosenau",
+  "license": "Apache-2.0"
+}

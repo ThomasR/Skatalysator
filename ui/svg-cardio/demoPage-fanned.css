@@ -1,0 +1,96 @@
+/*
+ *  Copyright 2024 Thomas Rosenau
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ */
+
+.fanned .card {
+    scale: 1;
+    --card-width: 20vh;
+    --rotation-radius: 250vh;
+    --rotation-angle-increment: 2.3deg;
+    max-width: initial;
+    max-height: initial;
+    width: var(--card-width);
+    height: auto;
+    position: absolute;
+    left: calc(50vw - .5 * var(--card-width));
+    bottom: 0;
+    --figure-index: 0;
+    --suit-index: 0;
+    --rotation-angle: calc((var(--figure-index) - 6) * var(--rotation-angle-increment));
+    transform-origin: center calc(50% + var(--rotation-radius));
+    transform: translateY(calc(var(--suit-index) * 15vh - 66vh)) rotate(var(--rotation-angle));
+}
+
+.card:nth-of-type(n + 14) {
+    --suit-index: 1;
+}
+
+.card:nth-of-type(n + 27) {
+    --suit-index: 2;
+}
+
+.card:nth-of-type(n + 40) {
+    --suit-index: 3;
+}
+
+
+.card:nth-of-type(13n + 2) {
+    --figure-index: 1;
+}
+
+.card:nth-of-type(13n + 3) {
+    --figure-index: 2;
+}
+
+.card:nth-of-type(13n + 4) {
+    --figure-index: 3;
+}
+
+.card:nth-of-type(13n + 5) {
+    --figure-index: 4;
+}
+
+.card:nth-of-type(13n + 6) {
+    --figure-index: 5;
+}
+
+.card:nth-of-type(13n + 7) {
+    --figure-index: 6;
+}
+
+.card:nth-of-type(13n + 8) {
+    --figure-index: 7;
+}
+
+.card:nth-of-type(13n + 9) {
+    --figure-index: 8;
+}
+
+.card:nth-of-type(13n + 10) {
+    --figure-index: 9;
+}
+
+.card:nth-of-type(13n + 11) {
+    --figure-index: 10;
+}
+
+.card:nth-of-type(13n + 12) {
+    --figure-index: 11;
+}
+
+.card:nth-of-type(13n) {
+    --figure-index: 12;
+}

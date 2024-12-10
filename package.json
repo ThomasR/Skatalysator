@@ -1,0 +1,22 @@
+{
+  "name": "skatalysator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint '**/*.{m,c,}js'",
+    "postinstall": "npm explore svg-cardio -- npm install",
+    "test": "node --test engine/test/runTests.mjs",
+    "test:watch": "node --test --watch engine/test/runTests.mjs"
+  },
+  "author": "Thomas Rosenau",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@stylistic/eslint-plugin-js": "^2.12.0",
+    "eslint": "8.x"
+  },
+  "dependencies": {
+    "skatalysator-engine": "file:engine",
+    "svg-cardio": "file:ui/svg-cardio"
+  }
+}

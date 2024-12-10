@@ -1,0 +1,86 @@
+# svg-card-i/o
+
+A template based SVG playing card generator.
+
+This tool can generate playing card SVG images from a template and various parameters.
+
+You can change the card width/height, the vertical/horizontal padding, the border width, border radius and inner frame width to receive different outputs like these:
+
+![7 of hearts, default](docs/hearts-7.svg)
+![7 of hearts, large](docs/hearts-7-large.svg)
+![7 of hearts, mini](docs/hearts-7-mini.svg)
+
+The tool will place the suit symbols precisely in the points seen in this image:
+
+![diagram of calculated intersection points](docs/hearts-7-debug.svg)
+
+## Usage
+
+If you just want to use the pre-generated cards, see [svgs/](./svgs).
+
+To create your own, adjust the dimensions in [generateCardDeckFromTemplate.mjs](./generator/generateCardDeckFromTemplate.mjs)*, and run `npm install`. This will overwrite the contents of the svgs folder.
+
+Or you can use the tool programmatically like this:
+
+```js
+import { generateDeck } from 'svg-cardio';
+
+// see generateAll.mjs for possible values
+const templateName = 'emoji';
+
+const template = await import(`svg-cardio/templates/template-${templateName}`);
+
+let svgText = generateDeck({ template, debug: false });
+```
+
+This works in Node or in the browser. See [demoPage-inline.html](demoPage-inline.html) for a usage example.
+You can quickly spin up a webserver using `npx serve .`, and then open [localhost:3000/demoPage-inline.html](http://localhost:3000/demoPage-inline.html) in your browser.
+
+
+*I know this is not ideal…
+
+## Included templates
+
+This package comes with 2 card themes, _Emoji_ and _[Fowler](https://tekeye.uk/playing_cards/svg-playing-cards)_. Both are available with standard suit colors (black, red) or "international" colors (black, red, green, orange).
+
+You will find the cards pre-generated in 60x90mm in the [svgs/](./svgs) folder along with HTML pages to view them.
+
+![Emoji card deck](docs/emoji-deck.png)
+![Fowler](docs/tekeye-deck.png)
+
+
+This package also comes with various card back templates, each available in multiple colors.
+
+See the [svgs/](./svgs) folder for the pre-generated versions in 60x90mm. 
+
+![Red card back with circles pattern](docs/back-circles-red.svg)
+![Blue card back with circles pattern](docs/back-circles2-blue.svg)
+![Green card back with interconnected pattern](docs/back-interconnected-green.svg)
+![Purple card back with fleur de lis pattern](docs/back-fleur-purple.svg)
+![Red card back with cube pattern](docs/back-cubes-red.svg)
+![Black card back with lozenges pattern](docs/back-lozenges-black.svg)
+
+Notice how the patterns align nicely with all edges. As you change the card or padding size, the pattern gets slightly stretched, so it always fits perfectly:
+
+![Blue circle pattern, stretched](docs/back-circles2-blue-small.svg)
+![Blue circle pattern, stretched](docs/back-circles2-medium.svg)
+![Blue circle pattern, stretched](docs/back-circles2-large.svg)
+
+## Writing a template
+
+The best way to get started is to duplicate an existing template from the [templates](./templates) folder.
+
+A template file must export a `text`, a `demoPage`, a list of `suits` and a list of `figures`.
+
+Inside the text you can use placeholders of the form `{placeholder}` that will be replaced with the corresponding values.
+
+The complete list of available placeholders is   `borderWidth`,
+  `cardValue`, `cornerRadius`, `debugMarkup`, `fontCSS`, `fontSize`, `frameBorderWidth`, `frameGapSize`, `halfSymbolWidth`, `horizontalPadding`, `illustration`, `innerHeight`, `innerMaxX`, `innerMaxY`, `innerWidth`, `isDebug`, `isPicture`, `suitName`, `suitSymbolPath`, `suitSymbolScalingFactor`, `suitSymbols`, `totalCardHeight`, `totalCardWidth`, `totalSVGHeight`, `totalSVGWidth`, `verticalPadding`, `verticalSymbolOffset`, `verticalTextOffset`, `verticalTextOffsetNumber`, `verticalTextOffsetPicture`, `viewBox`.
+
+Conditionals are available using `{?isBoolean}conditionalContent{/isBoolean}`.
+
+Apart from placeholder replacement,  the tool can also do basic math using the syntax `{=1+2}`. Other than the standard math operations, it also supports `Math.round` using the `[]` symbols. So `{=[1.75]}` results in the output `2`. A sophisticated example from one of the predefined templates:
+```
+scale({= {innerWidth}/(11*[{innerWidth}/11]) }, {= {innerHeight}/( 22*[{innerHeight}/22]) })
+```
+This will calculate scaling factors that fill the available space with an integer count of background elements (which are of size 11x22).
