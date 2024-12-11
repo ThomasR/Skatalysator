@@ -23,11 +23,9 @@ import { updateForm } from './kartenleger.mjs';
 
 const main = document.querySelector('main');
 
-const addTrickMarkup = trick => {
+const addTrickMarkup = () => {
   let trickDiv = document.createElement('div');
   trickDiv.className = 'trick';
-  trickDiv.dataset.leader = trick.leadPlayer + 1;
-  trickDiv.dataset.winner = trick.winningPlayer + 1;
   main.appendChild(trickDiv);
   return trickDiv;
 };
@@ -126,7 +124,7 @@ if (sample.currentTrick?.length) {
 }
 
 tricks.forEach((trick, i) => {
-  let trickDiv = addTrickMarkup(trick);
+  let trickDiv = addTrickMarkup();
   addCards(trick, trickDiv);
   addScore(i, trickDiv);
 });

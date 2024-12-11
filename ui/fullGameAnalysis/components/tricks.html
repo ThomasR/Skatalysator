@@ -1,7 +1,9 @@
-<template x-data="$store.game" x-for="trick in tricks">
+<template x-data="$store.game" x-for="trick in tricks" :key="index">
   <div class="trick">
-    <template x-for="(card, index) in trick.cards">
-      <div class="card" :data-player-index="1 + (trick.leadPlayer + index) % 3" :class="{ 'trick-winner': trick.winningPlayer === trick.leadPlayer + index }">
+    <template x-for="(card, index) in trick.cards" :key="index">
+      <div class="card" :data-player-index="1 + (trick.leadPlayer + index) % 3"
+          :class="{ 'trick-winner': trick.winningPlayer === trick.leadPlayer + index }"
+      >
         <img :src="`../svg-cardio/svgs/${$store.settings.cardTheme}/${card.suit}-${card.name}.svg`">
         <div class="evaluation"></div>
       </div>

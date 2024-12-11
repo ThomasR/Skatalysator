@@ -1,3 +1,10 @@
-<script type="module" src="js/init-gameStore.mjs"></script>
-<script type="module" src="js/init-settingsStore.mjs"></script>
-<script src="js/alpinejs-3.14.7.js" defer></script>
+<script type="module">
+  // init scripts must be loaded before alpine
+  await Promise.all([
+    import('./js/init-i18n.mjs'),
+    import('./js/init-gameStore.mjs'),
+    import('./js/init-settingsStore.mjs')
+  ]);
+
+  import('./js/alpinejs-3.14.7.js');
+</script>

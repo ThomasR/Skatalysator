@@ -67,9 +67,12 @@ const loadScripts = () => {
 
 let scripts = [...document.querySelectorAll('script')].filter(s => s.src === import.meta.url);
 
+const removeComments = text => text.replaceAll(/<!--.*?-->/g, '');
+
 for (const s of scripts) {
   let text = s.textContent;
   text = await processTemplate(text);
+  text = removeComments(text);
   text = insertScriptMarkers(text);
   s.insertAdjacentHTML('afterend', text);
   s.remove();
