@@ -15,7 +15,7 @@
  *
  */
 
-body[data-mark-trick-winner="star"] .card.trick-winner::before {
+body[data-trick-winner-marker="star"] .card.trick-winner::before {
     content: "⭐";
 }
 

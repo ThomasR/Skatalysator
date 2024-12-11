@@ -19,33 +19,54 @@ document.addEventListener('alpine:init', () => {
 
   const storageKey = 'skatalysator-settings';
 
-  Alpine.store('settings', {
-    cardTheme: 'tekeye',
-    trickMarker: 'none',
+  const defaults = {
+    cardTheme: 'emoji-tournament',
+    trickWinnerMarker: 'none',
     alignCards: false,
     timeout: 60,
-    bgColor: '#2170b0',
+    bgColor: '#0e5d9a'
+  };
+
+  let initialized = false;
+  Alpine.store('settings', {
+    ...defaults,
+    locale: 'de',
 
     init() {
+      this.loadFromStorage();
+
+      Alpine.effect(() => {
+        if (!initialized) {
+          // JSON.stringify will access every property, thus activating reactivity through the synthesized getter
+          JSON.stringify(this);
+          initialized = true;
+          return;
+        }
+        this.saveToStorage();
+      });
+    },
+
+    saveToStorage() {
+      localStorage.setItem(storageKey, JSON.stringify(this));
+    },
+
+    loadFromStorage() {
       let settings = localStorage.getItem(storageKey);
       if (settings) {
         let parsed = JSON.parse(settings);
         let parsedKeys = Object.keys(parsed);
         let invalidKeys = parsedKeys.filter(key => typeof this[key] === 'undefined' || typeof this[key] === 'function');
         if (invalidKeys.length) {
-          throw new Error(`Unknown config ${invalidKeys.join(', ')}`);
+          // eslint-disable-next-line no-console
+          console.warn(`Unknown config ${invalidKeys.join(', ')}`);
+          invalidKeys.forEach(key => delete parsed[key]);
         }
         Object.assign(this, parsed);
       }
+    },
 
-      let initialized = false;
-      Alpine.effect(() => {
-        let json = JSON.stringify(this);
-        if (initialized) {
-          localStorage.setItem(storageKey, json);
-        }
-        initialized = true;
-      });
+    reset() {
+      Object.assign(this, defaults);
     }
   });
 });

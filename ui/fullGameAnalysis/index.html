@@ -1,3 +1,20 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <link rel="icon" href="data:image/svg+xml,
+    <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+      <text y=%22.9em%22 font-size=%2290%22>&#x1F0CF;</text>
+    </svg>"
+  >
+
+  <script src="templateLoader.mjs" type="module">
+    {{fragment-alpine.html}}
+    {{fragment-meta.html}}
+    <!-- {{fragment-preload.html}} -->
+    {{fragment-css.html}}
+  </script>
+</head>
 <!--
   ~ Copyright 2024 Thomas Rosenau
   ~
@@ -14,26 +31,11 @@
   ~ limitations under the License.
   ~
   -->
-
-<!doctype html>
-<html lang="en-US">
-<head>
-  <meta charset="utf-8"/>
-  <link rel="icon" href="data:image/svg+xml,
-    <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
-      <text y=%22.9em%22 font-size=%2290%22>&#x1F0CF;</text>
-    </svg>"
-  >
-
-  <script src="templateLoader.mjs" type="module">
-    {{fragment-alpine.html}}
-    <!-- {{fragment-preload.html}} -->
-    {{fragment-css.html}}
-  </script>
-</head>
-<body x-data="$store.settings" :data-mark-trick-winner="trickMarker"
-      :data-horizontal-layout="alignCards"
-      :style="{ backgroundColor: bgColor }"
+<body
+    x-data="$store.settings"
+    :data-trick-winner-marker="trickWinnerMarker"
+    :data-horizontal-layout="alignCards"
+    :style="{ backgroundColor: bgColor }"
 >
 <script src="templateLoader.mjs" type="module">
   {{fragment-main.html}}

@@ -1,21 +1,43 @@
 <aside>
   <form>
-    <label><input type="checkbox" name="alignCards" x-model="$store.settings.alignCards">Karten ausrichten</label>
     <fieldset>
-      <legend>Markierung des Stichgewinners</legend>
-      <label><input type="radio" name="trickMarker" value="none" x-model="$store.settings.trickMarker">ohne</label>
-      <label><input type="radio" name="trickMarker" value="star" x-model="$store.settings.trickMarker">Stern</label>
-      <label><input type="radio" name="trickMarker" value="glow" x-model="$store.settings.trickMarker">Neon</label>
+      <legend x-text="$i18n('settings.language')"></legend>
+      <label>
+        <input type="radio" name="locale" value="de" x-model="$store.settings.locale">🇩🇪 Deutsch</label>
+      <label>
+        <input type="radio" name="locale" value="en" x-model="$store.settings.locale">🇬🇧 English</label>
+    </fieldset>
+    <label>
+      <input type="checkbox" name="alignCards" x-model="$store.settings.alignCards">
+      <span x-text="$i18n('settings.alignCards')"></span>
+    </label>
+    <fieldset>
+      <legend x-text="$i18n('settings.trickWinnerMarker')"></legend>
+      <label>
+        <input type="radio" name="trickWinnerMarker" value="none" x-model="$store.settings.trickWinnerMarker">
+        <span x-text="$i18n('settings.none')"></span>
+      </label>
+      <label>
+        <input type="radio" name="trickWinnerMarker" value="star" x-model="$store.settings.trickWinnerMarker">
+        <span x-text="$i18n('settings.star')"></span>
+      </label>
+      <label>
+        <input type="radio" name="trickWinnerMarker" value="glow" x-model="$store.settings.trickWinnerMarker">
+        <span x-text="$i18n('settings.neon')"></span>
+      </label>
     </fieldset>
     <fieldset>
-      <legend>Karten</legend>
+      <legend x-text="$i18n('settings.cardTheme')"></legend>
       <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="emoji-crisp">Emoji</label>
       <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="emoji-tournament">Emoji Int</label>
       <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="tekeye">Fowler</label>
       <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="tekeye-tournament">Fowler
         Int</label>
     </fieldset>
-    <label>Hintergrund:
+    <label>
+      <span x-text="$i18n('settings.background')"></span>
       <input type="color" name="bgColor" x-model="$store.settings.bgColor"></label>
+    <br>
+    <button x-text="$i18n('settings.reset')" @click.prevent="$store.settings.reset()"></button>
   </form>
 </aside>
