@@ -22,13 +22,12 @@
  * Usage: Put a script tag like this into your HTML file:
 
  <script src="templateLoader.mjs" type="module">
-      {{include-head.html}}
-    </script>
+   {{include-something.html}}
+ </script>
 
- * Placeholders of the form {{foo}} will be replaced with the contents of the referenced file
+ * Placeholders of the form {{foo}} will be replaced with the contents of the referenced file.
  * Replacement works recursively, i.e. you can also use placeholders in the templates
  */
-
 
 const processTemplate = async (text, baseURL = location.href) => {
   let imports = Array.from(text.matchAll(/\{\{([^}]+?)\}\}/g));
@@ -47,15 +46,16 @@ const processTemplate = async (text, baseURL = location.href) => {
   return text;
 };
 
-const randomId = String(Math.round(Math.random() * 10 ** 16));
+const randomId = `loader${String(Math.round(Math.random() * 10 ** 16))}`;
 
-const insertScriptMarkers = text => text.replaceAll(/<script\b/g, `<script data-loader${randomId} `);
+const insertScriptMarkers = text => text.replaceAll(/<script\b/g, `<script data-${randomId} `);
 
+// see https://stackoverflow.com/questions/57209520/script-injected-with-insertadjacenthtml-does-not-execute
 const loadScripts = () => {
-  for (let scriptTpl of document.querySelectorAll(`script[data-loader${randomId}]`)) {
+  for (let scriptTpl of document.querySelectorAll(`script[data-${randomId}]`)) {
     let script = document.createElement('script');
     for (let attribute of scriptTpl.attributes) {
-      if (attribute.name === `data-loader${randomId}`) {
+      if (attribute.name === `data-${randomId}`) {
         continue;
       }
       script.setAttribute(attribute.name, scriptTpl.getAttribute(attribute.name));
@@ -65,11 +65,11 @@ const loadScripts = () => {
   }
 };
 
-let scripts = [...document.querySelectorAll('script')].filter(s => s.src === import.meta.url);
-
 const removeComments = text => text.replaceAll(/<!--.*?-->/g, '');
 
-for (const s of scripts) {
+let myScripts = [...document.querySelectorAll('script')].filter(s => s.src === import.meta.url);
+
+for (const s of myScripts) {
   let text = s.textContent;
   text = await processTemplate(text);
   text = removeComments(text);
@@ -78,3 +78,5 @@ for (const s of scripts) {
   s.remove();
   loadScripts();
 }
+
+document.dispatchEvent(new CustomEvent('templateloader:done'));

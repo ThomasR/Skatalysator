@@ -1,10 +1,11 @@
 <script type="module">
-  // init scripts must be loaded before alpine
-  await Promise.all([
+  let [{ Alpine }] = await Promise.all([
+    import('./js/libs/alpinejs-3.14.7.min.mjs'),
     import('./js/init-i18n.mjs'),
     import('./js/init-gameStore.mjs'),
     import('./js/init-settingsStore.mjs')
   ]);
 
-  import('./js/alpinejs-3.14.7.js');
+  window.Alpine = Alpine;
+  Alpine.start();
 </script>
