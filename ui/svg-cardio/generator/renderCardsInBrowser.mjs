@@ -17,12 +17,15 @@
 
 import { generateDeck } from './generateCardDeckFromTemplate.mjs';
 
-const templateName = document.querySelector('[data-template-name]').dataset.templateName;
-const template = await import(`../templates/template-${templateName}.mjs`);
+export const generate = async () => {
 
-document.title = `${templateName} Skat deck (inline)`;
+  const templateName = document.querySelector('[data-template-name]').dataset.templateName;
+  const template = await import(`../templates/template-${templateName}.mjs`);
 
-let cards = generateDeck({ template, debug: false });
-cards.forEach(card => {
-  document.querySelector('main').insertAdjacentHTML('beforeend', card.text);
-});
+  document.title = `${templateName} Skat deck (inline)`;
+
+  let cards = generateDeck({ template, debug: false });
+  cards.forEach(card => {
+    document.querySelector('main').insertAdjacentHTML('beforeend', card.text);
+  });
+};
