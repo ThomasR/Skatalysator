@@ -1,0 +1,14 @@
+<form method="post" target="_blank" action="https://32karten.de/forum/skatfox/index.php">
+    <input type="submit" value="SkatFox"
+           style="position: absolute; top:0; right:0; margin:1em; padding: .5em 1em; cursor: pointer;">
+    <input type="hidden" name="spiel" value="karo">
+    <input type="hidden" name="spieler" value="mh">
+    <input type="hidden" name="karten"
+           value='a:4:{s:2:"vh";a:10:{i:0;s:4:"kabu";i:1;s:4:"kr10";i:2;s:4:"krda";i:3;s:4:"kr09";i:4;s:4:"kr07";i:5;s:4:"pi10";i:6;s:4:"pi09";i:7;s:4:"he10";i:8;s:4:"kako";i:9;s:4:"ka09";}s:2:"mh";a:10:{i:0;s:4:"krbu";i:1;s:4:"hebu";i:2;s:4:"kras";i:3;s:4:"heas";i:4;s:4:"he09";i:5;s:4:"he08";i:6;s:4:"kaas";i:7;s:4:"ka10";i:8;s:4:"kada";i:9;s:4:"ka08";}s:2:"hh";a:10:{i:0;s:4:"pibu";i:1;s:4:"krko";i:2;s:4:"kr08";i:3;s:4:"pias";i:4;s:4:"piko";i:5;s:4:"pi08";i:6;s:4:"heko";i:7;s:4:"heda";i:8;s:4:"he07";i:9;s:4:"ka07";}s:4:"skat";a:2:{i:0;s:4:"pida";i:1;s:4:"pi07";}}'>
+</form>
+<script type="module">
+    import { updateForm } from './js/kartenleger.mjs';
+    import sample from './prototype/sample.mjs';
+
+    updateForm(sample);
+</script>

@@ -17,8 +17,8 @@
 
 import sample from './sample.mjs';
 
-import analyzeGame from '../analyzeGame.mjs';
-import { onStart, onEnd, onResult } from '../analysisCallbacks.mjs';
+import analyzeGame from '../js/analyzeGame.mjs';
+import { onStart, onEnd, onResult } from './analysisCallbacks.mjs';
 import { updateForm } from './kartenleger.mjs';
 
 const main = document.querySelector('main');
