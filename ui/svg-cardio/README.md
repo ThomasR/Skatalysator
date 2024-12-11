@@ -18,9 +18,9 @@ The tool will place the suit symbols precisely in the points seen in this image:
 
 ## Usage
 
-If you just want to use the pre-generated cards, see [svgs/](./svgs).
+If you just want to use the pre-generated cards, see [svgs/](https://github.com/ThomasR/Skatalysator/tree/gh-pages/ui/svg-cardio/svgs).
 
-To create your own, adjust the dimensions in [generateCardDeckFromTemplate.mjs](./generator/generateCardDeckFromTemplate.mjs)*, and run `npm install`. This will overwrite the contents of the svgs folder.
+To create your own, adjust the dimensions in [generateCardDeckFromTemplate.mjs](./generator/generateCardDeckFromTemplate.mjs)*, and run `npm install`. This will overwrite the contents of the `svgs` folder.
 
 Or you can use the tool programmatically like this:
 
@@ -44,7 +44,7 @@ This works in Node or in the browser. See [demoPage-inline.html](https://thomasr
 
 This package comes with 2 card themes, _Emoji_ and _[Fowler](https://tekeye.uk/playing_cards/svg-playing-cards)_. Both are available with standard suit colors (black, red) or "international" colors (black, red, green, orange).
 
-You will find the cards pre-generated in 60x90mm in the [svgs/](./svgs) folder along with HTML pages to view them.
+You will find the cards pre-generated in 60x90mm in the [svgs/](https://github.com/ThomasR/Skatalysator/tree/gh-pages/ui/svg-cardio/svgs) folder along with HTML pages to view them.
 
 ![Emoji card deck](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/emoji-deck.png)
 ![Fowler](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/tekeye-deck.png)
@@ -52,7 +52,7 @@ You will find the cards pre-generated in 60x90mm in the [svgs/](./svgs) folder a
 
 This package also comes with various card back templates, each available in multiple colors.
 
-See the [svgs/](./svgs) folder for the pre-generated versions in 60x90mm. 
+See the [svgs/](https://github.com/ThomasR/Skatalysator/tree/gh-pages/ui/svg-cardio/svgs) folder for the pre-generated versions in 60x90mm. 
 
 ![Red card back with circles pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-circles-red.svg)
 ![Blue card back with circles pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-circles2-blue.svg)
@@ -60,6 +60,8 @@ See the [svgs/](./svgs) folder for the pre-generated versions in 60x90mm.
 ![Purple card back with fleur de lis pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-fleur-purple.svg)
 ![Red card back with cube pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-cubes-red.svg)
 ![Black card back with lozenges pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-lozenges-black.svg)
+
+See the demo pages &#x005B; [1](https://thomasr.github.io/Skatalysator/ui/svg-cardio/svgs/back-circles/back.html), [2](https://thomasr.github.io/Skatalysator/ui/svg-cardio/svgs/back-circles2/back.html), [3](https://thomasr.github.io/Skatalysator/ui/svg-cardio/svgs/back-interconnected/back.html), [4](https://thomasr.github.io/Skatalysator/ui/svg-cardio/svgs/back-fleur/back-purple.html), [5](https://thomasr.github.io/Skatalysator/ui/svg-cardio/svgs/back-cubes/back.html), [6](https://thomasr.github.io/Skatalysator/ui/svg-cardio/svgs/back-lozenges/back.html) &#x005D; for more colors.
 
 Notice how the patterns align nicely with all edges. As you change the card or padding size, the pattern gets slightly stretched, so it always fits perfectly:
 
