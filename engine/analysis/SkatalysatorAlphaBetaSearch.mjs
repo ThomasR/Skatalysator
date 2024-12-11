@@ -20,6 +20,7 @@ import { ColorGameStrategy } from '../ColorGameStrategy.mjs';
 import { DistributionAnalyzer } from './DistributionAnalyzer.mjs';
 import { GrandStrategy } from '../GrandStrategy.mjs';
 import { NullStrategy } from '../NullStrategy.mjs';
+import { GameType } from '../model/GameType.mjs';
 
 export class SkatalysatorAlphaBetaSearch extends AbstractAlphaBetaSearch {
 
@@ -28,9 +29,9 @@ export class SkatalysatorAlphaBetaSearch extends AbstractAlphaBetaSearch {
   constructor(...args) {
     super(...args);
     let { game } = args[0];
-    if (game.gameType === -1) {
+    if (game.gameType === GameType.GRAND) {
       this.Strategy = GrandStrategy;
-    } else if (game.gameType === null) {
+    } else if (game.gameType === GameType.NULL) {
       this.Strategy = NullStrategy;
     }
   }

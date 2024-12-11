@@ -17,9 +17,36 @@
 
 import { translate } from './i18n.mjs';
 
+/**
+ * Simple i18n implementation.
+ * Usage:
+ *
+ *  $t('some.string')
+ *
+ * If your dictionary contains
+ * {
+ *   some: {
+ *     string: 'foo'
+ *   }
+ * }
+ *
+ * this will evaluate to "foo".
+ *
+ * Placeholders are supported:
+ *
+ * {
+ *   some: {
+ *     string: 'foo has {} apples and {} oranges'
+ *   }
+ * }
+ *
+ * $t('some.string', 3, 'no') // -> 'foo has 3 apples and no oranges'
+ *
+ * The current locale from the 'settings' store is used to pick the dictionary.
+ */
 document.addEventListener('alpine:init', () => {
   let settings;
-  Alpine.magic('i18n', el => {
+  Alpine.magic('t', el => {
     if (!settings) {
       settings = Alpine.store('settings');
     }

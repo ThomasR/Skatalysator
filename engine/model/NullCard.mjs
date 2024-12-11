@@ -26,10 +26,6 @@ export class NullCard extends Card {
     this._initDeck();
   }
 
-  constructor(...args) {
-    super(...args);
-  }
-
   get rank() {
     return figures.indexOf(this.figure);
   }
