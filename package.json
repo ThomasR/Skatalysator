@@ -2,25 +2,25 @@
   "name": "skatalysator",
   "version": "1.0.0",
   "description": "A free analysis engine for the card game Skat",
+  "homepage": "https://github.com/ThomasR/Skatalysator.git#readme",
+  "license": "Apache-2.0",
+  "author": "Thomas Rosenau",
   "repository": {
     "type": "git",
     "url": "https://github.com/ThomasR/Skatalysator.git"
   },
-  "homepage": "https://github.com/ThomasR/Skatalysator.git#readme",
   "scripts": {
     "lint": "eslint '**/*.{m,c,}js'",
     "postinstall": "npm explore svg-cardio -- npm install",
     "test": "node --test engine/test/runTests.mjs",
     "test:watch": "node --test --watch engine/test/runTests.mjs"
   },
-  "author": "Thomas Rosenau",
-  "license": "Apache-2.0",
-  "devDependencies": {
-    "@stylistic/eslint-plugin-js": "^2.12.0",
-    "eslint": "8.x"
-  },
   "dependencies": {
     "skatalysator-engine": "file:engine",
     "svg-cardio": "file:ui/svg-cardio"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin-js": "^2.12.0",
+    "eslint": "8.x"
   }
 }
