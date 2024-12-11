@@ -22,6 +22,13 @@ export const Suit = {
   DIAMONDS: 'D'
 };
 
+export const suitNames = {
+  C: 'clubs',
+  S: 'spades',
+  H: 'hearts',
+  D: 'diamonds'
+};
+
 export const suitLetters = Object.values(Suit);
 
 export const suitSymbols = ['\x1b[34m♣\x1b[0m', '\x1b[32m♠\x1b[0m', '\x1b[31m♥\x1b[0m', '\x1b[33m♦\x1b[0m'];

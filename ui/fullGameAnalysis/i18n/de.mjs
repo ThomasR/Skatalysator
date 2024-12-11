@@ -27,8 +27,16 @@ export default {
     reset: 'Zurücksetzen'
   },
   analysis: {
-    buttonText: 'Analyse starten',
+    startButtonText: 'Analyse starten',
+    endButtonText: 'Analyse stoppen',
     timeout: 'Timeout:',
-    seconds: 'Sekunden'
+    seconds: 'Sekunden',
+    tooltips: {
+      domination: 'Spieler kann offenlegen',
+      forced: 'Einzig möglicher Zug',
+      blunder: 'Fehler: {} -> {}',
+      mistake: 'Ungenauigkeit: {} -> {}',
+      best: 'Bester Zug'
+    }
   }
 };

@@ -28,8 +28,16 @@ export default {
     reset: 'Reset'
   },
   analysis: {
-    buttonText: 'Run Analysis',
+    startButtonText: 'Run Analysis',
+    endButtonText: 'Cancel Analysis',
     timeout: 'Timeout:',
-    seconds: 'Seconds'
+    seconds: 'Seconds',
+    tooltips: {
+      domination: 'Player can play with open cards',
+      forced: 'Only move',
+      blunder: 'Blunder: {} -> {}',
+      mistake: 'Mistake: {} -> {}',
+      best: 'Best Move'
+    }
   }
 };
