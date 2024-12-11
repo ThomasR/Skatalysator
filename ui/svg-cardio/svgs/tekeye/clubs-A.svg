@@ -1,0 +1,85 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid meet" 
+    class="card clubs val-A" 
+    width="60.5mm" height="90.5mm"
+    viewBox="-30.25 -45.25 60.5 90.5"
+  >
+  <title>A of clubs playing card</title>
+  <metadata>
+    Copyright 2024 Thomas Rosenau
+ 
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+ 
+        http://www.apache.org/licenses/LICENSE-2.0
+ 
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+  </metadata>
+  <style><![CDATA[
+    @font-face {
+    /*! extracted from Lora using https://transfonter.org/
+      https://www.cyreal.org/fonts/lora/
+      licensed under the OFL-1.1 license, see
+      https://github.com/cyrealtype/Lora-Cyrillic?tab=OFL-1.1-1-ov-file#readme or
+      https://openfontlicense.org/open-font-license-official-text/
+    */
+    font-family: 'Lora';
+    src: url('data:font/woff2;charset=utf-8;base64,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') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+    svg {
+        font: bold 8.833333333333334px Lora, serif;
+        width: 100%;
+        height: 100%;
+    }
+
+    svg > * {
+        pointer-events: none;
+    }
+
+    .frame {
+        stroke-width: 0.4;
+    }
+
+    
+    svg.diamonds .filled,
+    svg.hearts .filled {
+        fill: #d40000;
+    }
+    svg.spades .filled,
+    svg.clubs .filled {
+        fill: #000;
+    }
+  ]]>
+  </style>
+  <defs>
+    <path id="suit-symbol-clubs" d="M 2.6,6.6C 0,6.1 .6,4.6 0.54,0.17A 3 3 0 1 0 1.31,-1.09A 3 3 0 1 0 -1.31,-1.09A 3 3 0 1 0 -0.54,0.17C -0.6,4.6 0,6.1 -2.6,6.6z" transform="scale(1.0192307692307692)"/>
+
+  </defs>
+  <rect width="60" height="90" x="-30" y="-45" rx="4.5" fill="white" stroke="black"
+    stroke-width="0.5"/>
+
+  <g class="filled">
+    <g id="top-labels-clubs-A">
+      <text y="6.625" style="text-anchor: end;" transform="translate(26.5, -41) scale(.7, 1)">A</text>
+      <text y="6.625" transform="translate(-26.5, -41) scale(.7, 1)">A</text>
+      <use href="#suit-symbol-clubs"
+        transform="translate(-26.5, -29.375) scale(.375) translate(6.625, 0)"/>
+      <use  href="#suit-symbol-clubs"
+        transform="translate(26.5, -29.375) scale(.375) translate(-6.625, 0)"/>
+    </g>
+    <use href="#top-labels-clubs-A" transform="rotate(180)"/>
+    <use href="#suit-symbol-clubs" transform="translate(0, 0)"/>
+  </g>
+
+</svg>

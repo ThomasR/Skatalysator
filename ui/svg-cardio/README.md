@@ -2,7 +2,7 @@
 
 A template based SVG playing card generator.
 
-[**<img style="height: 3em;" src="https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/github-mark.svg" alt="github logo"> View on GitHub**](https://github.com/ThomasR/Skatalysator/blob/main/ui/svg-cardio/README.md)
+[**<img style="height: 3em;" src="https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/github-mark.svg" alt="github logo"> View on GitHub**](https://github.com/ThomasR/Skatalysator/blob/main/ui/svg-cardio/)
 
 This tool can generate playing card SVG images from a template and various parameters.
 
@@ -35,8 +35,7 @@ const template = await import(`svg-cardio/templates/template-${templateName}`);
 let svgText = generateDeck({ template, debug: false });
 ```
 
-This works in Node or in the browser. See [demoPage-inline.html](demoPage-inline.html) for a usage example.
-You can quickly spin up a webserver using `npx serve .`, and then open [localhost:3000/demoPage-inline.html](http://localhost:3000/demoPage-inline.html) in your browser.
+This works in Node or in the browser. See [demoPage-inline.html](https://thomasr.github.io/Skatalysator/ui/svg-cardio/demoPage-inline.html) for a usage example.
 
 
 *I know this is not ideal…
