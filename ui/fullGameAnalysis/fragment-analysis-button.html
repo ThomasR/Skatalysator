@@ -1,4 +1,4 @@
-<button id="analysis-button" x-text="$t('analysis.buttonText')"></button>
+<button x-bind="runAnalysis" x-text="$store.analysis.running ? $t('analysis.endButtonText') : $t('analysis.startButtonText')"></button>
 <span x-text="` - ${$t('analysis.timeout')}`"></span>
-<input type="number" id="timeout" x-model="$store.settings.timeout" max="600" min="1">
+<input type="number" x-model="$store.settings.timeout" max="600" min="1">
 <span x-text="$t('analysis.seconds')"></span>

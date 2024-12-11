@@ -15,15 +15,38 @@
  *
  */
 
+import sample from '../prototype/sample.mjs';
+import { suitNames } from '../../../engine/model/Suit.mjs';
+
+
+const convertCard = card => ({
+  suitName: suitNames[card.suit],
+  // TODO: this could just return card.figure if language is English, but then we need to generate English cards
+  name: card.figure === 'J' ? 'B' : card.figure === 'Q' ? 'D' : card.figure
+});
+
+const convertTricks = tricks => tricks.map(trick => ({
+  ...trick,
+  cards: trick.cards.map(convertCard)
+}));
+
 document.addEventListener('alpine:init', () => {
+
+  let rawGame;
+
   Alpine.store('game', {
-    tricks: [{
-      leadPlayer: 0,
-      winningPlayer: 2,
-      cards: [{ suit: 'diamonds', name: 'B' }, { suit: 'hearts', name: 'B' }, { suit: 'spades', name: 'B' }]
-    }, {
-      leadPlayer: 2,
-      cards: [{ suit: 'clubs', name: 'K' }]
-    }]
+    tricks: [],
+
+    getGame() {
+      return rawGame;
+    },
+
+    setGame(game) {
+      rawGame = game;
+      let tricks = game.currentTrick?.length ? [...game.playedTricks, game.currentTrick] : game.playedTricks;
+      this.tricks = convertTricks(tricks);
+    }
   });
+
+  Alpine.store('game').setGame(sample);
 });

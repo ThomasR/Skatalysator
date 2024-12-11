@@ -75,9 +75,9 @@ CardDistribution.prototype.toFox = function (leadPlayer) {
 };
 
 
-export const updateForm = sample => {
+export const updateForm = () => {
 
-  let game = sample.clone();
+  let game = Alpine.store('game').getGame().clone();
   while (true) {
     try {
       game.undoLastMove();

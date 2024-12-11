@@ -20,6 +20,7 @@ import sample from './sample.mjs';
 import analyzeGame from '../js/analyzeGame.mjs';
 import { onStart, onEnd, onResult } from './analysisCallbacks.mjs';
 import { updateForm } from './kartenleger.mjs';
+import { suitNames } from '../../../engine/model/Suit.mjs';
 
 const main = document.querySelector('main');
 
@@ -28,13 +29,6 @@ const addTrickMarkup = () => {
   trickDiv.className = 'trick';
   main.appendChild(trickDiv);
   return trickDiv;
-};
-
-const suitNames = {
-  C: 'clubs',
-  S: 'spades',
-  H: 'hearts',
-  D: 'diamonds'
 };
 
 let leadPlayer = sample.playedTricks[0]?.leadPlayer ?? sample.currentTrick.leadPlayer ?? sample.currentPlayer;
