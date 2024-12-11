@@ -36,7 +36,7 @@ npm install
 
 This package includes a prototype, which you can try out on
 
-[https://thomasr.github.io/Skatalysator/ui/fullGameAnalysis/prototype/game.html]().
+[https://thomasr.github.io/Skatalysator/ui/fullGameAnalysis/prototype/game.html](https://thomasr.github.io/Skatalysator/ui/fullGameAnalysis/prototype/game.html).
 
 
 It is currently available in German only. There is only one predefined game that can be analyzed.
