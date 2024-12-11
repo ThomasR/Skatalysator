@@ -1,6 +1,0 @@
-plugins:
-  - jekyll-remote-theme
-remote_theme: pages-themes/tactile@v0.2.0
-show_downloads: false
-include:
-  - ./ui/svg-cardio/
