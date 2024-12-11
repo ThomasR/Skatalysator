@@ -18,17 +18,17 @@
 import { default as de } from '../i18n/de.mjs';
 import { default as en } from '../i18n/en.mjs';
 
-export const dictionary = {
+const dictionary = {
   de,
   en
 };
 
-export const translate = ({ locale }) => (key, ...params) => {
+export const translate = ({ locale }) => (key, ...replacements) => {
   let target = key.split('.').reduce(
     (result, path) => result?.[path] || '',
     dictionary[locale]
   );
 
   let i = 0;
-  return target.replaceAll(/{}/g, () => params[i++] ?? '');
+  return target.replaceAll(/\{\}/g, () => replacements[i++] ?? '');
 };
