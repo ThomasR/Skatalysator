@@ -1,10 +1,10 @@
 # Skatalysator ♣️♠️♥️♦️
 
-<img alt="Skatalysator logo" src="docs/3%20Jacks.png" style="width:142px;">
+<img alt="Skatalysator logo" src="https://raw.githubusercontent.com/ThomasR/Skatalysator/main/docs/3%20Jacks.png" style="width:142px;">
 
-A free analysis engine for the game of [Skat](https://en.wikipedia.org/wiki/Skat_(card_game)).
+A free analysis engine for the card game [Skat](https://en.wikipedia.org/wiki/Skat_(card_game)).
 
-[**<img style="height: 3em;" src="docs/github-mark.svg" alt="github logo"> View on GitHub**](https://github.com/ThomasR/Skatalysator)
+[**<img style="height: 3em;" src="https://raw.githubusercontent.com/ThomasR/Skatalysator/main/docs/github-mark.svg" alt="github logo"> View on GitHub**](https://github.com/ThomasR/Skatalysator)
 
 What this engine can do:
 
@@ -43,7 +43,7 @@ It is currently available in German only. There is only one predefined game that
 
 **⚠️ This prototype is nowhere near finished. ⚠️**
 
-![UI Prototype Screenshot](docs/UI%20prototype.png)
+![UI Prototype Screenshot](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/docs/UI%20prototype.png)
 
 ### Engine
 

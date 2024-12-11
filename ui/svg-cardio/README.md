@@ -2,19 +2,19 @@
 
 A template based SVG playing card generator.
 
-[**<img style="height: 3em;" src="docs/github-mark.svg" alt="github logo"> View on GitHub**](https://github.com/ThomasR/Skatalysator/blob/main/ui/svg-cardio/README.md)
+[**<img style="height: 3em;" src="https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/github-mark.svg" alt="github logo"> View on GitHub**](https://github.com/ThomasR/Skatalysator/blob/main/ui/svg-cardio/README.md)
 
 This tool can generate playing card SVG images from a template and various parameters.
 
 You can change the card width/height, the vertical/horizontal padding, the border width, border radius and inner frame width to receive different outputs like these:
 
-![7 of hearts, default](docs/hearts-7.svg)
-![7 of hearts, large](docs/hearts-7-large.svg)
-![7 of hearts, mini](docs/hearts-7-mini.svg)
+![7 of hearts, default](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/hearts-7.svg)
+![7 of hearts, large](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/hearts-7-large.svg)
+![7 of hearts, mini](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/hearts-7-mini.svg)
 
 The tool will place the suit symbols precisely in the points seen in this image:
 
-![diagram of calculated intersection points](docs/hearts-7-debug.svg)
+![diagram of calculated intersection points](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/hearts-7-debug.svg)
 
 ## Usage
 
@@ -47,26 +47,26 @@ This package comes with 2 card themes, _Emoji_ and _[Fowler](https://tekeye.uk/p
 
 You will find the cards pre-generated in 60x90mm in the [svgs/](./svgs) folder along with HTML pages to view them.
 
-![Emoji card deck](docs/emoji-deck.png)
-![Fowler](docs/tekeye-deck.png)
+![Emoji card deck](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/emoji-deck.png)
+![Fowler](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/tekeye-deck.png)
 
 
 This package also comes with various card back templates, each available in multiple colors.
 
 See the [svgs/](./svgs) folder for the pre-generated versions in 60x90mm. 
 
-![Red card back with circles pattern](docs/back-circles-red.svg)
-![Blue card back with circles pattern](docs/back-circles2-blue.svg)
-![Green card back with interconnected pattern](docs/back-interconnected-green.svg)
-![Purple card back with fleur de lis pattern](docs/back-fleur-purple.svg)
-![Red card back with cube pattern](docs/back-cubes-red.svg)
-![Black card back with lozenges pattern](docs/back-lozenges-black.svg)
+![Red card back with circles pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-circles-red.svg)
+![Blue card back with circles pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-circles2-blue.svg)
+![Green card back with interconnected pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-interconnected-green.svg)
+![Purple card back with fleur de lis pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-fleur-purple.svg)
+![Red card back with cube pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-cubes-red.svg)
+![Black card back with lozenges pattern](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-lozenges-black.svg)
 
 Notice how the patterns align nicely with all edges. As you change the card or padding size, the pattern gets slightly stretched, so it always fits perfectly:
 
-![Blue circle pattern, stretched](docs/back-circles2-blue-small.svg)
-![Blue circle pattern, stretched](docs/back-circles2-medium.svg)
-![Blue circle pattern, stretched](docs/back-circles2-large.svg)
+![Blue circle pattern, stretched](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-circles2-blue-small.svg)
+![Blue circle pattern, stretched](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-circles2-medium.svg)
+![Blue circle pattern, stretched](https://raw.githubusercontent.com/ThomasR/Skatalysator/main/ui/svg-cardio/docs/back-circles2-large.svg)
 
 ## Writing a template
 
