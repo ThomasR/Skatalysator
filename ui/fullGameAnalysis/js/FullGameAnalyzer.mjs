@@ -15,7 +15,7 @@
  *
  */
 
-import { Strategy } from '../../engine/Strategy.mjs';
+import { Strategy } from '../../../engine/Strategy.mjs';
 
 const workerURL = import.meta.resolve('./worker.mjs');
 

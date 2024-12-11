@@ -1,0 +1,57 @@
+/*
+ *  Copyright 2024 Thomas Rosenau
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ */
+
+body[data-mark-trick-winner="star"] .card.trick-winner::before {
+    content: "⭐";
+}
+
+.card.trick-winner::before {
+    font-size: calc(var(--card-width) / 10);
+    position: absolute;
+    top: -3.5vmin;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.card[data-player-index="1"].trick-winner::before {
+    top: 100%;
+}
+
+body[data-horizontal-layout] .card::before {
+    top: calc(100% + .5vmin);
+}
+
+body[data-horizontal-layout] .card.trick-winner::before {
+    top: calc(100% + .5vmin);
+}
+
+body[data-horizontal-layout] .card.trick-winner:nth-of-type(1)::before {
+    left: 10%;
+}
+
+body[data-horizontal-layout] .card.trick-winner:nth-of-type(2)::before {
+    left: 20%;
+}
+
+body[data-horizontal-layout] .card.trick-winner:nth-of-type(3)::before {
+    left: 30%;
+}
+
+
+body:not([data-horizontal-layout]) .card[data-player-index="1"]:has(.evaluation:is([title], .analyzing)).trick-winner::before {
+    left: 75%;
+}

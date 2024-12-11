@@ -15,9 +15,9 @@
  *
  */
 
-import { Game } from '../../engine/model/Game.mjs';
-import { WinLevel } from '../../engine/model/WinLevel.mjs';
-import { RecursiveGameEvaluator } from '../../engine/analysis/RecursiveGameEvaluator.mjs';
+import { Game } from '../../../engine/model/Game.mjs';
+import { WinLevel } from '../../../engine/model/WinLevel.mjs';
+import { RecursiveGameEvaluator } from '../../../engine/analysis/RecursiveGameEvaluator.mjs';
 
 const timeoutInSeconds = 60;
 
