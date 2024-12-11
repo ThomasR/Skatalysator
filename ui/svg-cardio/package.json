@@ -1,7 +1,12 @@
 {
   "name": "svg-cardio",
   "version": "1.0.0",
-  "description": "A template based SVG playing card generator.",
+  "description": "A template based SVG playing card generator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThomasR/Skatalysator.git"
+  },
+  "homepage": "https://github.com/ThomasR/Skatalysator/tree/main/ui/svg-cardio#readme",
   "scripts": {
     "generate": "node generateAll.mjs",
     "install": "npm run generate",

@@ -1,8 +1,12 @@
 {
   "name": "skatalysator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A free analysis engine for the card game Skat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThomasR/Skatalysator.git"
+  },
+  "homepage": "https://github.com/ThomasR/Skatalysator.git#readme",
   "scripts": {
     "lint": "eslint '**/*.{m,c,}js'",
     "postinstall": "npm explore svg-cardio -- npm install",
