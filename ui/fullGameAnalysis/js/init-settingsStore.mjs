@@ -34,15 +34,16 @@ document.addEventListener('alpine:init', () => {
 
     init() {
       this.loadFromStorage();
-
       Alpine.effect(() => {
         if (!initialized) {
-          // JSON.stringify will access every property, thus activating reactivity through the synthesized getter
+          // The callback gets executed immediately. First, we activate reactivity through the synthesized getters.
+          // JSON.stringify will access every property
           JSON.stringify(this);
+          // From now on, the callback will be run on every property change
           initialized = true;
-          return;
+        } else {
+          this.saveToStorage();
         }
-        this.saveToStorage();
       });
     },
 
