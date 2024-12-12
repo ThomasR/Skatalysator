@@ -1,18 +1,18 @@
-<aside>
+<aside class="pico">
   <form>
     <fieldset>
-      <legend x-text="$t('settings.language')"></legend>
+      <legend><strong x-text="`🌐 ${$t('settings.language')}`"></strong></legend>
       <label>
-        <input type="radio" name="locale" value="de" x-model="$store.settings.locale">🇩🇪 Deutsch</label>
+        <input type="radio" name="locale" value="de" x-model="$store.settings.locale">Deutsch</label>
       <label>
-        <input type="radio" name="locale" value="en" x-model="$store.settings.locale">🇬🇧 English</label>
+        <input type="radio" name="locale" value="en" x-model="$store.settings.locale">English</label>
     </fieldset>
     <label>
-      <input type="checkbox" name="alignCards" x-model="$store.settings.alignCards">
-      <span x-text="$t('settings.alignCards')"></span>
+      <span x-text="$t('settings.background')"></span>
+      <input type="color" name="bgColor" x-model="$store.settings.bgColor">
     </label>
     <fieldset>
-      <legend x-text="$t('settings.trickWinnerMarker')"></legend>
+      <legend><strong x-text="$t('settings.trickWinnerMarker')"></strong></legend>
       <label>
         <input type="radio" name="trickWinnerMarker" value="none" x-model="$store.settings.trickWinnerMarker">
         <span x-text="$t('settings.none')"></span>
@@ -27,17 +27,19 @@
       </label>
     </fieldset>
     <fieldset>
-      <legend x-text="$t('settings.cardTheme')"></legend>
+      <legend><strong x-text="$t('settings.cardTheme')"></strong></legend>
       <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="emoji-crisp">Emoji</label>
       <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="emoji-tournament">Emoji Int</label>
       <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="tekeye">Fowler</label>
       <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="tekeye-tournament">Fowler
         Int</label>
     </fieldset>
-    <label>
-      <span x-text="$t('settings.background')"></span>
-      <input type="color" name="bgColor" x-model="$store.settings.bgColor"></label>
-    <br>
+    <fieldset>
+      <label>
+        <input type="checkbox" role="switch" name="alignCards" x-model="$store.settings.alignCards">
+        <span x-text="$t('settings.alignCards')"></span>
+      </label>
+    </fieldset>
     <button x-text="$t('settings.reset')" @click.prevent="$store.settings.reset()"></button>
   </form>
 </aside>

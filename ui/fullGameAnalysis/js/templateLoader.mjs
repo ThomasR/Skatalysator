@@ -33,7 +33,7 @@ const processTemplate = async (text, baseURL = location.href) => {
   let imports = Array.from(text.matchAll(/\{\{([^}]+?)\}\}/g));
   const promises = imports.map(async ([placeholder, href]) => {
     let url = new URL(href, baseURL);
-    let replacement = await (await fetch(url)).text();
+    let replacement = await (await fetch(url, { cache: 'no-cache' })).text();
     replacement = await processTemplate(replacement, url);
     return { placeholder, replacement };
   });
