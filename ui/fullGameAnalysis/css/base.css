@@ -19,6 +19,11 @@
     box-sizing: border-box;
 }
 
+html {
+    background: unset;
+    color: white;
+}
+
 body {
     margin: 0;
 }

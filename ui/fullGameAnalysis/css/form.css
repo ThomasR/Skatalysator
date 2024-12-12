@@ -15,6 +15,42 @@
  *
  */
 
+aside:has(> form) {
+    --bg-color: hsla(0, 0%, 100%, 0.97);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 18em;
+    height: 100vh;
+    transition: transform ease-in-out .5s .5s;
+    transform: translateX(-100%);
+    background: var(--bg-color);
+    &:hover, &:focus-within {
+        transition-delay: 0s;
+        transform: none;
+    }
+    &::after {
+        content: '⚙️';
+        width: 2em;
+        height: 2em;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        cursor: pointer;
+        border-radius: 0 0 .5em 0;
+        background: var(--bg-color);
+        text-align: center;
+        line-height: 1.7em;
+    }
+    & > form {
+        height: 100%;
+        overflow: auto;
+        padding: 1em;
+    }
+}
+
 .legend > div {
     display: none;
     align-items: center;
