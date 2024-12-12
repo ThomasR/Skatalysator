@@ -24,7 +24,7 @@ document.addEventListener('alpine:init', () => {
     trickWinnerMarker: 'none',
     alignCards: false,
     timeout: 60,
-    bgColor: '#004062'
+    bgColor: '#084d72'
   };
 
   let initialized = false;

@@ -21,6 +21,7 @@ const workerURL = import.meta.resolve('./worker.mjs');
 
 export class FullGameAnalyzer {
   game;
+  timeout;
   onStart;
   onResult;
   onEnd;
@@ -28,6 +29,7 @@ export class FullGameAnalyzer {
 
   constructor({
     game,
+    timeout = 60,
     onStart,
     onResult,
     onEnd
@@ -39,6 +41,7 @@ export class FullGameAnalyzer {
     if (!onStart || !onResult || !onEnd) {
       throw new Error('Must pass onStart, onResult and onEnd callbacks!');
     }
+    this.timeout = timeout;
     this.onStart = onStart;
     this.onResult = onResult;
     this.onEnd = onEnd;
@@ -86,7 +89,7 @@ export class FullGameAnalyzer {
     }
     this.worker = new Worker(workerURL, { type: 'module' });
     this.worker.addEventListener('message', this.#onMessage.bind(this));
-    this.worker.postMessage({ game: this.game, skip: skipIndexes });
+    this.worker.postMessage({ game: this.game, skip: skipIndexes, timeout: this.timeout });
   }
 
   #onMessage({ data }) {
