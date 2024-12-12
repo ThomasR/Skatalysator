@@ -1,11 +1,13 @@
 <form method="post" target="_blank" action="https://32karten.de/forum/skatfox/index.php">
-    <input type="submit" value="SkatFox"
-           style="position: absolute; top:0; right:0; margin:1em; padding: .5em 1em; cursor: pointer;">
-    <input type="hidden" name="spiel">
-    <input type="hidden" name="spieler">
-    <input type="hidden" name="karten">
+  <input type="submit" value="SkatFox"
+      style="position: absolute; top:0; right:0; margin:1em; padding: .5em 1em; cursor: pointer;">
+  <input type="hidden" name="spiel">
+  <input type="hidden" name="spieler">
+  <input type="hidden" name="karten">
 </form>
 <script type="module">
-    import { updateForm } from './js/kartenleger.mjs';
+  import { updateForm } from './js/kartenleger.mjs';
+  document.addEventListener('alpine:initialized', () => {
     updateForm();
+  });
 </script>
