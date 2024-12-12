@@ -21,8 +21,8 @@ import analyzeGame from './analyzeGame.mjs';
 document.addEventListener('alpine:init', () => {
 
   Alpine.bind('runAnalysis', () => {
-    let store = Alpine.store('analysis');
-    let { onStart, onResult, onEnd } = store;
+    let analysisStore = Alpine.store('analysis');
+    let { onStart, onResult, onEnd } = analysisStore;
     let stop = null;
     return {
       '@click'() {
@@ -32,9 +32,10 @@ document.addEventListener('alpine:init', () => {
         } else {
           stop = analyzeGame({
             game: sample,
-            onStart: onStart.bind(store),
-            onResult: onResult.bind(store),
-            onEnd: onEnd.bind(store)
+            onStart: onStart.bind(analysisStore),
+            onResult: onResult.bind(analysisStore),
+            onEnd: onEnd.bind(analysisStore),
+            timeout: Alpine.store('settings').timeout
           });
         }
       }
