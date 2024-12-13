@@ -16,8 +16,6 @@
  */
 
 import { Card } from './Card.mjs';
-import { NullCard } from './NullCard.mjs';
-import { GameType } from './GameType.mjs';
 
 export class Trick {
   cards;
@@ -30,8 +28,7 @@ export class Trick {
     winningPlayer = null,
     gameType
   } = {}) {
-    let CardClass = gameType === GameType.NULL ? NullCard : Card;
-    this.cards = cards.map(cardInput => new CardClass(cardInput));
+    this.cards = cards.map(cardInput => new (Card(gameType))(cardInput));
     this.leadPlayer = leadPlayer;
     this.winningPlayer = winningPlayer;
   }

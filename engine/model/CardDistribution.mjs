@@ -16,9 +16,7 @@
  */
 
 import { Card } from './Card.mjs';
-import { NullCard } from './NullCard.mjs';
 import { Hand } from './Hand.mjs';
-import { GameType } from './GameType.mjs';
 
 export class CardDistribution {
 
@@ -27,28 +25,35 @@ export class CardDistribution {
   gameType;
 
   constructor(input, gameType) {
-
     if (input instanceof CardDistribution) {
-      this.hands = input.hands.map(hand => hand.clone());
-      this.skat = [...input.skat];
-      this.gameType = input.gameType;
-      return this;
-    }
-
-    if (typeof gameType === 'undefined') {
-      throw new Error('gameType is required');
-    }
-
-    this.gameType = gameType;
-    input.hands.forEach(handInput => {
-      if (Object.hasOwn(handInput, 'cards')) {
-        handInput = Object.values(handInput.cards).flat();
+      this.#copyExistingDistribution(input);
+    } else {
+      if (!gameType) {
+        throw new Error('gameType is required');
       }
-      this.hands.push(new Hand(handInput, gameType));
-    });
-    let CardClass = gameType === GameType.NULL ? NullCard : Card;
-    this.skat = input.skat.map(cardInput => new CardClass(cardInput));
-    this.#sortSkat();
+      this.gameType = gameType;
+      this.hands = this.#initializeHands(input.hands, gameType);
+      this.skat = input.skat.map(cardInput => new (Card(gameType))(cardInput));
+      this.#sortSkat();
+    }
+  }
+
+  #copyExistingDistribution(input) {
+    this.hands = input.hands.map(hand => hand.clone());
+    this.skat = [...input.skat];
+    this.gameType = input.gameType;
+  }
+
+  #initializeHands(handInputs, gameType) {
+    return handInputs.map(handInput =>
+      new Hand(this.#mapCardToHandInput(handInput), gameType)
+    );
+  }
+
+  #mapCardToHandInput(handInput) {
+    return Object.hasOwn(handInput, 'cards')
+      ? Object.values(handInput.cards).flat()
+      : handInput;
   }
 
   #sortSkat() {

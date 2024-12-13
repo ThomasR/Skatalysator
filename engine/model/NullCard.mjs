@@ -15,12 +15,12 @@
  *
  */
 
-import { Card } from './Card.mjs';
+import { GenericCard } from './GenericCard.mjs';
 
 const figures = ['7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
 
-export class NullCard extends Card {
+export class NullCard extends GenericCard {
 
   static {
     this._initDeck();

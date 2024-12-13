@@ -22,7 +22,6 @@ import { Trick } from './Trick.mjs';
 import { CardDistribution } from './CardDistribution.mjs';
 import { Strategy } from '../Strategy.mjs';
 import { GameType } from './GameType.mjs';
-import { NullCard } from './NullCard.mjs';
 
 export class Game extends PrettyLogging {
   soloPlayer;
@@ -60,8 +59,7 @@ export class Game extends PrettyLogging {
     if (this.isOver()) {
       throw new Error('Cannot play card after game is over');
     }
-    let CardClass = this.gameType === GameType.NULL ? NullCard : Card;
-    let card = new CardClass(cardInput);
+    let card = new (Card(this.gameType))(cardInput);
     this.distribution.removeCard(card, this.currentPlayer);
     this.currentTrick.playCard(card);
     if (this.currentTrick.length === 3) {

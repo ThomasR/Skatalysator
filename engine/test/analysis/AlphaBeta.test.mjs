@@ -43,7 +43,7 @@ for (let AlphaBeta of [SkatalysatorAlphaBetaSearch, LoggingSkatalysatorAlphaBeta
                 assert.equal(evaluation.hint, 'domination', 'Evaluation should include follow-up moves or domination hint');
               }
             } else {
-              let expectedCards = bestContinuation.map(x => (x ? new Card(x) : undefined));
+              let expectedCards = bestContinuation.map(x => (x ? new (Card(game.gameType))(x) : undefined));
               assert(expectedCards.includes(evaluation.moves[0]),
                 `Best move ${evaluation.moves[0]} should be ${expectedCards.length > 1 ?
                   'one of ' :

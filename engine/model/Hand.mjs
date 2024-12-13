@@ -16,7 +16,6 @@
  */
 
 import { Card } from './Card.mjs';
-import { NullCard } from './NullCard.mjs';
 import { GameType } from './GameType.mjs';
 
 const suits = ['J', 'C', 'S', 'H', 'D'];
@@ -52,9 +51,8 @@ export class Hand {
     }
 
     let isNull = this.gameType === GameType.NULL;
-    let CardClass = isNull ? NullCard : Card;
     input.forEach(cardInput => {
-      let card = new CardClass(cardInput);
+      let card = new (Card(this.gameType))(cardInput);
       let suitIndex = (card.figure === 'J' && !isNull) ? 'J' : card.suit;
       this.cards[suitIndex].push(card);
     });
