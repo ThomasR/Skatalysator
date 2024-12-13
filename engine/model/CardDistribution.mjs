@@ -32,7 +32,7 @@ export class CardDistribution {
         throw new Error('gameType is required');
       }
       this.gameType = gameType;
-      this.hands = this.#initializeHands(input.hands, gameType);
+      this.hands = CardDistribution.#initializeHands(input.hands, gameType);
       this.skat = input.skat.map(cardInput => new (Card(gameType))(cardInput));
       this.#sortSkat();
     }
@@ -44,13 +44,11 @@ export class CardDistribution {
     this.gameType = input.gameType;
   }
 
-  #initializeHands(handInputs, gameType) {
-    return handInputs.map(handInput =>
-      new Hand(this.#mapCardToHandInput(handInput), gameType)
-    );
+  static #initializeHands(handInputs, gameType) {
+    return handInputs.map(handInput => new Hand(CardDistribution.#mapCardToHandInput(handInput), gameType));
   }
 
-  #mapCardToHandInput(handInput) {
+  static #mapCardToHandInput(handInput) {
     return Object.hasOwn(handInput, 'cards')
       ? Object.values(handInput.cards).flat()
       : handInput;

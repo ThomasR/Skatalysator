@@ -19,4 +19,4 @@ import { GenericCard } from './GenericCard.mjs';
 import { NullCard } from './NullCard.mjs';
 import { GameType } from './GameType.mjs';
 
-export const Card = gameType => gameType === GameType.NULL ? NullCard : GenericCard;
+export const Card = gameType => (gameType === GameType.NULL ? NullCard : GenericCard);
