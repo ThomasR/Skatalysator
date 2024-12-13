@@ -80,7 +80,7 @@ main {
     color: rgba(255, 255, 255, .07);
 }
 
-body[data-trick-winner-marker="glow"] .trick-winner img {
+body[data-trick-winner-marker="glow"] .trick-winner {
     box-shadow: 0 0 2px lime, 0 0 5px cyan;
 }
 

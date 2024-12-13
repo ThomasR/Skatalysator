@@ -20,11 +20,11 @@ body[data-trick-winner-marker="star"] .card.trick-winner::before {
 }
 
 .card.trick-winner::before {
-    font-size: calc(var(--card-width) / 10);
     position: absolute;
-    top: -3.5vmin;
     left: 50%;
+    top: -3.5vmin;
     transform: translate(-50%);
+    font-size: calc(var(--card-width) / 10);
 }
 
 .card[data-player-index="1"].trick-winner::before {
