@@ -92,6 +92,9 @@ export class Hand {
       }
       insertionIndex++;
     }
+    if (this.cards[suit][insertionIndex - 1] === newCard) {
+      throw new Error(`Player already has ${newCard}!`);
+    }
     this.cards[suit].splice(insertionIndex, 0, newCard);
   }
 

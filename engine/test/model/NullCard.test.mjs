@@ -15,12 +15,12 @@
  *
  */
 
-import { describe, test } from 'node:test';
+import test from 'node:test';
 import assert from 'node:assert';
 import { NullCard } from '../../model/NullCard.mjs';
 import { GameType } from '../../model/GameType.mjs';
 
-describe('NullCard', () => {
+test.describe('NullCard', () => {
   test('should return 0 as the value of the card', () => {
     const nullCard = new NullCard('D10');
     assert.strictEqual(nullCard.value, 0);

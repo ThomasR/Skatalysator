@@ -18,10 +18,10 @@
 import { GenericCard } from '../../model/GenericCard.mjs';
 
 import assert from 'node:assert';
-import { default as test, describe } from 'node:test';
+import test from 'node:test';
 import { GameType } from '../../model/GameType.mjs';
 
-describe('Card', () => {
+test.describe('Card', () => {
 
   test('should create a valid card from suit and figure', () => {
     const card = new GenericCard({ suit: 'H', figure: 'Q' });
