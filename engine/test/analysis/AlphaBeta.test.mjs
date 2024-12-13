@@ -16,7 +16,7 @@
  */
 
 import assert from 'node:assert';
-import { default as test, suite } from 'node:test';
+import test from 'node:test';
 
 import { Card } from '../../model/Card.mjs';
 
@@ -27,15 +27,22 @@ import { CachingSkatalysatorAlphaBetaSearch } from '../../analysis/CachingSkatal
 const testCases = ['57', '62', '62-optimal', '59'];
 
 for (let AlphaBeta of [SkatalysatorAlphaBetaSearch, LoggingSkatalysatorAlphaBetaSearch, CachingSkatalysatorAlphaBetaSearch]) {
-  suite(AlphaBeta.name, () => {
+  test.describe(AlphaBeta.name, () => {
 
     for (const id of testCases) {
-      suite(`Game ${id}`, async () => {
+      test.describe(`Game ${id}`, async () => {
         const { fixtures, game: originalGame } = await import(`../alphabeta-fixtures/fixture-${id}.mjs`);
         let game = originalGame.clone();
-        let moveNumber = 3 * game.playedTricks.length + game.currentTrick.length + 1;
+        let moveNumber = 3 * game.playedTricks.length + game.currentTrick.length;
         for (let [cardToPlay, score, bestContinuation = [undefined]] of fixtures) {
-          test(`Move ${moveNumber++} - ${cardToPlay}`, () => {
+          moveNumber++;
+          // Skip tests that require deep calculation (slow)
+          const MAGIC_THRESHOLD = 12;
+          if (process.env.QUICK_TEST && moveNumber <= MAGIC_THRESHOLD) {
+            game.playCard(cardToPlay);
+            continue;
+          }
+          test(`Move ${moveNumber} - ${cardToPlay}`, () => {
             game.playCard(cardToPlay);
             let evaluation = new AlphaBeta({ game: game.clone() }).minimax();
             if (!evaluation.moves?.length) {
