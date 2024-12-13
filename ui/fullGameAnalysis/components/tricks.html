@@ -2,7 +2,7 @@
   <div class="trick">
     <template x-for="(card, cardIndex) in trick.cards" :key="cardIndex">
       <div class="card" :data-player-index="1 + (trick.leadPlayer + cardIndex) % 3"
-          :class="{ 'trick-winner': trick.winningPlayer === trick.leadPlayer + cardIndex }"
+          :class="{ 'trick-winner': trick.winningPlayer === (trick.leadPlayer + cardIndex) % 3 }"
       >
         <img :src="`../svg-cardio/svgs/${$store.settings.cardTheme}/${card.suitName}-${card.name}.svg`">
         <template x-if="$store.analysis.cardEvaluation[trickIndex][cardIndex]?.css">
