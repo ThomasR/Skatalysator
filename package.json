@@ -12,8 +12,8 @@
   "scripts": {
     "lint": "eslint '**/*.{m,c,}js'",
     "postinstall": "npm explore svg-cardio -- npm install",
-    "test": "node --test engine/test/runTests.mjs",
-    "test:watch": "node --test --watch engine/test/runTests.mjs"
+    "test": "node --test \"**/*.test.mjs\"",
+    "test:watch": "node --test --watch \"**/*.test.mjs\""
   },
   "dependencies": {
     "skatalysator-engine": "file:engine",
