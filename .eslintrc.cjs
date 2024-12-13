@@ -5,7 +5,8 @@ module.exports = {
     es2024: true
   },
   plugins: [
-    '@stylistic/js'
+    '@stylistic/js',
+    'validate-filename'
   ],
   extends: 'eslint:recommended',
   parserOptions: {
@@ -85,10 +86,16 @@ module.exports = {
     radix: 'error',
     'require-await': 'warn',
     'symbol-description': 'error',
-    yoda: 'error'
+    yoda: 'error',
+    'validate-filename/limit-extensions': ['error', {
+      rules: [{
+        target: '**',
+        extensions: ['.mjs', '.cjs']
+      }]
+    }]
   },
   overrides: [{
-    files: ['.*.cjs'],
+    files: ['.*.cjs', '**/test/**/*.mjs'],
     env: {
       node: true
     }
