@@ -41,8 +41,8 @@ aside:has(> form) {
         right: 0;
         top: 0;
         transform: translateX(100%);
-        background: var(--bg-color);
         border-radius: 0 0 .5em 0;
+        background: var(--bg-color);
         cursor: pointer;
         line-height: 1.7em;
         text-align: center;
@@ -81,8 +81,8 @@ main:has(.evaluation.blunder) ~ .legend div.blunder {
     top: 2vmin;
     transform: translateX(-50%);
     padding: 1.5vmin 2vmin;
-    background: rgba(255, 255, 255, .1);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    background: rgba(255, 255, 255, .1);
     font-size: 2.5vmin;
 }
