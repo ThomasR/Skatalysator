@@ -28,7 +28,7 @@ export class CardDistribution {
     if (input instanceof CardDistribution) {
       this.#copyExistingDistribution(input);
     } else {
-      if (!gameType) {
+      if (typeof gameType === 'undefined') {
         throw new Error('gameType is required');
       }
       this.gameType = gameType;
