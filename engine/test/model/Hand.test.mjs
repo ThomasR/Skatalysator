@@ -90,18 +90,11 @@ test.describe('Hand', () => {
     assert.match(hand.toString(), /♣.*10 .*♣.*9/);
   });
 
-  test('toHash computes a unique hash for the hand', () => {
-    const hand1 = new Hand(['H10'], GameType.GRAND);
-    const hand2 = new Hand(['H10', 'H9'], GameType.GRAND);
-    assert.notEqual(hand1.toHash(), hand2.toHash());
-  });
-
   test('clone creates an identical copy of the hand', () => {
     const hand1 = new Hand(['D10', 'D9'], GameType.GRAND);
     const hand2 = hand1.clone();
     assert.notEqual(hand1, hand2);
     assert.equal(hand1.toString(), hand2.toString());
-    assert.equal(hand1.toHash(), hand2.toHash());
     assert.equal(hand1.gameType, hand2.gameType);
   });
 });

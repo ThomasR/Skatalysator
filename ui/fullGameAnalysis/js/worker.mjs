@@ -28,7 +28,7 @@ const runAnalysis = ({ data: { game: gameData, skip = [], timeout = timeoutInSec
 
   let evaluator = new RecursiveGameEvaluator({ game });
 
-  let cardCount = 3 * game.playedTricks.length + game.currentTrick.length;
+  let cardCount = game.playedCardCount;
   for (let i = 0; i <= cardCount; i++) {
     if (skip.includes(i) || game.isOver()) {
       game.undoLastMove();

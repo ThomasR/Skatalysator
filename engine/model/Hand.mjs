@@ -21,13 +21,7 @@ import { GameType } from './GameType.mjs';
 const suits = ['J', 'C', 'S', 'H', 'D'];
 
 export class Hand {
-  cards = {
-    J: [],
-    C: [],
-    S: [],
-    H: [],
-    D: []
-  };
+  cards = Object.fromEntries(suits.map(suit => [suit, []]));
 
   gameType = null;
 
@@ -120,16 +114,6 @@ export class Hand {
     });
     let cards = suits.map(suit => this.cards[suit]);
     return cards.flat(2).join(' ') || '-';
-  }
-
-  toHash() {
-    let result = 0;
-    suits.forEach((suit, suitIndex) => {
-      this.cards[suit].forEach(card => {
-        result += 2 ** (card.rank % 7 + 7 * (4 - suitIndex));
-      });
-    });
-    return result;
   }
 
   clone() {

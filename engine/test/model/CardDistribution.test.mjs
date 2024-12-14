@@ -118,9 +118,11 @@ test.describe('CardDistribution', () => {
 
   test('should throw an error if removing a card not owned by a player', () => {
     class MockHand {
+      // eslint-disable-next-line class-methods-use-this
       addCard() {
       }
 
+      // eslint-disable-next-line class-methods-use-this
       removeCard() {
         throw new Error('not owned');
       }

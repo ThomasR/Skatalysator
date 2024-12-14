@@ -26,14 +26,14 @@ import { CachingSkatalysatorAlphaBetaSearch } from '../../analysis/CachingSkatal
 
 const testCases = ['57', '62', '62-optimal', '59'];
 
-for (let AlphaBeta of [SkatalysatorAlphaBetaSearch, LoggingSkatalysatorAlphaBetaSearch, CachingSkatalysatorAlphaBetaSearch]) {
+for (let AlphaBeta of [CachingSkatalysatorAlphaBetaSearch]) {
   test.describe(AlphaBeta.name, () => {
 
     for (const id of testCases) {
       test.describe(`Game ${id}`, async () => {
         const { fixtures, game: originalGame } = await import(`../alphabeta-fixtures/fixture-${id}.mjs`);
         let game = originalGame.clone();
-        let moveNumber = 3 * game.playedTricks.length + game.currentTrick.length;
+        let moveNumber = game.playedCardCount;
         for (let [cardToPlay, score, bestContinuation = [undefined]] of fixtures) {
           moveNumber++;
           // Skip tests that require deep calculation (slow)

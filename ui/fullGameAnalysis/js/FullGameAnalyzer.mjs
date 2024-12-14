@@ -62,10 +62,10 @@ export class FullGameAnalyzer {
 
   #findForcedMoves() {
     let doneIndexes = [];
-    let cardCount = 3 * this.game.playedTricks.length + this.game.currentTrick.length;
+    let { playedCardCount } = this.game;
     let tempGame = this.game.clone();
-    for (let i = 0; i < cardCount; i++) {
-      if (i === 0 && cardCount === 30) {
+    for (let i = 0; i < playedCardCount; i++) {
+      if (i === 0 && playedCardCount === 30) {
         tempGame.undoLastMove();
         continue;
       }

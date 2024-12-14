@@ -20,7 +20,6 @@ import { PrettyLogging } from '../PrettyLogging.mjs';
 import { suitToSymbol } from './Suit.mjs';
 import { Trick } from './Trick.mjs';
 import { CardDistribution } from './CardDistribution.mjs';
-import { Strategy } from '../Strategy.mjs';
 import { GameType } from './GameType.mjs';
 
 export class Game extends PrettyLogging {
@@ -146,6 +145,10 @@ export class Game extends PrettyLogging {
     });
   }
 
+  get playedCardCount() {
+    return this.playedTricks.length * 3 + this.currentTrick.length;
+  }
+
   toString() {
     let trumpString;
     if (this.gameType === null) {
@@ -174,25 +177,5 @@ export class Game extends PrettyLogging {
     }
     result += '\n-----';
     return result;
-  }
-
-  toHash() {
-    let result = `${this.pointsSolo},${this.distribution.toHash()}`;
-    if (this.currentTrick?.length) {
-      result += `,${this.currentTrick.cards.map(({ figure, suit }) => `${suit}${figure}`).join(',')}`;
-    }
-    return result;
-  }
-
-  getVariationCount() {
-    if (this.playedTricks.length >= 9) {
-      return 1;
-    }
-    let possibleMoves = Strategy.getPossibleMoves(this);
-    return possibleMoves.reduce((count, move) => {
-      let clone = this.clone();
-      clone.playCard(move);
-      return count + clone.getVariationCount();
-    }, 0);
   }
 }

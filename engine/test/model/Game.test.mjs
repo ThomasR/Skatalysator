@@ -21,7 +21,7 @@ import { Game } from '../../model/Game.mjs';
 import { Trick } from '../../model/Trick.mjs';
 import { GameType } from '../../model/GameType.mjs';
 
-test.describe('Game Class Tests', () => {
+test.describe('Game', () => {
   test('should initialize the game with correct default values', () => {
     const game = new Game({
       soloPlayer: 1,
@@ -185,25 +185,5 @@ test.describe('Game Class Tests', () => {
 
     assert.ok(result.includes('-----\nGame: Player 2 plays Grand'));
     assert.ok(result.includes('Score: 20:10'));
-  });
-
-  test('toHash should return a unique hash of the game state', () => {
-    const game = new Game({
-      soloPlayer: 1,
-      currentPlayer: 0,
-      gameType: GameType.GRAND,
-      distribution: {
-        hands: [[], [], []],
-        skat: []
-      },
-      playedTricks: [],
-      pointsSolo: 20,
-      pointsDuo: 10
-    });
-
-    const hash = game.toHash();
-
-    assert.ok(typeof hash === 'string');
-    assert.equal([...hash.matchAll(/,/g)].length, 2);
   });
 });

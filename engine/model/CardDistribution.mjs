@@ -91,10 +91,6 @@ export class CardDistribution {
     }
   }
 
-  toHash() {
-    return this.hands.map(hand => hand.toHash()).join(',');
-  }
-
   toString() {
     let playerCards = [0, 1, 2].map(i => `Pl.${i + 1}: ${this.hands[i]}`).join('\n');
     let skat = `Skat: ${this.skat.join(' ')}`;

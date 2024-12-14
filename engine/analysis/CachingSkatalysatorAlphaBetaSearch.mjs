@@ -16,6 +16,7 @@
  */
 
 import { LoggingSkatalysatorAlphaBetaSearch } from './LoggingSkatalysatorAlphaBetaSearch.mjs';
+import { GameHasher } from './GameHasher.mjs';
 
 // TODO: make configurable
 const AGGRESSIVE_CACHING = false;
@@ -37,14 +38,13 @@ export class CachingSkatalysatorAlphaBetaSearch extends LoggingSkatalysatorAlpha
       recursionDepth = 0,
       logger = console
     } = args[0] ?? {};
+    let hash = `${GameHasher.hash(this.game)},${bestSoloScore},${bestDuoScore}`;
 
-    let hash = `${this.game.toHash()},${bestSoloScore},${bestDuoScore}`;
-
-    let cache = this.#transpositionTables[this.game.currentPlayer ?? 0];
-    let cached = cache.get(hash);
+    let transpositionTable = this.#transpositionTables[this.game.currentPlayer ?? 0];
+    let cached = transpositionTable.get(hash);
     if (!cached) {
       cached = super.minimax(...args);
-      cache.set(hash, cached);
+      transpositionTable.set(hash, cached);
     }
     if (recursionDepth === 0 && this.logDepth) {
       logger.log('Cache size: ', this.cacheSize);
@@ -56,7 +56,7 @@ export class CachingSkatalysatorAlphaBetaSearch extends LoggingSkatalysatorAlpha
     if (this.game.isOver()) {
       return false;
     }
-    let remainingCardCount = 30 - (this.game.playedTricks.length * 3 + this.game.currentTrick.length);
+    let remainingCardCount = 30 - this.game.playedCardCount;
     if (remainingCardCount <= (AGGRESSIVE_CACHING ? 0 : 3)) {
       return false;
     }
