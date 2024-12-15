@@ -17,12 +17,17 @@
 
 import { LoggingSkatalysatorAlphaBetaSearch } from './LoggingSkatalysatorAlphaBetaSearch.mjs';
 
+// TODO: make configurable
+const AGGRESSIVE_CACHING = false;
+
 export class CachingSkatalysatorAlphaBetaSearch extends LoggingSkatalysatorAlphaBetaSearch {
 
   #transpositionTables = [new Map(), new Map(), new Map()];
 
+
   minimax(...args) {
-    if (this.game.isOver()) {
+
+    if (!this.useCache()) {
       return super.minimax(...args);
     }
 
@@ -45,6 +50,17 @@ export class CachingSkatalysatorAlphaBetaSearch extends LoggingSkatalysatorAlpha
       logger.log('Cache size: ', this.cacheSize);
     }
     return cached;
+  }
+
+  useCache() {
+    if (this.game.isOver()) {
+      return false;
+    }
+    let remainingCardCount = 30 - (this.game.playedTricks.length * 3 + this.game.currentTrick.length);
+    if (remainingCardCount <= (AGGRESSIVE_CACHING ? 0 : 3)) {
+      return false;
+    }
+    return remainingCardCount % 3 === 0;
   }
 
   get cacheSize() {
