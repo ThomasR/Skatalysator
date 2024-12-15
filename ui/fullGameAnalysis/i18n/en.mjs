@@ -25,7 +25,8 @@ export default {
     neon: 'Neon',
     cardTheme: 'Deck',
     background: 'Background:',
-    reset: 'Reset'
+    reset: 'Reset',
+    tournamentScheme: 'International suit colors'
   },
   analysis: {
     startButtonText: 'Run Analysis',

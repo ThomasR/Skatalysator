@@ -4,7 +4,9 @@
       <div class="card" :data-player-index="1 + (trick.leadPlayer + cardIndex) % 3"
           :class="{ 'trick-winner': trick.winningPlayer === (trick.leadPlayer + cardIndex) % 3 }"
       >
-        <img :src="`../svg-cardio/svgs/${$store.settings.cardTheme}/${card.suitName}-${card.name}.svg`">
+        <img :src="`../svg-cardio/svgs/${$store.settings.cardTheme}` +
+                   `${$store.settings.tournamentScheme ? '-tournament' : ''}/${card.suitName}-${card.name}.svg`"
+        >
         <template x-if="$store.analysis.cardEvaluation[trickIndex][cardIndex]?.css">
           <div
               class="evaluation" :class="$store.analysis.cardEvaluation[trickIndex][cardIndex].css"

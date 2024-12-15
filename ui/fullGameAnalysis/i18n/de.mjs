@@ -24,7 +24,8 @@ export default {
     neon: 'Neon',
     cardTheme: 'Karten',
     background: 'Hintergrund:',
-    reset: 'Zurücksetzen'
+    reset: 'Zurücksetzen',
+    tournamentScheme: 'Turnierfarben'
   },
   analysis: {
     startButtonText: 'Analyse starten',

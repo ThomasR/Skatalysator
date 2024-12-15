@@ -20,9 +20,10 @@ document.addEventListener('alpine:init', () => {
   const storageKey = 'skatalysator-settings';
 
   const defaults = {
-    cardTheme: 'emoji-tournament',
+    cardTheme: 'emoji',
     trickWinnerMarker: 'none',
     alignCards: false,
+    tournamentScheme: true,
     timeout: 60,
     // lch(from var(--pico-primary-background) 37 c h)
     bgColor: '#005e97'
