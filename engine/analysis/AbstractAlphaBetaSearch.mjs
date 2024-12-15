@@ -53,6 +53,12 @@ export class AbstractAlphaBetaSearch {
       };
     }
 
+    if (bestSoloScore === bestDuoScore) {
+      return {
+        score: bestSoloScore
+      };
+    }
+
     let { currentPlayer, isCurrentPlayerSolo } = this.getPlayerInfo();
 
     let early = this.getEarlyCutoff({ currentPlayer, isPrevPlayerSolo, bestSoloScore, bestDuoScore });

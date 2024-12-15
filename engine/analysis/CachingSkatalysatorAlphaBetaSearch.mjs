@@ -19,27 +19,35 @@ import { LoggingSkatalysatorAlphaBetaSearch } from './LoggingSkatalysatorAlphaBe
 
 export class CachingSkatalysatorAlphaBetaSearch extends LoggingSkatalysatorAlphaBetaSearch {
 
-  #caches = [new Map(), new Map(), new Map()];
+  #transpositionTables = [new Map(), new Map(), new Map()];
 
   minimax(...args) {
     if (this.game.isOver()) {
       return super.minimax(...args);
     }
 
-    const { bestSoloScore = Number.NEGATIVE_INFINITY, bestDuoScore = Number.POSITIVE_INFINITY } = args[0] ?? {};
-    let currentPoints = this.game.pointsSolo;
-    let hash = `${this.game.toHash()},${currentPoints},${bestSoloScore},${bestDuoScore}`;
+    const {
+      bestSoloScore = Number.NEGATIVE_INFINITY,
+      bestDuoScore = Number.POSITIVE_INFINITY,
+      recursionDepth = 0,
+      logger = console
+    } = args[0] ?? {};
 
-    let cache = this.#caches[this.game.currentPlayer ?? 0];
+    let hash = `${this.game.toHash()},${bestSoloScore},${bestDuoScore}`;
+
+    let cache = this.#transpositionTables[this.game.currentPlayer ?? 0];
     let cached = cache.get(hash);
     if (!cached) {
       cached = super.minimax(...args);
       cache.set(hash, cached);
     }
+    if (recursionDepth === 0 && this.logDepth) {
+      logger.log('Cache size: ', this.cacheSize);
+    }
     return cached;
   }
 
   get cacheSize() {
-    return this.#caches[0].size + this.#caches[1].size + this.#caches[2].size;
+    return this.#transpositionTables.reduce((total, table) => total + table.size, 0);
   }
 }

@@ -177,7 +177,7 @@ export class Game extends PrettyLogging {
   }
 
   toHash() {
-    let result = this.distribution.toHash();
+    let result = `${this.pointsSolo},${this.distribution.toHash()}`;
     if (this.currentTrick?.length) {
       result += `,${this.currentTrick.cards.map(({ figure, suit }) => `${suit}${figure}`).join(',')}`;
     }
