@@ -16,21 +16,27 @@
  */
 
 import { suitLetters } from './model/Suit.mjs';
-import { TrickAnalyzer } from './analysis/TrickAnalyzer.mjs';
 
 export class Strategy {
-  static getBestMoveCandidates() {
+
+  game;
+
+  constructor(game) {
+    this.game = game;
+  }
+
+  getBestMoveCandidates() {
     throw new Error('Abstract method cannot be called directly');
   }
 
-  static getPossibleMoves(game) {
-    if (game.isOver()) {
+  getPossibleMoves() {
+    if (this.game.isOver()) {
       return [];
     }
-    let hand = game.distribution.hands[game.currentPlayer];
-    if (game.currentTrick.length > 0) {
-      let firstCard = game.currentTrick[0];
-      if (firstCard.isTrump(game.gameType)) {
+    let hand = this.game.distribution.hands[this.game.currentPlayer];
+    if (this.game.currentTrick.length > 0) {
+      let firstCard = this.game.currentTrick[0];
+      if (firstCard.isTrump(this.game.gameType)) {
         if (hand.trumpCards.length) {
           return hand.trumpCards;
         }
@@ -38,90 +44,23 @@ export class Strategy {
         return [...hand.cards[firstCard.suit]];
       }
     }
-
     return hand.allCards;
   }
 
-  static #gapExistsBetween(cardA, cardB, game) {
-    let currentSuitIsTrump = cardA.isTrump(game.gameType);
-    let targetSuit = currentSuitIsTrump ? game.gameType : cardA.suit;
-    let currentPlayer = game.currentPlayer;
-    for (let card of game.currentTrick.cards) {
-      if (!currentSuitIsTrump && card.isTrump(game.gameType)) {
-        continue;
-      }
-      if (currentSuitIsTrump && !card.isTrump(game.gameType)) {
-        continue;
-      }
-      if (cardA.rank > card.rank && card.rank > cardB.rank) {
-        return true;
-      }
-    }
-    for (let hand of game.distribution.hands) {
-      if (hand === game.distribution.hands[currentPlayer]) {
-        continue;
-      }
-      for (let index = cardB.rank + 1; index < cardA.rank; index++) {
-        let searchSuit = (index > 6) ? 'J' : targetSuit;
-        if (hand.cards[searchSuit].some(card => card.rank === index)) {
-          return true;
-        }
-      }
-    }
-    return false;
+  static getPossibleMoves(game) {
+    return this.prototype.getPossibleMoves.call({ game });
   }
 
-  static #findSequences(cards, game) {
-    let result = [];
-    let currentRun = [cards[0]];
-    for (let i = 1; i < cards.length; i++) {
-      let nextCard = cards[i];
-      if (this.#gapExistsBetween(currentRun.at(-1), nextCard, game)) {
-        result.push(currentRun);
-        currentRun = [nextCard];
-      } else {
-        currentRun.push(nextCard);
-      }
-    }
-    result.push(currentRun);
-    return result;
-  }
-
-  static #findSequenceEnds(cards, game) {
-    let sequences = cards.map(suit => this.#findSequences(suit, game)).flat();
-    sequences.forEach(sequence => sequence.sort(({ value: val1 }, { value: val2 }) => val2 - val1));
-    return sequences.map(sequence => {
-      if (sequence[0].value === sequence.at(-1).value) {
-        return [sequence[0]];
-      }
-      return [sequence[0], sequence.at(-1)];
-    });
-  }
-
-  static #removeUnreasonableMoves(result, game) {
-    result.forEach(run => {
-      if (run.length === 1) {
-        return;
-      }
-      let [high, low] = run;
-      if (TrickAnalyzer.mustWinTrick(low, game)) {
-        run.splice(1, 1);
-      } else if (TrickAnalyzer.cannotWinTrick(high, game)) {
-        run.splice(0, 1);
-      }
-    });
-  }
-
-  static getDominantStrategy(game) {
-    let hasDominantStrategy = this.hasDominantStrategy(game);
+  getDominantStrategy() {
+    let hasDominantStrategy = this.hasDominantStrategy();
     if (!hasDominantStrategy) {
       return null;
     }
-    let isSoloPlayer = game.isCurrentPlayerSolo;
-    let score = isSoloPlayer ? (120 - game.pointsDuo) : game.pointsSolo;
-    if (isSoloPlayer && !game.duoHasMadeTrick) {
+    let isSoloPlayer = this.game.isCurrentPlayerSolo;
+    let score = isSoloPlayer ? (120 - this.game.pointsDuo) : this.game.pointsSolo;
+    if (isSoloPlayer && !this.game.duoHasMadeTrick) {
       score = 121;
-    } else if (!isSoloPlayer && !game.soloHasMadeTrick) {
+    } else if (!isSoloPlayer && !this.game.soloHasMadeTrick) {
       score = -1;
     }
 
@@ -131,28 +70,22 @@ export class Strategy {
     };
   }
 
-  static hasDominantStrategy(game) {
+  hasDominantStrategy() {
 
-    let hands = game.distribution.hands;
-    let myHand = hands[game.currentPlayer];
-    let otherHand1 = hands[(game.currentPlayer + 1) % 3];
-    let otherHand2 = hands[(game.currentPlayer + 2) % 3];
-    let myTrumps;
-    switch (game.currentTrick.length) {
+    let hands = this.game.distribution.hands;
+    let myHand = hands[this.game.currentPlayer];
+    let otherHand1 = hands[(this.game.currentPlayer + 1) % 3];
+    let otherHand2 = hands[(this.game.currentPlayer + 2) % 3];
+    switch (this.game.currentTrick.length) {
     case 0:
-      if (game.gameType) {
-        myTrumps = [...myHand.cards.J, ...(myHand.cards[game.gameType] ?? [])];
-        let otherTrumps1 = [...otherHand1.cards.J, ...(otherHand1.cards[game.gameType] ?? [])];
-        let otherTrumps2 = [...otherHand2.cards.J, ...(otherHand2.cards[game.gameType] ?? [])];
-        if (!this.isDominant(myTrumps, otherTrumps1, otherTrumps2, true)) {
-          return false;
-        }
+      if (!Strategy.isDominant(myHand.trumpCards, otherHand1.trumpCards, otherHand2.trumpCards, true)) {
+        return false;
       }
       for (let suit of suitLetters) {
-        if (suit === game.gameType) {
+        if (suit === this.game.gameType) {
           continue;
         }
-        if (!this.isDominant(myHand.cards[suit], otherHand1.cards[suit], otherHand2.cards[suit])) {
+        if (!Strategy.isDominant(myHand.cards[suit], otherHand1.cards[suit], otherHand2.cards[suit])) {
           return false;
         }
       }

@@ -24,15 +24,17 @@ import { GameType } from '../model/GameType.mjs';
 
 export class SkatalysatorAlphaBetaSearch extends AbstractAlphaBetaSearch {
 
-  Strategy = ColorGameStrategy;
+  strategy;
 
   constructor(...args) {
     super(...args);
     let { game } = args[0];
     if (game.gameType === GameType.GRAND) {
-      this.Strategy = GrandStrategy;
+      this.strategy = new GrandStrategy(game);
     } else if (game.gameType === GameType.NULL) {
-      this.Strategy = NullStrategy;
+      this.strategy = new NullStrategy(game);
+    } else {
+      this.strategy = new ColorGameStrategy(game);
     }
   }
 
@@ -51,7 +53,7 @@ export class SkatalysatorAlphaBetaSearch extends AbstractAlphaBetaSearch {
   }
 
   getMoveCandidates() {
-    return this.Strategy.getBestMoveCandidates(this.game);
+    return this.strategy.getBestMoveCandidates();
   }
 
   getPlayerInfo() {
@@ -73,7 +75,7 @@ export class SkatalysatorAlphaBetaSearch extends AbstractAlphaBetaSearch {
     if (this.game.playedTricks.length >= 9) {
       return;
     }
-    let dominantStrategy = this.Strategy.getDominantStrategy(this.game);
+    let dominantStrategy = this.strategy.getDominantStrategy();
     if (dominantStrategy) {
       return dominantStrategy;
     }

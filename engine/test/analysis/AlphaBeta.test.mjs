@@ -26,7 +26,7 @@ import { CachingSkatalysatorAlphaBetaSearch } from '../../analysis/CachingSkatal
 
 const testCases = ['57', '62', '62-optimal', '59'];
 
-for (let AlphaBeta of [CachingSkatalysatorAlphaBetaSearch]) {
+for (let AlphaBeta of [SkatalysatorAlphaBetaSearch, LoggingSkatalysatorAlphaBetaSearch, CachingSkatalysatorAlphaBetaSearch]) {
   test.describe(AlphaBeta.name, () => {
 
     for (const id of testCases) {

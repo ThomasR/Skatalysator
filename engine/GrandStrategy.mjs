@@ -18,7 +18,7 @@
 import { Strategy } from './Strategy.mjs';
 
 export class GrandStrategy extends Strategy {
-  static getBestMoveCandidates(game) {
-    return super.getPossibleMoves(game);
+  getBestMoveCandidates() {
+    return super.getPossibleMoves();
   }
 }

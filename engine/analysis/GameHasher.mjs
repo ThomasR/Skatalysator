@@ -50,6 +50,7 @@ export class GameHasher {
     if (game.currentTrick?.length) {
       allCards.push(...game.currentTrick.cards);
     }
+    // quasi-symmetry reduction as described in https://ai.dmi.unibas.ch/papers/kupferschmid-helmert-cg2006.pdf#page=7
     let jackFactors = this.#getJackFactors(allCards);
     let smallCardFactors = this.#getSmallCardFactors(allCards);
     return game.distribution.hands.map(hand => hand.allCards.reduce((hash, card) => {

@@ -18,12 +18,12 @@
 import { Strategy } from './Strategy.mjs';
 
 export class NullStrategy extends Strategy {
-  static getBestMoveCandidates(game) {
-    return this.getPossibleMoves(game);
+  getBestMoveCandidates() {
+    return this.getPossibleMoves();
     // throw new Error('Not implemented');
   }
 
-  static hasDominantStrategy() {
+  hasDominantStrategy() {
     return false;
   }
 }
