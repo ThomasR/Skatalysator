@@ -85,7 +85,7 @@ test.describe('Card', () => {
 
   test('toString should return correct string representation', () => {
     const card = new GenericCard('HQ');
-    assert.equal(card.toString(), '\x1B[31m♥\x1B[0mQ');
+    assert.equal(card.toString(), '♥Q');
   });
 
 });

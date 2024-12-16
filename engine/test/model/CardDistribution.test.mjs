@@ -159,8 +159,7 @@ test.describe('CardDistribution', () => {
 
     assert.strictEqual(
       result,
-      'Pl.1: \x1B[34m♣\x1B[0mQ \x1B[33m♦\x1B[0mQ\nPl.2: \x1B[34m♣\x1B[0mJ \x1B[31m♥\x1B[0mJ\nPl.3:' +
-      ' \x1B[32m♠\x1B[0mA \x1B[32m♠\x1B[0m7\nSkat: \x1B[32m♠\x1B[0m9 \x1B[32m♠\x1B[0m8'
+      'Pl.1: ♣Q ♦Q\nPl.2: ♣J ♥J\nPl.3: ♠A ♠7\nSkat: ♠9 ♠8'
     );
   });
 });

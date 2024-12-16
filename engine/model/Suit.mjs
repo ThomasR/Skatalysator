@@ -31,6 +31,10 @@ export const suitNames = {
 
 export const suitLetters = Object.values(Suit);
 
-export const suitSymbols = ['\x1b[34m♣\x1b[0m', '\x1b[32m♠\x1b[0m', '\x1b[31m♥\x1b[0m', '\x1b[33m♦\x1b[0m'];
+let symbols = ['♣', '♠', '♥', '♦'];
+if (globalThis.process?.stdout?.isTTY) {
+  symbols = ['\x1b[34m♣\x1b[0m', '\x1b[32m♠\x1b[0m', '\x1b[31m♥\x1b[0m', '\x1b[33m♦\x1b[0m'];
+}
+export const suitSymbols = symbols;
 
 export const suitToSymbol = suit => suitSymbols[suitLetters.indexOf(suit)];
