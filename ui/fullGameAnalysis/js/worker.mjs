@@ -17,12 +17,102 @@
 
 import { Game } from '../../../engine/model/Game.mjs';
 import { WinLevel } from '../../../engine/model/WinLevel.mjs';
-import { TrackingSkatalysatorSearch } from '../../../engine/analysis/TrackingSkatalysatorSearch.mjs';
+import {
+  TrackingSkatalysatorSearch
+} from '../../../engine/analysis/TrackingSkatalysatorSearch.mjs';
 
 const timeoutInSeconds = 60;
 
+const checkTimeout = ({ startTime, timeout, analyzedTrickIndex, analyzedCardIndex }) => {
+  if ((Date.now() - startTime) / 1_000 > timeout) {
+    self.postMessage({
+      type: 'timeout',
+      payload: {
+        analyzedTrickIndex,
+        analyzedCardIndex
+      }
+    });
+    self.close();
+  }
+};
+
+
+const postResultMessage = ({
+  score, bestMoves, scoreAfter, analyzedTrickIndex, analyzedCardIndex
+}) => {
+
+  let message = {
+    type: 'result',
+    payload: {
+      analyzedTrickIndex,
+      analyzedCardIndex,
+      best: {
+        score,
+        bestMoves
+      }
+    }
+  };
+
+  if (scoreAfter !== null && scoreAfter !== score) {
+    message.payload.forfeitScore = scoreAfter;
+    message.payload.isBlunder = WinLevel.getLevel(score) !== WinLevel.getLevel(scoreAfter);
+  }
+
+  self.postMessage(message);
+};
+
+/** Events sent to the main thread:
+ * - `start`: Sent before analyzing a specific trick and card.
+ *            Payload Example:
+ *            {
+ *              type: 'start',
+ *              payload: {
+ *                analyzedTrickIndex: 3,
+ *                analyzedCardIndex: 1
+ *              }
+ *            }
+ *
+ * - `result`: Sent after analyzing a game state to report the score and suggested best moves.
+ *             It may also include additional fields if a significant change occurred.
+ *             Payload Example:
+ *             {
+ *               type: 'result',
+ *               payload: {
+ *                 analyzedTrickIndex: 3,
+ *                 analyzedCardIndex: 1,
+ *                 best: {
+ *                   score: 100,
+ *                   bestMoves: ['DQ', 'CA']
+ *                 },
+ *                 forfeitScore: 80, // Optional; only included if different from `score`
+ *                 isBlunder: true // Optional; indicates a potential mistake in strategy
+ *               }
+ *             }
+ *
+ * - `timeout`: Sent when the analysis exceeds the given timeout. The worker stops processing.
+ *              Payload Example:
+ *              {
+ *                type: 'timeout',
+ *                payload: {
+ *                  analyzedTrickIndex: 3,
+ *                  analyzedCardIndex: 1
+ *                }
+ *              }
+ *
+ * - `end`: Sent when the analysis process is complete.
+ *          Payload Example:
+ *          {
+ *            type: 'end'
+ *          }
+ *
+ * @event start  Indicates that analysis has started for a trick and a card.
+ * @event result Contains the computed score and suggested best moves for the current position.
+ * @event timeout Reports that the analysis exceeded the allowed timeout and was halted.
+ * @event end    Signals the completion of the analysis process.
+ */
+
 const runAnalysis = ({ data: { game: gameData, skip = [], timeout = timeoutInSeconds } }) => {
-  let time = Date.now();
+  let startTime = Date.now();
   let game = new Game(gameData);
   let scoreAfter = null;
 
@@ -47,37 +137,11 @@ const runAnalysis = ({ data: { game: gameData, skip = [], timeout = timeoutInSec
     let score = scorer.minimax();
     let bestMoves = scorer.bestMoves;
 
-    let message = {
-      type: 'result',
-      payload: {
-        analyzedTrickIndex,
-        analyzedCardIndex,
-        best: {
-          score,
-          bestMoves
-        }
-      }
-    };
-
-    if (scoreAfter !== null && scoreAfter !== score) {
-      message.payload.forfeitScore = scoreAfter;
-      message.payload.isBlunder = WinLevel.getLevel(score) !== WinLevel.getLevel(scoreAfter);
-    }
-
-    self.postMessage(message);
+    postResultMessage({ score, bestMoves, scoreAfter, analyzedTrickIndex, analyzedCardIndex });
 
     scoreAfter = score;
 
-    if ((Date.now() - time) / 1_000 > timeout) {
-      self.postMessage({
-        type: 'timeout',
-        payload: {
-          analyzedTrickIndex,
-          analyzedCardIndex
-        }
-      });
-      self.close();
-    }
+    checkTimeout({ startTime, timeout, analyzedTrickIndex, analyzedCardIndex });
 
     try {
       game.undoLastMove();
@@ -91,5 +155,26 @@ const runAnalysis = ({ data: { game: gameData, skip = [], timeout = timeoutInSec
   });
 };
 
-// TODO: document arg format
+/**
+ * Handles messages received by the web worker to perform game analysis.
+ * This function expects its input in the form of an object with specific properties.
+ *
+ * @param {Object} message - The input data object for analysis.
+ * @param {Object} game - (Required) Serialized game data used to create a `Game` instance.
+ *                        This object represents the current state of the game, including
+ *                        played tricks, players’ moves, and the game board.
+ *                        Example:
+ *                        {
+ *                          tricks: [],
+ *                          currentTrick: ['card1', 'card2'],
+ *                          score: 42,
+ *                        }
+ * @param {number[]} [skip=[]] - (Optional) An array of trick indices to skip during analysis.
+ *                               If specified, the worker will not analyze these indices.
+ *                               Example: [0, 2, 5] (skips tricks at positions 0, 2, and 5).
+ * @param {number} [timeout=60] - (Optional) The timeout for analysis in seconds. If
+ *                                 exceeded, the worker will send a timeout notification and
+ *                                 terminate execution. Default is 60 seconds.
+ */
+
 self.onmessage = runAnalysis;
