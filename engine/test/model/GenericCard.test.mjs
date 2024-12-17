@@ -85,7 +85,8 @@ test.describe('Card', () => {
 
   test('toString should return correct string representation', () => {
     const card = new GenericCard('HQ');
-    assert.equal(card.toString(), '♥Q');
+    // eslint-disable-next-line no-control-regex
+    let result = card.toString().replaceAll(/\x1b\[[0-9;]*m/g, '');
+    assert.equal(result, '♥Q');
   });
-
 });

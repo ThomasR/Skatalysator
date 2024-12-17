@@ -32,7 +32,7 @@ export const suitNames = {
 export const suitLetters = Object.values(Suit);
 
 let symbols = ['♣', '♠', '♥', '♦'];
-if (globalThis.process?.stdout?.isTTY) {
+if (globalThis.process?.stdout?.isTTY || globalThis.process?.env.FORCE_COLOR) {
   symbols = ['\x1b[34m♣\x1b[0m', '\x1b[32m♠\x1b[0m', '\x1b[31m♥\x1b[0m', '\x1b[33m♦\x1b[0m'];
 }
 export const suitSymbols = symbols;

@@ -155,7 +155,9 @@ test.describe('CardDistribution', () => {
 
     const cardDistribution = new CardDistribution(mockInput, GameType.SPADES);
 
-    const result = cardDistribution.toString();
+    let result = cardDistribution.toString();
+    // eslint-disable-next-line no-control-regex
+    result = result.replaceAll(/\x1b\[[0-9;]*m/g, '');
 
     assert.strictEqual(
       result,
