@@ -21,7 +21,8 @@ import { suitNames } from '../../../engine/model/Suit.mjs';
 
 const convertCard = card => ({
   suitName: suitNames[card.suit],
-  // TODO: this could just return card.figure if language is English, but then we need to generate English cards
+  // TODO: this could just return card.figure if language is English,
+  //  but then we need to generate English cards
   name: card.figure === 'J' ? 'B' : card.figure === 'Q' ? 'D' : card.figure
 });
 
@@ -43,7 +44,9 @@ document.addEventListener('alpine:init', () => {
 
     setGame(game) {
       rawGame = game;
-      let tricks = game.currentTrick?.length ? [...game.playedTricks, game.currentTrick] : game.playedTricks;
+      let tricks = game.currentTrick?.length ?
+        [...game.playedTricks, game.currentTrick] :
+        game.playedTricks;
       this.tricks = convertTricks(tricks);
     }
   });
