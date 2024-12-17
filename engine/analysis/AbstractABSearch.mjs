@@ -101,6 +101,7 @@ export class AbstractABSearch {
           alpha = moveScore;
         }
       } else {
+        // eslint-disable-next-line no-lonely-if
         if (moveScore < beta) {
           foundMove = true;
           this.scoreImprovedHook({ move, lastMoveScore, moveScore, alpha, beta, isMaximizer });
@@ -118,18 +119,22 @@ export class AbstractABSearch {
     }
 
     let score = isMaximizer ? alpha : beta;
+    this.#callPostHook({ score, isCutoff, foundMove, memo });
+    return score;
+  }
+
+
+  #callPostHook({ score, isCutoff, foundMove, memo }) {
     let resultType = AbstractABSearch.resultTypes.NONE;
     if (isCutoff) {
-      resultType = isMaximizer
+      resultType = this.isMaximizer
         ? AbstractABSearch.resultTypes.BETA_CUTOFF
         : AbstractABSearch.resultTypes.ALPHA_CUTOFF;
     } else if (foundMove) {
       resultType = AbstractABSearch.resultTypes.FINAL;
     }
     this.postIterationHook({ score, resultType, memo });
-    return score;
   }
-
 
   // default method implementations
 
