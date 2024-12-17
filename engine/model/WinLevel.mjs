@@ -16,12 +16,12 @@
  */
 
 export const WinLevel = {
-  WIN_BLACK: 5,
-  WIN_TAILOR: 4,
-  WIN_TAILORFREE: 3,
-  LOSS_TAILORFREE: 2,
-  LOSS_TAILOR: 1,
-  LOSS_BLACK: 0,
+  WIN_BLACK: Symbol('WIN_BLACK'),
+  WIN_TAILOR: Symbol('WIN_TAILOR'),
+  WIN_TAILORFREE: Symbol('WIN_TAILORFREE'),
+  LOSS_TAILORFREE: Symbol('LOSS_TAILORFREE'),
+  LOSS_TAILOR: Symbol('LOSS_TAILOR'),
+  LOSS_BLACK: Symbol('LOSS_BLACK'),
 
   // score can range from -1 to 121
   getLevel(score) {

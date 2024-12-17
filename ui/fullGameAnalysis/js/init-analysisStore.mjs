@@ -36,6 +36,7 @@ document.addEventListener('alpine:init', () => {
       let css = '';
       if (forced) {
         css = 'forced';
+      // FIXME: this is not implemented
       } else if (best.hint === 'domination') {
         css = 'domination';
       } else if (forfeitScore) {

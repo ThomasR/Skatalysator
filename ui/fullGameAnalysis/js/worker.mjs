@@ -17,7 +17,7 @@
 
 import { Game } from '../../../engine/model/Game.mjs';
 import { WinLevel } from '../../../engine/model/WinLevel.mjs';
-import { RecursiveGameEvaluator } from '../../../engine/analysis/RecursiveGameEvaluator.mjs';
+import { TrackingSkatalysatorSearch } from '../../../engine/analysis/TrackingSkatalysatorSearch.mjs';
 
 const timeoutInSeconds = 60;
 
@@ -26,7 +26,7 @@ const runAnalysis = ({ data: { game: gameData, skip = [], timeout = timeoutInSec
   let game = new Game(gameData);
   let scoreAfter = null;
 
-  let evaluator = new RecursiveGameEvaluator({ game });
+  let scorer = new TrackingSkatalysatorSearch({ game });
 
   let cardCount = game.playedCardCount;
   for (let i = 0; i <= cardCount; i++) {
@@ -44,25 +44,29 @@ const runAnalysis = ({ data: { game: gameData, skip = [], timeout = timeoutInSec
       }
     });
 
-    let best = evaluator.evaluateGame();
+    let score = scorer.minimax();
+    let bestMoves = scorer.bestMoves;
 
     let message = {
       type: 'result',
       payload: {
         analyzedTrickIndex,
         analyzedCardIndex,
-        best
+        best: {
+          score,
+          bestMoves
+        }
       }
     };
 
-    if (scoreAfter !== null && scoreAfter !== best.score) {
+    if (scoreAfter !== null && scoreAfter !== score) {
       message.payload.forfeitScore = scoreAfter;
-      message.payload.isBlunder = WinLevel.getLevel(best.score) !== WinLevel.getLevel(scoreAfter);
+      message.payload.isBlunder = WinLevel.getLevel(score) !== WinLevel.getLevel(scoreAfter);
     }
 
     self.postMessage(message);
 
-    scoreAfter = best.score;
+    scoreAfter = score;
 
     if ((Date.now() - time) / 1_000 > timeout) {
       self.postMessage({
