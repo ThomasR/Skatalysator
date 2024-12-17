@@ -24,7 +24,6 @@ export class GameHasher {
     if (game.gameType === GameType.NULL) {
       result += this.#hashNullGame(game);
     } else {
-      result += `${game.pointsSolo},`;
       result += this.#hashGenericGame(game);
     }
     if (game.currentTrick?.length) {

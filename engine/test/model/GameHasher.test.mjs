@@ -46,7 +46,7 @@ test.describe('GameHasher', () => {
     assert.strictEqual(result, expectedHash);
   });
 
-  test('hash should include current trick cards and score when present', () => {
+  test('hash should include current trick cards when present', () => {
     const game = new Game({
       gameType: GameType.SPADES,
       pointsSolo: 15,
@@ -64,7 +64,7 @@ test.describe('GameHasher', () => {
       }
     });
 
-    const expectedHash = '2,15,272629825,2097792,536887552,HA,SK';
+    const expectedHash = '2,272629825,2097792,536887552,HA,SK';
 
     const result = GameHasher.hash(game);
 
