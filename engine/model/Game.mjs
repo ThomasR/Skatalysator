@@ -22,6 +22,10 @@ import { Trick } from './Trick.mjs';
 import { CardDistribution } from './CardDistribution.mjs';
 import { GameType } from './GameType.mjs';
 
+/**
+ * Represents a Skat game, managing the game's state, actions, and rules.
+ * Handles the flow of the game, including card plays, scoring, and resolving tricks.
+ */
 export class Game extends PrettyLogging {
   soloPlayer;
   currentPlayer;
@@ -32,6 +36,20 @@ export class Game extends PrettyLogging {
   pointsDuo;
   currentTrick;
 
+  /**
+   * Constructs a new Game instance with the specified configuration.
+   *
+   * @param {Object} options - The configuration options for the game.
+   * @param {string} options.soloPlayer - The identifier of the solo player.
+   * @param {string} options.currentPlayer - The identifier of the current player.
+   * @param {string} options.gameType - The type of the game being played.
+   * @param {Object} options.distribution - The card distribution data for the game.
+   * @param {Array<Object>} [options.playedTricks=[]] - The list of already played tricks in the game.
+   * @param {number} [options.pointsSolo=0] - The current points scored by the solo player.
+   * @param {number} [options.pointsDuo=0] - The current points scored by the duo players.
+   * @param {Object} [options.currentTrick] - The data for the current trick being played.
+   * @param {Array<Object>} [options.playedCards=[]] - The list of cards that have already been played.
+   */
   constructor({
     soloPlayer,
     currentPlayer,
@@ -40,7 +58,8 @@ export class Game extends PrettyLogging {
     playedTricks = [],
     pointsSolo = 0,
     pointsDuo = 0,
-    currentTrick
+    currentTrick,
+    playedCards = []
   } = {}) {
     super();
     this.soloPlayer = soloPlayer;
@@ -52,6 +71,7 @@ export class Game extends PrettyLogging {
     this.pointsSolo = Math.max(pointsSolo, minPointsSolo);
     this.pointsDuo = pointsDuo;
     this.currentTrick = new Trick(currentTrick ?? { leadPlayer: this.currentPlayer });
+    playedCards.forEach(cardInput => this.playCard(cardInput));
   }
 
   playCard(cardInput) {

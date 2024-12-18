@@ -21,6 +21,7 @@ import { Game } from '../../model/Game.mjs';
 import { Trick } from '../../model/Trick.mjs';
 import { GameType } from '../../model/GameType.mjs';
 
+
 test.describe('Game', () => {
   test('should initialize the game with correct default values', () => {
     const game = new Game({
@@ -40,6 +41,30 @@ test.describe('Game', () => {
     assert.strictEqual(game.pointsSolo, 0);
     assert.strictEqual(game.pointsDuo, 0);
     assert.ok(game.currentTrick instanceof Trick);
+  });
+
+  test('should handle playedCards correctly during initialization', () => {
+    let game = new Game({
+      distribution: {
+        hands: [
+          ['H8', 'HQ', 'HA', 'H7', 'CJ', 'CA', 'DA', 'DJ', 'H9', 'SJ'],
+          ['D9', 'SA', 'C8', 'DK', 'C7', 'HK', 'SK', 'C10', 'D7', 'DQ'],
+          ['S9', 'S8', 'CQ', 'H10', 'S7', 'CK', 'HJ', 'D10', 'S10', 'C9']
+        ],
+        skat: ['SQ', 'D8']
+      },
+      currentPlayer: 1,
+      soloPlayer: 0,
+      gameType: 'G',
+      playedCards: ['HK', 'H10', 'HA', 'SJ']
+    });
+
+    assert(game.currentTrick.cards.some(c => c.suit === 'S' && c.figure === 'J'), 'SJ should be in the current trick');
+
+    assert.strictEqual(game.currentPlayer, 1, 'Current player should be 1');
+    assert.strictEqual(game.currentTrick.length, 1, 'Current trick should have 1 card');
+    assert.strictEqual(game.playedTricks.length, 1, 'Played tricks should have 1 trick');
+    assert.strictEqual(game.playedCardCount, 4, 'Played card count should be 4');
   });
 
   test('playCard should throw an error if the game is over', () => {
