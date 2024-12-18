@@ -1,0 +1,1340 @@
+[
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "CQ",
+            "CK",
+            "HJ",
+            "S9",
+            "DA",
+            "DK",
+            "CJ",
+            "H7",
+            "D8",
+            "CA"
+          ],
+          [
+            "H9",
+            "D9",
+            "D7",
+            "SA",
+            "S7",
+            "SQ",
+            "D10",
+            "HQ",
+            "HK",
+            "C7"
+          ],
+          [
+            "HA",
+            "S8",
+            "C10",
+            "C8",
+            "C9",
+            "H10",
+            "SJ",
+            "DJ",
+            "H8",
+            "SK"
+          ]
+        ],
+        "skat": [
+          "DQ",
+          "S10"
+        ]
+      },
+      "currentPlayer": 1,
+      "soloPlayer": 2,
+      "gameType": "C"
+    },
+    "playedCards": [
+      "C7",
+      "C9",
+      "CA",
+      "S9",
+      "SQ",
+      "SK",
+      "C8",
+      "CK",
+      "SA",
+      "H7",
+      "HQ",
+      "HA",
+      "H10",
+      "CQ",
+      "HK",
+      "DA",
+      "D9",
+      "C10",
+      "H8",
+      "D8",
+      "H9",
+      "D10",
+      "DJ",
+      "DK",
+      "S8",
+      "HJ",
+      "S7",
+      "CJ",
+      "D7",
+      "SJ"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "H8",
+            "H9",
+            "D10",
+            "CA",
+            "CJ",
+            "DA",
+            "DQ",
+            "HJ",
+            "D8",
+            "HA"
+          ],
+          [
+            "SJ",
+            "SK",
+            "CK",
+            "H7",
+            "S8",
+            "HQ",
+            "HK",
+            "SA",
+            "D7",
+            "C8"
+          ],
+          [
+            "CQ",
+            "H10",
+            "C7",
+            "DJ",
+            "C9",
+            "DK",
+            "D9",
+            "S10",
+            "C10",
+            "S9"
+          ]
+        ],
+        "skat": [
+          "S7",
+          "SQ"
+        ]
+      },
+      "currentPlayer": 2,
+      "soloPlayer": 0,
+      "gameType": "D"
+    },
+    "playedCards": [
+      "C9",
+      "CA",
+      "C8",
+      "CJ",
+      "D7",
+      "D9",
+      "HJ",
+      "SJ",
+      "DK",
+      "HQ",
+      "H10",
+      "HA",
+      "D8",
+      "HK",
+      "DJ",
+      "C10",
+      "DQ",
+      "CK",
+      "DA"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "HQ",
+            "S10",
+            "S8",
+            "S7",
+            "SK",
+            "HJ",
+            "CK",
+            "D9",
+            "CA",
+            "DQ"
+          ],
+          [
+            "S9",
+            "D10",
+            "SJ",
+            "D8",
+            "HA",
+            "DJ",
+            "CJ",
+            "H10",
+            "DA",
+            "SQ"
+          ],
+          [
+            "H8",
+            "CQ",
+            "SA",
+            "H9",
+            "C7",
+            "D7",
+            "HK",
+            "H7",
+            "DK",
+            "C8"
+          ]
+        ],
+        "skat": [
+          "C10",
+          "C9"
+        ]
+      },
+      "currentPlayer": 0,
+      "soloPlayer": 1,
+      "gameType": "D"
+    },
+    "playedCards": [
+      "HQ",
+      "HA",
+      "H7",
+      "SJ",
+      "DK",
+      "D9",
+      "CJ",
+      "D7",
+      "DQ",
+      "D8",
+      "HK",
+      "HJ",
+      "CA",
+      "DA",
+      "C7",
+      "H10",
+      "H8",
+      "S7",
+      "S9",
+      "SA",
+      "S10",
+      "C8",
+      "CK",
+      "SQ",
+      "SK",
+      "D10",
+      "H9",
+      "DJ",
+      "CQ",
+      "S8"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "CK",
+            "S7",
+            "SA",
+            "DQ",
+            "D10",
+            "C8",
+            "H10",
+            "D9",
+            "S10",
+            "SQ"
+          ],
+          [
+            "HQ",
+            "C10",
+            "DA",
+            "DK",
+            "SK",
+            "H9",
+            "HA",
+            "DJ",
+            "HK",
+            "CQ"
+          ],
+          [
+            "D8",
+            "C7",
+            "S9",
+            "CJ",
+            "D7",
+            "HJ",
+            "H8",
+            "S8",
+            "C9",
+            "H7"
+          ]
+        ],
+        "skat": [
+          "CA",
+          "SJ"
+        ]
+      },
+      "currentPlayer": 1,
+      "soloPlayer": 2,
+      "gameType": "0"
+    },
+    "playedCards": [
+      "SK",
+      "S9",
+      "SA",
+      "S7",
+      "CQ",
+      "S8"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "SA",
+            "D10",
+            "DK",
+            "CA",
+            "DA",
+            "CJ",
+            "D9",
+            "C9",
+            "C7",
+            "S8"
+          ],
+          [
+            "H7",
+            "CK",
+            "SK",
+            "C10",
+            "HQ",
+            "CQ",
+            "S9",
+            "S7",
+            "S10",
+            "H8"
+          ],
+          [
+            "HK",
+            "DQ",
+            "D7",
+            "D8",
+            "H9",
+            "SJ",
+            "C8",
+            "SQ",
+            "HA",
+            "HJ"
+          ]
+        ],
+        "skat": [
+          "H10",
+          "DJ"
+        ]
+      },
+      "currentPlayer": 2,
+      "soloPlayer": 0,
+      "gameType": "D"
+    },
+    "playedCards": [
+      "HA",
+      "DA",
+      "H7",
+      "CJ",
+      "H8",
+      "D7"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "SQ",
+            "CA",
+            "D8",
+            "S7",
+            "HK",
+            "SK",
+            "D7",
+            "DQ",
+            "DK",
+            "HQ"
+          ],
+          [
+            "D9",
+            "SA",
+            "H7",
+            "C8",
+            "HJ",
+            "SJ",
+            "CK",
+            "H9",
+            "D10",
+            "H10"
+          ],
+          [
+            "DJ",
+            "HA",
+            "C7",
+            "DA",
+            "CJ",
+            "S9",
+            "CQ",
+            "C10",
+            "S8",
+            "C9"
+          ]
+        ],
+        "skat": [
+          "H8",
+          "S10"
+        ]
+      },
+      "currentPlayer": 0,
+      "soloPlayer": 2,
+      "gameType": "C"
+    },
+    "playedCards": [
+      "HK",
+      "H9",
+      "HA",
+      "CJ",
+      "CA",
+      "C8",
+      "C7",
+      "HQ",
+      "CK",
+      "SA",
+      "S8",
+      "SK",
+      "H7",
+      "C10",
+      "S7",
+      "DJ",
+      "SQ",
+      "HJ",
+      "H10",
+      "CQ",
+      "D7",
+      "DA",
+      "D8",
+      "D9",
+      "S9",
+      "DK",
+      "SJ",
+      "D10",
+      "C9",
+      "DQ"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "S9",
+            "C7",
+            "DJ",
+            "H8",
+            "DK",
+            "C8",
+            "SJ",
+            "CQ",
+            "D8",
+            "HA"
+          ],
+          [
+            "C10",
+            "S10",
+            "C9",
+            "HJ",
+            "SA",
+            "SK",
+            "CA",
+            "D10",
+            "D7",
+            "H7"
+          ],
+          [
+            "HK",
+            "DQ",
+            "HQ",
+            "DA",
+            "S8",
+            "CJ",
+            "H10",
+            "H9",
+            "D9",
+            "S7"
+          ]
+        ],
+        "skat": [
+          "CK",
+          "SQ"
+        ]
+      },
+      "currentPlayer": 1,
+      "soloPlayer": 2,
+      "gameType": "H"
+    },
+    "playedCards": [
+      "CA",
+      "H10",
+      "C7",
+      "H9",
+      "HA",
+      "HJ",
+      "SA",
+      "S7",
+      "S9",
+      "S10",
+      "S8",
+      "DK",
+      "SK",
+      "HK",
+      "DJ",
+      "D8",
+      "D7",
+      "DQ",
+      "CJ",
+      "H8",
+      "H7",
+      "DA",
+      "SJ",
+      "D10",
+      "CQ",
+      "C9",
+      "HQ",
+      "D9",
+      "C8",
+      "C10"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "H8",
+            "CK",
+            "HK",
+            "D7",
+            "S7",
+            "DQ",
+            "HQ",
+            "S9",
+            "DA",
+            "D9"
+          ],
+          [
+            "C9",
+            "D10",
+            "DJ",
+            "H7",
+            "SQ",
+            "C10",
+            "S10",
+            "H9",
+            "C7",
+            "D8"
+          ],
+          [
+            "CJ",
+            "CA",
+            "HJ",
+            "H10",
+            "SA",
+            "S8",
+            "HA",
+            "SJ",
+            "SK",
+            "C8"
+          ]
+        ],
+        "skat": [
+          "DK",
+          "CQ"
+        ]
+      },
+      "currentPlayer": 2,
+      "soloPlayer": 2,
+      "gameType": "G"
+    },
+    "playedCards": [
+      "HJ",
+      "CK",
+      "DJ",
+      "HA",
+      "H8",
+      "H7",
+      "H10",
+      "HQ",
+      "H9",
+      "SA",
+      "S7",
+      "SQ",
+      "S8",
+      "S9",
+      "S10",
+      "C10",
+      "CA",
+      "D7",
+      "SJ",
+      "HK",
+      "C9",
+      "SK",
+      "D9",
+      "C7",
+      "CJ",
+      "DQ",
+      "D8",
+      "C8",
+      "DA",
+      "D10"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "HJ",
+            "CJ",
+            "HQ",
+            "DQ",
+            "DK",
+            "SK",
+            "D7",
+            "HA",
+            "HK",
+            "S7"
+          ],
+          [
+            "CA",
+            "H10",
+            "S9",
+            "H8",
+            "D10",
+            "SQ",
+            "C9",
+            "D9",
+            "DJ",
+            "C10"
+          ],
+          [
+            "S8",
+            "H7",
+            "C7",
+            "CK",
+            "SA",
+            "C8",
+            "DA",
+            "SJ",
+            "H9",
+            "D8"
+          ]
+        ],
+        "skat": [
+          "S10",
+          "CQ"
+        ]
+      },
+      "currentPlayer": 0,
+      "soloPlayer": 0,
+      "gameType": "D"
+    },
+    "playedCards": [
+      "D7",
+      "D10",
+      "DA",
+      "H9",
+      "HA",
+      "H8",
+      "DQ",
+      "D9",
+      "D8",
+      "CJ",
+      "DJ",
+      "SJ",
+      "HQ",
+      "H10",
+      "H7",
+      "CA",
+      "C7",
+      "HJ",
+      "S7",
+      "SQ",
+      "SA",
+      "C8",
+      "DK",
+      "C9",
+      "SK",
+      "S9",
+      "S8",
+      "HK",
+      "C10",
+      "CK"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "SK",
+            "C7",
+            "CK",
+            "H8",
+            "HQ",
+            "CJ",
+            "D7",
+            "D8",
+            "C8",
+            "SQ"
+          ],
+          [
+            "H7",
+            "D9",
+            "CA",
+            "CQ",
+            "DK",
+            "D10",
+            "S10",
+            "SJ",
+            "C9",
+            "SA"
+          ],
+          [
+            "DQ",
+            "HA",
+            "S8",
+            "HK",
+            "DJ",
+            "H9",
+            "HJ",
+            "DA",
+            "S9",
+            "H10"
+          ]
+        ],
+        "skat": [
+          "C10",
+          "S7"
+        ]
+      },
+      "currentPlayer": 1,
+      "soloPlayer": 2,
+      "gameType": "H"
+    },
+    "playedCards": [
+      "SA",
+      "S8",
+      "SK",
+      "S10",
+      "S9",
+      "SQ",
+      "DK",
+      "DA",
+      "D7",
+      "H9",
+      "H8",
+      "SJ",
+      "D10",
+      "DQ",
+      "D8",
+      "D9",
+      "HK",
+      "C7",
+      "DJ",
+      "HQ",
+      "H7",
+      "HJ",
+      "CJ",
+      "CA",
+      "C8",
+      "CQ",
+      "HA",
+      "H10",
+      "CK",
+      "C9"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "DA",
+            "CA",
+            "C7",
+            "HJ",
+            "C10",
+            "SA",
+            "CQ",
+            "S7",
+            "D9",
+            "D10"
+          ],
+          [
+            "H10",
+            "H8",
+            "SK",
+            "DJ",
+            "D8",
+            "SQ",
+            "H9",
+            "SJ",
+            "D7",
+            "DK"
+          ],
+          [
+            "S10",
+            "DQ",
+            "HA",
+            "CK",
+            "S8",
+            "S9",
+            "C8",
+            "CJ",
+            "H7",
+            "C9"
+          ]
+        ],
+        "skat": [
+          "HQ",
+          "HK"
+        ]
+      },
+      "currentPlayer": 2,
+      "soloPlayer": 0,
+      "gameType": "C"
+    },
+    "playedCards": [
+      "S8",
+      "SA",
+      "SQ",
+      "C7",
+      "DJ",
+      "CK",
+      "D8",
+      "DQ",
+      "DA",
+      "CQ",
+      "SJ",
+      "C8",
+      "DK",
+      "H7",
+      "D10",
+      "HJ",
+      "D7",
+      "CJ",
+      "S9",
+      "S7",
+      "SK",
+      "H9",
+      "HA",
+      "CA",
+      "C10",
+      "H8",
+      "C9",
+      "D9",
+      "H10",
+      "S10"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "CJ",
+            "H9",
+            "SJ",
+            "CA",
+            "S8",
+            "SQ",
+            "S7",
+            "S10",
+            "D8",
+            "SA"
+          ],
+          [
+            "D7",
+            "HQ",
+            "C9",
+            "HA",
+            "DQ",
+            "D9",
+            "CQ",
+            "C7",
+            "S9",
+            "H8"
+          ],
+          [
+            "H7",
+            "DJ",
+            "C10",
+            "HJ",
+            "H10",
+            "C8",
+            "DK",
+            "DA",
+            "D10",
+            "SK"
+          ]
+        ],
+        "skat": [
+          "HK",
+          "CK"
+        ]
+      },
+      "currentPlayer": 0,
+      "soloPlayer": 0,
+      "gameType": "G"
+    },
+    "playedCards": [
+      "CJ",
+      "S9",
+      "DJ",
+      "SA",
+      "C7",
+      "SK",
+      "S10",
+      "C9",
+      "HJ",
+      "DA",
+      "D8",
+      "DQ",
+      "D10",
+      "SJ",
+      "D7",
+      "CA",
+      "CQ",
+      "C8",
+      "SQ",
+      "HQ",
+      "DK",
+      "S8",
+      "D9",
+      "H7",
+      "S7",
+      "H8",
+      "H10",
+      "H9",
+      "HA",
+      "C10"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "C9",
+            "D9",
+            "S10",
+            "S9",
+            "DQ",
+            "D7",
+            "D8",
+            "SA",
+            "CJ",
+            "S7"
+          ],
+          [
+            "H7",
+            "CK",
+            "C7",
+            "H10",
+            "D10",
+            "DA",
+            "HA",
+            "S8",
+            "SQ",
+            "HJ"
+          ],
+          [
+            "C10",
+            "H9",
+            "SJ",
+            "HK",
+            "CA",
+            "CQ",
+            "DJ",
+            "C8",
+            "H8",
+            "HQ"
+          ]
+        ],
+        "skat": [
+          "SK",
+          "DK"
+        ]
+      },
+      "currentPlayer": 1,
+      "soloPlayer": 2,
+      "gameType": "C"
+    },
+    "playedCards": [
+      "DA",
+      "CA",
+      "D7",
+      "C8",
+      "C9",
+      "CK",
+      "SQ",
+      "C10",
+      "S7",
+      "H8",
+      "SA",
+      "HA",
+      "H10",
+      "H9",
+      "S10",
+      "H7",
+      "HQ",
+      "CJ",
+      "D8",
+      "D10",
+      "CQ",
+      "SJ",
+      "D9",
+      "C7",
+      "DJ",
+      "S9",
+      "HJ",
+      "S8",
+      "HK",
+      "DQ"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "DJ",
+            "CJ",
+            "H7",
+            "C10",
+            "C7",
+            "CQ",
+            "HJ",
+            "C9",
+            "C8",
+            "CK"
+          ],
+          [
+            "SA",
+            "S10",
+            "DA",
+            "HK",
+            "S9",
+            "D8",
+            "CA",
+            "H8",
+            "DQ",
+            "D10"
+          ],
+          [
+            "S7",
+            "H10",
+            "H9",
+            "HA",
+            "D9",
+            "DK",
+            "SQ",
+            "HQ",
+            "SJ",
+            "D7"
+          ]
+        ],
+        "skat": [
+          "S8",
+          "SK"
+        ]
+      },
+      "currentPlayer": 2,
+      "soloPlayer": 0,
+      "gameType": "G"
+    },
+    "playedCards": [
+      "HA",
+      "H7",
+      "HK",
+      "H10",
+      "DJ",
+      "H8",
+      "CJ",
+      "D8",
+      "SJ",
+      "C7",
+      "CA",
+      "SQ",
+      "SA",
+      "S7",
+      "HJ",
+      "C10"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "D7",
+            "HQ",
+            "DJ",
+            "S9",
+            "D9",
+            "C7",
+            "DQ",
+            "S7",
+            "DA",
+            "HK"
+          ],
+          [
+            "C8",
+            "H8",
+            "S10",
+            "H10",
+            "CK",
+            "SK",
+            "C10",
+            "S8",
+            "SJ",
+            "D8"
+          ],
+          [
+            "SA",
+            "CA",
+            "D10",
+            "H9",
+            "CQ",
+            "HJ",
+            "DK",
+            "C9",
+            "CJ",
+            "HA"
+          ]
+        ],
+        "skat": [
+          "SQ",
+          "H7"
+        ]
+      },
+      "currentPlayer": 1,
+      "soloPlayer": 2,
+      "gameType": "C"
+    },
+    "playedCards": [
+      "D8",
+      "DK",
+      "DA",
+      "DQ",
+      "CK",
+      "D10",
+      "SK",
+      "SA",
+      "S7",
+      "CJ",
+      "DJ",
+      "C8",
+      "HJ",
+      "C7",
+      "SJ",
+      "S10",
+      "CQ",
+      "S9",
+      "CA",
+      "D7",
+      "C10",
+      "C9",
+      "D9",
+      "S8",
+      "HA",
+      "HQ",
+      "H8",
+      "H9",
+      "HK",
+      "H10"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "DK",
+            "DJ",
+            "S7",
+            "S10",
+            "HK",
+            "C8",
+            "D9",
+            "CA",
+            "C7",
+            "SA"
+          ],
+          [
+            "HA",
+            "CK",
+            "D7",
+            "SQ",
+            "D10",
+            "HQ",
+            "DQ",
+            "HJ",
+            "H8",
+            "H9"
+          ],
+          [
+            "D8",
+            "SK",
+            "S9",
+            "SJ",
+            "CJ",
+            "CQ",
+            "S8",
+            "DA",
+            "C9",
+            "C10"
+          ]
+        ],
+        "skat": [
+          "H10",
+          "H7"
+        ]
+      },
+      "currentPlayer": 2,
+      "soloPlayer": 2,
+      "gameType": "C"
+    },
+    "playedCards": [
+      "SJ",
+      "C7",
+      "CK",
+      "CJ",
+      "C8",
+      "HJ",
+      "C9",
+      "CA",
+      "D10",
+      "HK",
+      "HQ",
+      "C10",
+      "DA",
+      "D9",
+      "D7",
+      "S8",
+      "S7",
+      "SQ",
+      "DQ",
+      "D8",
+      "DK",
+      "DJ",
+      "H9",
+      "CQ",
+      "SA",
+      "HA",
+      "S9",
+      "S10",
+      "H8",
+      "SK"
+    ]
+  },
+  {
+    "game": {
+      "distribution": {
+        "hands": [
+          [
+            "HA",
+            "H9",
+            "H8",
+            "SA",
+            "D9",
+            "D7",
+            "S9",
+            "DA",
+            "S10",
+            "CA"
+          ],
+          [
+            "SJ",
+            "C8",
+            "DJ",
+            "C9",
+            "CQ",
+            "SQ",
+            "DQ",
+            "C7",
+            "DK",
+            "C10"
+          ],
+          [
+            "HJ",
+            "D10",
+            "CJ",
+            "H7",
+            "CK",
+            "S8",
+            "D8",
+            "S7",
+            "SK",
+            "HQ"
+          ]
+        ],
+        "skat": [
+          "H10",
+          "HK"
+        ]
+      },
+      "currentPlayer": 0,
+      "soloPlayer": 1,
+      "gameType": "C"
+    },
+    "playedCards": [
+      "HA",
+      "C10",
+      "H7",
+      "DJ",
+      "HJ",
+      "CA",
+      "HQ",
+      "H8",
+      "CQ",
+      "C8",
+      "CK",
+      "SA",
+      "S7",
+      "S10",
+      "SQ",
+      "S9",
+      "DQ",
+      "SK",
+      "S8",
+      "H9",
+      "DK",
+      "D8",
+      "D9",
+      "C7",
+      "C9",
+      "CJ",
+      "DA",
+      "D10",
+      "D7",
+      "SJ"
+    ]
+  }
+]
