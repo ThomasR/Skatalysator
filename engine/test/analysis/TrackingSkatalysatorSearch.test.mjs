@@ -21,42 +21,41 @@ import assert from 'node:assert';
 import { TrackingSkatalysatorSearch } from '../../analysis/TrackingSkatalysatorSearch.mjs';
 import { Card } from '../../model/Card.mjs';
 
-const testCases = ['59', '57', '62', '62-optimal'];
+import fixtureFromData from '../alphabeta-fixtures/fixtureFromData.mjs';
+
+const testCases = [
+  { gameId: '9031171-5', playedCardCount: 10 },
+  { gameId: '9020350-10', playedCardCount: 6 },
+  { gameId: '8953165-28', playedCardCount: 6 }
+];
 
 test.describe('TrackingSkatalysatorSearch', () => {
 
-  for (let fixtureName of testCases) {
+  for (let { gameId, playedCardCount } of testCases) {
 
-    test.describe(`test fixture ${fixtureName}`, async () => {
+    test.describe(`Game ${gameId}`, async () => {
 
-      let {
-        fixtures,
-        game: imported
-      } = await import(`../alphabeta-fixtures/fixture-${fixtureName}.mjs`);
-
-      let game = imported.clone();
+      let { game, remaining } = await fixtureFromData({ gameId, playedCardCount });
 
       const searcher = new TrackingSkatalysatorSearch({ game, logDepth: -1 });
 
-      let playedCardCount = game.playedCardCount;
-      for (const [move, expectedScore, expectedBest] of fixtures) {
-        test(`Move ${++playedCardCount} [${move}]`, async (nested) => {
-          game.playCard(move);
-          if (game.isOver()) {
-            return;
-          }
-          let evaluation = searcher.minimax();
-          await nested.test('finds correct evaluation', () => {
-            assert.equal(evaluation, expectedScore, 'Wrong evaluation');
+      for (const { move, evaluation: expected } of remaining.slice(1)) {
+        if (expected) {
+          test(`Move ${++playedCardCount} [${move}]`, async (nested) => {
+            game.playCard(move);
+            let actual = searcher.minimax();
+            await nested.test('finds correct evaluation', () => {
+              assert.strictEqual(actual, expected.score, `Wrong evaluation: ${actual} != ${expected}`);
+            });
+            await nested.test('finds best follow-up moves', () => {
+              let bestMoves = searcher.bestMoves;
+              assert.equal(bestMoves.length, expected.best.length, 'Wrong number of best moves');
+              for (let move of expected.best) {
+                assert(bestMoves.includes(new (Card(game.gameType))(move)), `bestMoves does not contain ${move}`);
+              }
+            });
           });
-          await nested.test('finds best follow-up moves', () => {
-            let bestMoves = searcher.bestMoves;
-            assert.equal(bestMoves.length, expectedBest.length, 'Wrong number of best moves');
-            for (let move of expectedBest) {
-              assert(bestMoves.includes(new (Card(game.gameType))(move)), `bestMoves does not contain ${move}`);
-            }
-          });
-        });
+        }
       }
     });
   }

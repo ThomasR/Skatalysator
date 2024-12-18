@@ -15,7 +15,7 @@
  *
  */
 
-import sample from './sample.mjs';
+import sample from '../sample.mjs';
 
 import analyzeGame from '../js/analyzeGame.mjs';
 import { onStart, onEnd, onResult } from './analysisCallbacks.mjs';

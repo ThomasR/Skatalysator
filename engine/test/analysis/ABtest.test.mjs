@@ -15,34 +15,40 @@
  *
  */
 
-import { LoggingSkatalysatorSearch as ABSearch } from '../../analysis/LoggingSkatalysatorSearch.mjs';
+import {
+  LoggingSkatalysatorSearch as ABSearch
+} from '../../analysis/LoggingSkatalysatorSearch.mjs';
 
 import test from 'node:test';
 import assert from 'node:assert';
 
-const testCases = ['59', '57', '62', '62-optimal'];
+import fixtureFromData from '../alphabeta-fixtures/fixtureFromData.mjs';
+
+const testCases = [
+  { gameId: '9031171-5', playedCardCount: 10 },
+  { gameId: '9020350-10', playedCardCount: 6 },
+  { gameId: '8953165-28', playedCardCount: 6 }
+];
 
 test.describe('ABSearch', () => {
 
-  for (let fixtureName of testCases) {
+  for (let { gameId, playedCardCount } of testCases) {
 
-    test.describe(`test fixture ${fixtureName}`, async () => {
+    test.describe(`Game ${gameId}`, async () => {
 
-      let { fixtures, game: imported } = await import(`../alphabeta-fixtures/fixture-${fixtureName}.mjs`);
-
-      let game = imported.clone();
+      let { game, remaining } = await fixtureFromData({ gameId, playedCardCount });
 
       const searcher = new ABSearch({ game, logDepth: -1 });
 
-      let playedCardCount = game.playedCardCount;
-      for (const [move, expected] of fixtures) {
-        test(`Finds evaluation of move ${++playedCardCount} [${move}]`, () => {
-          game.playCard(move);
-          let evaluation = searcher.minimax();
-          assert.equal(evaluation, expected, 'Wrong evaluation');
-        });
+      for (const { move, evaluation: expected } of remaining.slice(1)) {
+        if (expected) {
+          test(`Finds evaluation of move ${++playedCardCount} [${move}]`, () => {
+            game.playCard(move);
+            let actual = searcher.minimax();
+            assert.strictEqual(actual, expected.score, `Wrong evaluation: ${actual} != ${expected}`);
+          });
+        }
       }
     });
-
   }
 });

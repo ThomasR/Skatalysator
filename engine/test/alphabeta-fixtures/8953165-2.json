@@ -1,0 +1,336 @@
+{
+  "game": {
+    "distribution": {
+      "hands": [
+        [
+          "H8",
+          "SQ",
+          "H10",
+          "C7",
+          "S8",
+          "S7",
+          "SJ",
+          "CJ",
+          "D7",
+          "D8"
+        ],
+        [
+          "C8",
+          "SA",
+          "C9",
+          "H7",
+          "D10",
+          "HA",
+          "SK",
+          "S9",
+          "CK",
+          "DJ"
+        ],
+        [
+          "C10",
+          "HQ",
+          "DA",
+          "S10",
+          "HJ",
+          "H9",
+          "DQ",
+          "CQ",
+          "HK",
+          "D9"
+        ]
+      ],
+      "skat": [
+        "DK",
+        "CA"
+      ]
+    },
+    "currentPlayer": 2,
+    "soloPlayer": 0,
+    "gameType": "0"
+  },
+  "analysis": [
+    {
+      "evaluation": {
+        "score": 5,
+        "best": [
+          "D9",
+          "DQ",
+          "DA",
+          "H9",
+          "HJ",
+          "HQ",
+          "HK"
+        ],
+        "all": {
+          "D9": 5,
+          "DQ": 5,
+          "DA": 5,
+          "H9": 5,
+          "HJ": 5,
+          "HQ": 5,
+          "HK": 5,
+          "S10": 4,
+          "C10": 4,
+          "CQ": 0
+        }
+      }
+    },
+    {
+      "move": "S10",
+      "evaluation": {
+        "score": 1,
+        "best": [
+          "SJ",
+          "SQ"
+        ],
+        "all": {
+          "SJ": 1,
+          "SQ": 1,
+          "S7": 4,
+          "S8": 4
+        }
+      }
+    },
+    {
+      "move": "S8",
+      "evaluation": {
+        "score": 5,
+        "best": [
+          "SK",
+          "SA"
+        ],
+        "all": {
+          "SK": 5,
+          "SA": 5,
+          "S9": 4
+        }
+      }
+    },
+    {
+      "move": "SA",
+      "evaluation": {
+        "score": 6,
+        "best": [
+          "HA"
+        ],
+        "all": {
+          "HA": 6,
+          "D10": 5,
+          "DJ": 5,
+          "H7": 5,
+          "S9": 5,
+          "SK": 5,
+          "C8": 5,
+          "C9": 5,
+          "CK": 0
+        }
+      }
+    },
+    {
+      "move": "SK",
+      "evaluation": {
+        "score": 6,
+        "best": [
+          "D9",
+          "DQ",
+          "DA",
+          "H9",
+          "HJ",
+          "HQ",
+          "HK"
+        ],
+        "all": {
+          "D9": 6,
+          "DQ": 6,
+          "DA": 6,
+          "H9": 6,
+          "HJ": 6,
+          "HQ": 6,
+          "HK": 6,
+          "C10": 5,
+          "CQ": 5
+        }
+      }
+    },
+    {
+      "move": "CQ",
+      "evaluation": {
+        "score": 3,
+        "best": [
+          "S7"
+        ],
+        "all": {
+          "S7": 3,
+          "SJ": 5,
+          "SQ": 5
+        }
+      }
+    },
+    {
+      "move": "SQ",
+      "evaluation": {
+        "score": 6,
+        "best": [
+          "HA"
+        ],
+        "all": {
+          "HA": 6,
+          "D10": 5,
+          "DJ": 5,
+          "H7": 5,
+          "S9": 5,
+          "C8": 5,
+          "C9": 5,
+          "CK": 0
+        }
+      }
+    },
+    {
+      "move": "S9",
+      "evaluation": {
+        "score": 6,
+        "best": [
+          "D9",
+          "DQ",
+          "DA",
+          "H9",
+          "HJ",
+          "HQ",
+          "HK"
+        ],
+        "all": {
+          "D9": 6,
+          "DQ": 6,
+          "DA": 6,
+          "H9": 6,
+          "HJ": 6,
+          "HQ": 6,
+          "HK": 6,
+          "C10": 5
+        }
+      }
+    },
+    {
+      "move": "C10",
+      "evaluation": {
+        "score": 3,
+        "best": [
+          "SJ"
+        ],
+        "all": {
+          "SJ": 3,
+          "S7": 5
+        }
+      }
+    },
+    {
+      "move": "S7",
+      "evaluation": {
+        "score": 7,
+        "best": [
+          "H7"
+        ],
+        "all": {
+          "H7": 7,
+          "D10": 6,
+          "DJ": 6,
+          "HA": 6,
+          "C8": 5,
+          "C9": 5,
+          "CK": 0
+        }
+      }
+    },
+    {
+      "move": "C9",
+      "evaluation": {
+        "score": 5,
+        "best": [
+          "D9",
+          "DQ",
+          "DA",
+          "H9",
+          "HJ",
+          "HQ",
+          "HK"
+        ],
+        "all": {
+          "D9": 5,
+          "DQ": 5,
+          "DA": 5,
+          "H9": 5,
+          "HJ": 5,
+          "HQ": 5,
+          "HK": 5
+        }
+      }
+    },
+    {
+      "move": "DA",
+      "evaluation": {
+        "score": 4,
+        "best": [
+          "CJ"
+        ],
+        "all": {
+          "CJ": 4,
+          "C7": 5
+        }
+      }
+    },
+    {
+      "move": "C7",
+      "evaluation": {
+        "score": 7,
+        "best": [
+          "H7"
+        ],
+        "all": {
+          "H7": 7,
+          "D10": 6,
+          "DJ": 6,
+          "HA": 6,
+          "C8": 5,
+          "CK": 0
+        }
+      }
+    },
+    {
+      "move": "C8",
+      "evaluation": {
+        "score": 5,
+        "best": [
+          "D9",
+          "DQ",
+          "H9",
+          "HJ",
+          "HQ",
+          "HK"
+        ],
+        "all": {
+          "D9": 5,
+          "DQ": 5,
+          "H9": 5,
+          "HJ": 5,
+          "HQ": 5,
+          "HK": 5
+        }
+      }
+    },
+    {
+      "move": "DQ",
+      "evaluation": {
+        "score": 5,
+        "best": [
+          "CJ"
+        ],
+        "all": {
+          "CJ": 5
+        }
+      }
+    },
+    {
+      "move": "CJ"
+    }
+  ]
+}

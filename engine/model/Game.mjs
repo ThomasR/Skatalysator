@@ -171,9 +171,9 @@ export class Game extends PrettyLogging {
 
   toString() {
     let trumpString;
-    if (this.gameType === null) {
+    if (this.gameType === GameType.NULL) {
       trumpString = 'Null';
-    } else if (this.gameType === -1) {
+    } else if (this.gameType === GameType.GRAND) {
       trumpString = 'Grand';
     } else {
       trumpString = suitToSymbol(this.gameType);
@@ -192,6 +192,11 @@ export class Game extends PrettyLogging {
       result += `\nPlayer ${this.currentPlayer + 1} to move\n`;
     }
     result += `Score: ${this.pointsSolo}:${this.pointsDuo}`;
+    if (this.gameType !== GameType.NULL && this.isOver() &&
+      (!this.soloHasMadeTrick || !this.duoHasMadeTrick)) {
+      result += ' (black)';
+    }
+
     if (this.playedTricks.length) {
       result += `\n\nHistory:\n${this.playedTricks.join('\n')}`;
     }

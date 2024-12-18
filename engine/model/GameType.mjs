@@ -19,16 +19,13 @@ import { Suit, suitLetters, suitToSymbol } from './Suit.mjs';
 
 export const GameType = {
   ...Suit,
-  GRAND: -1,
-  NULL: null
+  GRAND: 'G',
+  NULL: '0'
 };
 
 export const gameToSymbol = gameType => {
   if (suitLetters.includes(gameType)) {
     return suitToSymbol(gameType);
   }
-  if (gameType === GameType.GRAND) {
-    return 'G';
-  }
-  return '0';
+  return gameType;
 };

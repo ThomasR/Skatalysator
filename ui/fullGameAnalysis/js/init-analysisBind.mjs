@@ -15,7 +15,7 @@
  *
  */
 
-import sample from '../prototype/sample.mjs';
+import sample from '../sample.mjs';
 import analyzeGame from './analyzeGame.mjs';
 
 document.addEventListener('alpine:init', () => {

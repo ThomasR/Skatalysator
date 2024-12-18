@@ -15,7 +15,7 @@
  *
  */
 
-import sample from '../prototype/sample.mjs';
+import sample from '../sample.mjs';
 import { suitNames } from '../../../engine/model/Suit.mjs';
 
 
