@@ -16,6 +16,7 @@
  */
 
 import { AbstractABSearch } from './AbstractABSearch.mjs';
+import { AbstractMoveOrderSearch } from './AbstractMoveOrderSearch.mjs';
 
 const { min, max } = Math;
 
@@ -36,7 +37,7 @@ const { min, max } = Math;
  * Note that the algorithm in the paper above is buggy: the last hash.add() should only be called if a
  * move was found. That's why we introduce AbstractABSearch.resultTypes here.
  */
-export class AbstractTranspositionTableSearch extends AbstractABSearch {
+export class AbstractTranspositionTableSearch extends AbstractMoveOrderSearch {
 
   #cache = new Map();
 
@@ -89,7 +90,6 @@ export class AbstractTranspositionTableSearch extends AbstractABSearch {
 
 
   // default method implementations
-
 
 
   /**

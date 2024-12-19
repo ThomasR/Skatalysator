@@ -18,6 +18,7 @@
 import { AbstractTranspositionTableSearch } from './AbstractTranspositionTableSearch.mjs';
 import { Strategy } from '../Strategy.mjs';
 import { GameHasher } from './GameHasher.mjs';
+import { GameType } from '../model/GameType.mjs';
 
 export class SkatalysatorSearch extends AbstractTranspositionTableSearch {
 
@@ -48,12 +49,6 @@ export class SkatalysatorSearch extends AbstractTranspositionTableSearch {
   }
 
   /** @override */
-  getMoveCandidates() {
-    let result = Strategy.getPossibleMoves(this.game);
-    return result.sort((a, b) => a.value - b.value);
-  }
-
-  /** @override */
   playMove(move) {
     this.game.playCard(move);
   }
@@ -72,4 +67,23 @@ export class SkatalysatorSearch extends AbstractTranspositionTableSearch {
   shouldUseCache() {
     return this.game.currentTrick.length === 0 && this.game.playedTricks.length < 9;
   }
+
+  /** @override */
+  getAllPossibleMoves() {
+    return Strategy.getPossibleMoves(this.game);
+  }
+
+  /** @override */
+  sortByGuessedQuality(moves) {
+    return moves.sort((a, b) => {
+      if (this.game.gameType === GameType.NULL) {
+        return a.rank - b.rank;
+      }
+      if (b.value === a.value) {
+        return a.rank - b.rank;
+      }
+      return b.value - a.value;
+    });
+  }
+
 }
