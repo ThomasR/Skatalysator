@@ -12,9 +12,9 @@
   "scripts": {
     "lint": "eslint '**/*.{m,c,}js'",
     "postinstall": "npm explore svg-cardio -- npm install",
-    "test": "node --test --env-file=.test.env \"**/*.test.mjs\"",
-    "test:watch": "node --test --watch --env-file=.test.env \"**/*.test.mjs\"",
-    "test:coverage": "node --test --experimental-test-coverage --test-coverage-exclude=\"**/test/**\" \"**/test/**/*.test.mjs\""
+    "test": "node --test --experimental-test-module-mocks --env-file=.test.env \"**/*.test.mjs\"",
+    "test:watch": "node --test --experimental-test-module-mocks --watch --env-file=.test.env \"**/*.test.mjs\"",
+    "test:coverage": "node --test --experimental-test-module-mocks --test-coverage-exclude=\"**/test/**\" \"**/test/**/*.test.mjs\""
   },
   "dependencies": {
     "skatalysator-engine": "file:engine",
