@@ -34,6 +34,8 @@ export const suitLetters = Object.values(Suit);
 let symbols = ['♣', '♠', '♥', '♦'];
 if (globalThis.process?.stdout?.isTTY || globalThis.process?.env.FORCE_COLOR) {
   symbols = ['\x1b[34m♣\x1b[0m', '\x1b[32m♠\x1b[0m', '\x1b[31m♥\x1b[0m', '\x1b[33m♦\x1b[0m'];
+} else if (globalThis.window && globalThis.window.document) {
+  symbols = symbols.map(s => `${s}\u{FE0F}`);
 }
 export const suitSymbols = symbols;
 
