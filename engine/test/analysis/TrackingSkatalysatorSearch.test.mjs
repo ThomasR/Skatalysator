@@ -30,6 +30,7 @@ const testCases = [
   { gameId: '9020350-10', playedCardCount: 6 },
   { gameId: '8953165-28', playedCardCount: 6 },
   { gameId: '9031171-5', playedCardCount: 10 },
+  { gameId: '8953165-27', playedCardCount: 11 },
 
   // absolute worst case
   { gameId: '8953165-18', playedCardCount: 11 }
