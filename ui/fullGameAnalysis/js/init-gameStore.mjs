@@ -37,6 +37,9 @@ document.addEventListener('alpine:init', () => {
 
   Alpine.store('game', {
     tricks: [],
+    soloPlayer: 0,
+    gameType: null,
+    skat: [],
 
     getGame() {
       return rawGame;
@@ -48,6 +51,9 @@ document.addEventListener('alpine:init', () => {
         [...game.playedTricks, game.currentTrick] :
         game.playedTricks;
       this.tricks = convertTricks(tricks);
+      this.soloPlayer = game.soloPlayer;
+      this.gameType = game.gameType;
+      this.skat = game.distribution.skat;
     }
   });
 

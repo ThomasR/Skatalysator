@@ -39,5 +39,29 @@ export default {
       mistake: 'Ungenauigkeit: {} -> {}',
       best: 'Bester Zug'
     }
+  },
+  info: {
+    gameInfo: 'Spieler {} spielt {}.',
+    skatInfo: 'Gedrückt: {}'
+  },
+  legend: {
+    forcedMove: 'Erzwungener Zug',
+    blunder: 'Dieser Zug verliert das Spiel oder eine Gewinnstufe. Für Details mit der Maus über das Symbol fahren.',
+    mistake: 'Dieser Zug verliert Augen, aber bei gleicher Gewinnstufe. Für Details mit der Maus über das Symbol fahren.',
+    bestMove: 'Bester Zug',
+    domination: 'An dieser Stelle macht der Spieler alle restlichen Stiche, und kann hinlegen'
+  },
+  contracts: {
+    C: '♣️Kreuz',
+    S: '♠️Pik',
+    H: '♥️Herz',
+    D: '♦️Karo',
+    G: 'Grand',
+    0: 'Null'
+  },
+  cardLetters: {
+    J: 'B',
+    Q: 'D',
+    K: 'K'
   }
 };

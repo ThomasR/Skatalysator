@@ -15,8 +15,8 @@
  *
  */
 
-import fixtureFromData from '../../../engine/test/alphabeta-fixtures/fixtureFromData.mjs';
+import fixtureFromData from '../../engine/test/alphabeta-fixtures/fixtureFromData.mjs';
 
-const { game } = await fixtureFromData({ seriesId: 9020350, gameIndex: 2, playedCardCount: 19, includeEvaluation: false });
+const { game } = await fixtureFromData({ gameId: '9020350-2', playedCardCount: 19 });
 
 export default game;

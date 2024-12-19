@@ -29,6 +29,10 @@ export const translate = ({ locale }) => (key, ...replacements) => {
     dictionary[locale]
   );
 
+  if (!target && location.hostname === 'localhost') {
+    return `MISSING TRANSLATION: ${key} (WILL BE EMPTY IN PRODUCTION)`;
+  }
+
   let i = 0;
   return target.replaceAll(/\{\}/g, () => replacements[i++] ?? '');
 };

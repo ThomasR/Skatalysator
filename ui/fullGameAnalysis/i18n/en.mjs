@@ -40,5 +40,29 @@ export default {
       mistake: 'Mistake: {} -> {}',
       best: 'Best Move'
     }
+  },
+  info: {
+    gameInfo: 'Player {} plays {}.',
+    skatInfo: 'Dropped cards: {}'
+  },
+  legend: {
+    forcedMove: 'Forced move',
+    blunder: 'This is move losing the game or a multiplier. Hover over the symbol for details.',
+    mistake: 'This move loses card points, but does not affect the outcome. Hover over the symbol for details.',
+    bestMove: 'Best move',
+    domination: 'The player can claim all remaining tricks, and therefore play with open cards.'
+  },
+  contracts: {
+    C: '♣️Clubs',
+    S: '♠️Spades',
+    H: '♥️Hearts',
+    D: '♦️Diamonds',
+    G: 'Grand',
+    0: 'Null'
+  },
+  cardLetters: {
+    J: 'J',
+    Q: 'Q',
+    K: 'K'
   }
 };

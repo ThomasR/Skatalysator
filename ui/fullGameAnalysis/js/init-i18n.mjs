@@ -52,4 +52,13 @@ document.addEventListener('alpine:init', () => {
     }
     return translate({ el, locale: settings.locale });
   });
+
+  Alpine.magic('tCard', el => {
+    if (!settings) {
+      settings = Alpine.store('settings');
+    }
+    return cardName => String(cardName).replace(/[JQK]/, (letter) => translate({
+      el, locale: settings.locale
+    })(`cardLetters.${letter}`));
+  });
 });

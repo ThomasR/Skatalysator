@@ -55,34 +55,3 @@ aside:has(> form) {
     }
 
 }
-
-.legend > div {
-    display: none;
-    align-items: center;
-    margin: 1vmin;
-}
-
-.legend .evaluation {
-    display: block;
-    margin-right: .5em;
-}
-
-main:has(.evaluation.domination) ~ .legend div.domination,
-main:has(.evaluation.forced) ~ .legend div.forced,
-main:has(.evaluation.best) ~ .legend div.best,
-main:has(.evaluation.mistake) ~ .legend div.mistake,
-main:has(.evaluation.blunder) ~ .legend div.blunder {
-    display: flex;
-}
-
-.info {
-    position: absolute;
-    left: 50%;
-    top: 2vmin;
-    transform: translateX(-50%);
-    padding: 1.5vmin 2vmin;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    background: rgba(255, 255, 255, .1);
-    font-size: 2.5vmin;
-}
