@@ -24,9 +24,16 @@ import { Card } from '../../model/Card.mjs';
 import fixtureFromData from '../alphabeta-fixtures/fixtureFromData.mjs';
 
 const testCases = [
-  { gameId: '9031171-5', playedCardCount: 10 },
+  // best case
+  { gameId: '9042180-7', playedCardCount: 5 },
+
   { gameId: '9020350-10', playedCardCount: 6 },
-  { gameId: '8953165-28', playedCardCount: 6 }
+  { gameId: '8953165-28', playedCardCount: 6 },
+  { gameId: '9031171-5', playedCardCount: 10 },
+
+  // absolute worst case
+  { gameId: '8953165-18', playedCardCount: 11 }
+
 ];
 
 test.describe('TrackingSkatalysatorSearch', () => {

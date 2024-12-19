@@ -25,9 +25,13 @@ import assert from 'node:assert';
 import fixtureFromData from '../alphabeta-fixtures/fixtureFromData.mjs';
 
 const testCases = [
-  { gameId: '9031171-5', playedCardCount: 10 },
+  { gameId: '9042180-7', playedCardCount: 5 }, // best case
   { gameId: '9020350-10', playedCardCount: 6 },
-  { gameId: '8953165-28', playedCardCount: 6 }
+  { gameId: '8953165-28', playedCardCount: 6 },
+  { gameId: '9031171-5', playedCardCount: 10 },
+  { gameId: '8953165-27', playedCardCount: 10 },
+  { gameId: '8953165-18', playedCardCount: 11 } // worst case by far
+
 ];
 
 test.describe('ABSearch', () => {
