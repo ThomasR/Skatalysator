@@ -28,9 +28,8 @@ export class TrackingSkatalysatorSearch extends SkatalysatorSearch {
   bestMoves = [];
 
   _abSearch(...args) {
-    let { recursionDepth = 0 } = args[0];
     let score = super._abSearch(...args);
-    if (recursionDepth === 0) {
+    if (this.recursionDepth === 0) {
       this.#captureBestMoves(score);
     }
     return score;

@@ -34,6 +34,7 @@ export class AbstractABSearch {
   };
 
   game;
+  recursionDepth = 0;
 
   /**
    * The `game` object is passed by reference, meaning any changes made to the `game`
@@ -59,7 +60,7 @@ export class AbstractABSearch {
    * It returns the score delta possible starting from the current position
    * within the alpha-beta search window given.
    */
-  _abSearch({ alpha = -Infinity, beta = Infinity, recursionDepth = 0 }) {
+  _abSearch({ alpha = -Infinity, beta = Infinity }) {
 
     if (this.isGameOver()) {
       return this.gameEndScore;
@@ -86,11 +87,12 @@ export class AbstractABSearch {
       this.playMove(move);
       let lastMoveScore = this.gameScore - scoreBefore;
 
+      this.recursionDepth++;
       let moveScore = lastMoveScore + this._abSearch({
         alpha: alpha - lastMoveScore,
-        beta: beta - lastMoveScore,
-        recursionDepth: recursionDepth + 1
+        beta: beta - lastMoveScore
       });
+      this.recursionDepth--;
 
       this.undoLastMove();
 

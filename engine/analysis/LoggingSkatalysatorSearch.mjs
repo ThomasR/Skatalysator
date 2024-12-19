@@ -30,13 +30,13 @@ export class LoggingSkatalysatorSearch extends SkatalysatorSearch {
     this.logDepth = logDepth ?? -1;
   }
 
-  setLogger({ recursionDepth }) {
-    if (this.logDepth >= recursionDepth) {
+  setLogger() {
+    if (this.logDepth >= this.recursionDepth) {
       this.logger = {
         ...this.#passedLogger,
         log: (...args) => {
-          if (recursionDepth) {
-            this.#passedLogger.log(recursionDepth, ...args);
+          if (this.recursionDepth) {
+            this.#passedLogger.log(this.recursionDepth, ...args);
           } else {
             this.#passedLogger.log(...args);
           }
@@ -49,12 +49,14 @@ export class LoggingSkatalysatorSearch extends SkatalysatorSearch {
 
   /** @override */
   _abSearch(...args) {
-    let { alpha, beta, recursionDepth = 0 } = args[0];
+    let { alpha, beta } = args[0];
 
     let prevLogger = this.logger;
-    this.setLogger({ recursionDepth });
+    this.setLogger();
 
-    if (recursionDepth > 0) {
+    if (this.recursionDepth === 0) {
+      this.logger?.time('Total time');
+    } else {
       this.logger?.groupCollapsed();
     }
     this.logger?.log(`Entering abSearch with α=${alpha}, β=${beta}. ${this.isMaximizer ? 'MAXIMIZING…' : 'minimizing…'}`);
@@ -62,8 +64,9 @@ export class LoggingSkatalysatorSearch extends SkatalysatorSearch {
     let result = super._abSearch(...args);
 
     this.logger?.groupEnd();
-    if (recursionDepth === 0) {
+    if (this.recursionDepth === 0) {
       this.logger?.log('Cache size', this.cacheSize);
+      this.logger?.timeEnd('Total time');
     }
     this.logger = prevLogger;
     return result;
@@ -104,7 +107,9 @@ export class LoggingSkatalysatorSearch extends SkatalysatorSearch {
   }
 
   /** @override */
-  innerIterationEndHook({ move, isCutoff, alpha, beta, isMaximizer }) {
+  innerIterationEndHook(...args) {
+    super.innerIterationEndHook(...args);
+    let { move, isCutoff, alpha, beta, isMaximizer } = args[0];
     if (isCutoff) {
       this.logger?.log(`${move} is cutoff. Score: ${isMaximizer ? alpha : beta}`);
     }

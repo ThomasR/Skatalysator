@@ -73,7 +73,6 @@ const game = new Game({
 Add moves that were played:
 
 ```js
-
 // 1
 game.playCard('C9');
 game.playCard('CA');
