@@ -23,13 +23,11 @@ export default async function fixtureFromData({
   gameId,
   playedCardCount = 0
 }) {
-
   const gameData = await dynamicImport(`./${gameId}.json`, { with: { type: 'json' } });
-  let game = new Game(gameData.game);
-  for (let i = 0; i < playedCardCount; i++) {
-    let card = gameData.analysis[i + 1].move;
-    game.playCard(card);
-  }
+  let game = new Game({
+    ...gameData.game,
+    playedCards: gameData.analysis.slice(1, playedCardCount + 1).map(a => a.move)
+  });
   return {
     game,
     remaining: gameData.analysis.slice(playedCardCount),
