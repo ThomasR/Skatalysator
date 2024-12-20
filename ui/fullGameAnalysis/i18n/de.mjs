@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,7 +24,8 @@ export default {
     neon: 'Neon',
     cardTheme: 'Karten',
     background: 'Hintergrund:',
-    reset: 'Zurücksetzen'
+    reset: 'Zurücksetzen',
+    tournamentScheme: 'Turnierfarben'
   },
   analysis: {
     startButtonText: 'Analyse starten',
@@ -38,5 +39,30 @@ export default {
       mistake: 'Ungenauigkeit: {} -> {}',
       best: 'Bester Zug'
     }
+  },
+  info: {
+    gameInfo: 'Spieler {} spielt {}.',
+    skatInfo: 'Gedrückt: {}'
+  },
+  legend: {
+    forcedMove: 'Erzwungener Zug',
+    blunder: 'Dieser Zug verliert das Spiel oder eine Gewinnstufe. Für Details mit der Maus über das Symbol fahren.',
+    mistake: 'Dieser Zug verliert Augen, aber bei gleicher Gewinnstufe. Für Details mit der Maus über das Symbol fahren.',
+    bestMove: 'Bester Zug',
+    domination: 'An dieser Stelle macht der Spieler alle restlichen Stiche, und kann hinlegen'
+  },
+  contracts: {
+    C: '♣️Kreuz',
+    S: '♠️Pik',
+    H: '♥️Herz',
+    D: '♦️Karo',
+    G: 'Grand',
+    0: 'Null'
+  },
+  cardLetters: {
+    J: 'B',
+    Q: 'D',
+    K: 'K',
+    A: 'A'
   }
 };

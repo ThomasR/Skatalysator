@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,7 +25,8 @@ export default {
     neon: 'Neon',
     cardTheme: 'Deck',
     background: 'Background:',
-    reset: 'Reset'
+    reset: 'Reset',
+    tournamentScheme: 'International suit colors'
   },
   analysis: {
     startButtonText: 'Run Analysis',
@@ -39,5 +40,30 @@ export default {
       mistake: 'Mistake: {} -> {}',
       best: 'Best Move'
     }
+  },
+  info: {
+    gameInfo: 'Player {} plays {}.',
+    skatInfo: 'Dropped cards: {}'
+  },
+  legend: {
+    forcedMove: 'Forced move',
+    blunder: 'This is move losing the game or a multiplier. Hover over the symbol for details.',
+    mistake: 'This move loses card points, but does not affect the outcome. Hover over the symbol for details.',
+    bestMove: 'Best move',
+    domination: 'The player can claim all remaining tricks, and therefore play with open cards.'
+  },
+  contracts: {
+    C: '♣️Clubs',
+    S: '♠️Spades',
+    H: '♥️Hearts',
+    D: '♦️Diamonds',
+    G: 'Grand',
+    0: 'Null'
+  },
+  cardLetters: {
+    J: 'J',
+    Q: 'Q',
+    K: 'K',
+    A: 'A'
   }
 };

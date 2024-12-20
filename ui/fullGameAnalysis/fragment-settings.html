@@ -28,11 +28,13 @@
     </fieldset>
     <fieldset>
       <legend><strong x-text="$t('settings.cardTheme')"></strong></legend>
-      <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="emoji-crisp">Emoji</label>
-      <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="emoji-tournament">Emoji Int</label>
+      <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="emoji">Emoji</label>
       <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="tekeye">Fowler</label>
-      <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="tekeye-tournament">Fowler
-        Int</label>
+      <label><input type="radio" name="cardTheme" x-model="$store.settings.cardTheme" value="minimalist">Minimalist</label>
+      <label>
+      <input type="checkbox" role="switch" name="tournamentScheme" x-model="$store.settings.tournamentScheme">
+        <span x-text="$t('settings.tournamentScheme')"></span>
+      </label>
     </fieldset>
     <fieldset>
       <label>

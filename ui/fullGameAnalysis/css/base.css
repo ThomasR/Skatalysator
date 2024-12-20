@@ -1,17 +1,17 @@
 /*
- *  Copyright 2024 Thomas Rosenau
+ * Copyright 2024 Thomas Rosenau
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  *
  */
 
@@ -22,6 +22,7 @@
 html {
     background: unset;
     color: white;
+    --pico-font-size: 100% !important;
 }
 
 body {
@@ -29,41 +30,41 @@ body {
 }
 
 main {
-    --card-width: 12vmin;
     --card-height: calc(90.5 / 60.5 * var(--card-width));
-    max-width: calc(5 * 2.5 * var(--card-width) + 10 * 2vmin + 1px);
+    --card-width: 12vmin;
     overflow: hidden;
+    max-width: calc(5 * 2.5 * var(--card-width) + 10 * 2vmin + 1px);
     margin: 9vmin auto 0;
 }
 
 .trick {
+    counter-increment: trick;
     width: calc(2.5 * var(--card-width));
     height: calc(2.4 * var(--card-width));
-    overflow: hidden;
     position: relative;
     float: left;
     margin: 2vmin;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     background: rgba(0, 0, 0, .1);
-    counter-increment: trick;
 }
 
 .score {
     position: absolute;
-    bottom: .2em;
     right: .5em;
+    bottom: .2em;
+    color: rgba(255, 255, 255, .6);
     font-family: sans-serif;
     font-size: 2vmin;
     font-weight: bold;
-    color: rgba(255, 255, 255, .6);
 }
 
 
 .card {
+    position: relative;
+    border-radius: calc(var(--card-width) * .08);
     box-shadow: 0 0 2vmin rgba(0, 0, 0, .1);
     will-change: transform;
-    position: relative;
 }
 
 .card img {
@@ -71,39 +72,35 @@ main {
 }
 
 .trick::after {
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 3vmin;
-    line-height: 1.5;
     content: counter(trick);
+    z-index: -1;
     position: absolute;
     left: 0;
     right: 0;
-    text-align: center;
-    z-index: -1;
     color: rgba(255, 255, 255, .07);
+    font-family: sans-serif;
+    font-size: 3vmin;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: center;
 }
 
-body[data-trick-winner-marker="glow"] .trick-winner img {
+body[data-trick-winner-marker="glow"] .trick-winner {
     box-shadow: 0 0 2px lime, 0 0 5px cyan;
 }
 
 
 .trick .card {
+    --extension: 18%;
     width: var(--card-width);
     height: var(--card-height);
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
+    top: 0;
     bottom: 0;
-    margin: auto;
     transform-origin: center center;
-    --extension: 18%;
-}
-
-.trick .card img {
-    border-radius: calc(var(--card-width) * .07);
+    margin: auto;
 }
 
 .card[data-player-index="1"] {

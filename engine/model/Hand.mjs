@@ -1,34 +1,27 @@
 /*
- *  Copyright 2024 Thomas Rosenau
+ * Copyright 2024 Thomas Rosenau
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  *
  */
 
 import { Card } from './Card.mjs';
-import { NullCard } from './NullCard.mjs';
 import { GameType } from './GameType.mjs';
 
 const suits = ['J', 'C', 'S', 'H', 'D'];
 
 export class Hand {
-  cards = {
-    J: [],
-    C: [],
-    S: [],
-    H: [],
-    D: []
-  };
+  cards = Object.fromEntries(suits.map(suit => [suit, []]));
 
   gameType = null;
 
@@ -52,9 +45,8 @@ export class Hand {
     }
 
     let isNull = this.gameType === GameType.NULL;
-    let CardClass = isNull ? NullCard : Card;
     input.forEach(cardInput => {
-      let card = new CardClass(cardInput);
+      let card = new (Card(this.gameType))(cardInput);
       let suitIndex = (card.figure === 'J' && !isNull) ? 'J' : card.suit;
       this.cards[suitIndex].push(card);
     });
@@ -94,6 +86,9 @@ export class Hand {
       }
       insertionIndex++;
     }
+    if (this.cards[suit][insertionIndex - 1] === newCard) {
+      throw new Error(`Player already has ${newCard}!`);
+    }
     this.cards[suit].splice(insertionIndex, 0, newCard);
   }
 
@@ -119,16 +114,6 @@ export class Hand {
     });
     let cards = suits.map(suit => this.cards[suit]);
     return cards.flat(2).join(' ') || '-';
-  }
-
-  toHash() {
-    let result = 0;
-    suits.forEach((suit, suitIndex) => {
-      this.cards[suit].forEach(card => {
-        result += 2 ** (card.rank % 7 + 7 * (4 - suitIndex));
-      });
-    });
-    return result;
   }
 
   clone() {

@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -62,10 +62,10 @@ export class FullGameAnalyzer {
 
   #findForcedMoves() {
     let doneIndexes = [];
-    let cardCount = 3 * this.game.playedTricks.length + this.game.currentTrick.length;
+    let { playedCardCount } = this.game;
     let tempGame = this.game.clone();
-    for (let i = 0; i < cardCount; i++) {
-      if (i === 0 && cardCount === 30) {
+    for (let i = 0; i < playedCardCount; i++) {
+      if (i === 0 && playedCardCount === 30) {
         tempGame.undoLastMove();
         continue;
       }

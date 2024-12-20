@@ -36,10 +36,10 @@ npm install
 
 This package includes a prototype, which you can try out on
 
-[https://thomasr.github.io/Skatalysator/ui/fullGameAnalysis/prototype/game.html](https://thomasr.github.io/Skatalysator/ui/fullGameAnalysis/prototype/game.html).
+[https://thomasr.github.io/Skatalysator/ui/fullGameAnalysis/](https://thomasr.github.io/Skatalysator/ui/fullGameAnalysis/).
 
 
-It is currently available in German only. There is only one predefined game that can be analyzed.
+There is only one predefined game that can be analyzed.
 
 **⚠️ This prototype is nowhere near finished. ⚠️**
 
@@ -73,7 +73,6 @@ const game = new Game({
 Add moves that were played:
 
 ```js
-
 // 1
 game.playCard('C9');
 game.playCard('CA');
@@ -115,93 +114,67 @@ History:
 Analyze the game:
 
 ```
-import { RecursiveGameEvaluator } from './engine/analysis/RecursiveGameEvaluator.mjs';
-console.log(new RecursiveGameEvaluator({ game }).evaluateGame());
+import { SkatalysatorSearch } from './engine/analysis/RecursiveGameEvaluator.mjs';
+console.log(new SkatalysatorSearch({ game }).minimax());
+```
+
+This will return the score that can be achieved with best play from the current position:
+
+```text
+78
+```
+
+You can aslo use `TrackingSkatalysatorSearch`, which will keep track of the optimal next move from this position,
+but it is slower.
+
+```
+import { TrackingSkatalysatorSearch } from './engine/analysis/RecursiveGameEvaluator.mjs';
+
+let searcher = new TrackingSkatalysatorSearch({ game });
+console.log(searcher.minimax());
+console.log(searcher.bestMoves);
 ```
 
 ```text
-{
-  score: 75,
-  moves: [
-    ♦K, ♥7, ♥10, ♥9, ♦J,
-    ♦8, ♠A, ♣10, ♥8, ♣K,
-    ♣Q, ♦A, ♠K
-  ],
-  forced: false,
-  pointsSolo: 75,
-  pointsDuo: 45
-}
+78
+[ ♦K ]
 ```
-This returns the optimal move sequence for the rest of the game with `pointsSolo` and `pointsDuo` representing the
-final score.
 
-The `score` field is always equal to `pointsSolo`, except if one of the parties is black, in which case it equals `-1` or `121`
-respectively.
-
-If the current player has only one move alialable, `force` is set to `true`.
-
-The returned object may also include a `hint` field, which currently can only take the value `'domination'`.
-If this field is present, it means that the current player can enforce making all remaining points, and thus can
-continue with open cards.
 
 #### Verbose logging
 
-The `RecursiveGameEvaluator` constructor also accepts a `logDepth` parameter if you want to inspect the internals:
+TODO: refactor the class hierarchy / create some factory
+
+The `LoggingSkatalysatorSearch` constructor accepts a `logDepth` parameter if you want to inspect the internals:
 
 ```
-console.log(new RecursiveGameEvaluator({ game, logDepth: 3 }).evaluateGame());
+new LoggingSkatalysatorSearch({ game, logDepth: 3 }).minimax();
 ```
 
 ```
-Entering minimax. Solo player is player 3, playing ♦.
-Player 3 (max) trying card ♥J
-  α=-Infinity, β=Infinity
-  Player 1 (min) trying card ♠J
-    α=-Infinity, β=Infinity
-    Player 2 (min) trying card ♦J
-      α=-Infinity, β=Infinity
-    Score for ♦J: 89
-    Player 2 (min) trying card ♦K
-      α=-Infinity, β=89
-    Score for ♦K: 75
-    Best: ♦K ♥7 ♥10 ♥9 ♦J ♦8 ♠A ♣10 ♥8 ♣K ♣Q ♦A ♠K
-  Score for ♠J: 75
-  Best: ♠J ♦K ♥7 ♥10 ♥9 ♦J ♦8 ♠A ♣10 ♥8 ♣K ♣Q ♦A ♠K
-Score for ♥J: 75
+Entering abSearch with α=-Infinity, β=Infinity. minimizing…
+Move candidates: ♦K ♦J
+Examining ♦K with bounds [-Infinity, Infinity]
+  1 Entering abSearch with α=-Infinity, β=Infinity. minimizing…
+  1 Move candidates: ♠A ♣K ♠K ♥K ♥Q ♥7 ♠8
+  1 Examining ♠A with bounds [-Infinity, Infinity]
+    2 Entering abSearch with α=-Infinity, β=Infinity. minimizing…
+    2 Move candidates: ♠10 ♠9
+    2 Examining ♠10 with bounds [-Infinity, Infinity]
+      3 Entering abSearch with α=-Infinity, β=Infinity. MAXIMIZING…
+      3 Move candidates: ♥A ♦A ♦10 ♦Q ♥8 ♦8 ♥9
+      3 Examining ♥A with bounds [-Infinity, Infinity]
+      3 ♥A is now best with score 37 > -Infinity.
+      3 Examining ♦A with bounds [37, Infinity]
 
-[…]
+[etc…]
 
-Player 3 (max) trying card ♦Q
-  α=87, β=Infinity
-  Player 1 (min) trying card ♠J
-    α=87, β=Infinity
-    Player 2 (min) trying card ♦J
-      α=87, β=Infinity
-    Score for ♦J: >=88 - discarding
-    Player 2 (min) trying card ♦K
-      α=87, β=88
-    Score for ♦K: 87
-    Best: ♦K ♠A ♠9
-  Score for ♠J: 87
-  Cutoff at 87.
-  Best: unknown (cutoff)
-Score for ♦Q: <=87 - discarding
-Player 3 (max) trying card ♦8
-  α=87, β=Infinity
-  Player 1 (min) trying card ♠J
-    α=87, β=Infinity
-    Player 2 (min) trying card ♦J
-      α=87, β=Infinity
-    Score for ♦J: >=91 - discarding
-    Player 2 (min) trying card ♦K
-      α=87, β=91
-    Score for ♦K: 89
-    Best: ♦K ♠A ♠9 ♥9 ♣K ♣10 ♥8 ♦J ♥J ♠K
-  Score for ♠J: 89
-  Best: ♠J ♦K ♠A ♠9 ♥9 ♣K ♣10 ♥8 ♦J ♥J ♠K
-Score for ♦8: 89
-Best: ♦8 ♠J ♦K ♠A ♠9 ♥9 ♣K ♣10 ♥8 ♦J ♥J ♠K
-Total analysis time: 13.433s
+      3 Score: 62, Result: BETA_CUTOFF
+    2 Score: 62, Result: NONE
+  1 Score: 62, Result: NONE
+Score: 62, Result: FINAL
+Cache size 9275
+
 ```
 
 `logDepth` can take values up to 30, but this produces **a lot** of ouptut.
@@ -213,11 +186,12 @@ Total analysis time: 13.433s
 - [x] Allows modeling Grand games
 - [x] Engine can analyze color games
   - [ ] Performance improvements
-- [ ] Engine can analyze Grand games
+- [x] Engine can analyze Grand games
 - [ ] Engine can analyze Null games
 - [ ] UI
   - [x] Prototype
-    - [ ] Vue application rewrite
+    - [x] Alpine.js application rewrite
+      - [ ] dev docs
   - [x] Configurable design
   - [x] Spawn analysis engine as worker
   - [x] Mark mistakes in UI
@@ -225,5 +199,5 @@ Total analysis time: 13.433s
   - [ ] Undo/redo
   - [ ] Fork variation
   - [ ] Load/save games
-  - [ ] i18n
+  - [x] i18n
   - [ ] Editable player names

@@ -1,0 +1,176 @@
+{
+  "game": {
+    "distribution": {
+      "hands": [
+        [
+          "CK",
+          "S7",
+          "SA",
+          "DQ",
+          "D10",
+          "C8",
+          "H10",
+          "D9",
+          "S10",
+          "SQ"
+        ],
+        [
+          "HQ",
+          "C10",
+          "DA",
+          "DK",
+          "SK",
+          "H9",
+          "HA",
+          "DJ",
+          "HK",
+          "CQ"
+        ],
+        [
+          "D8",
+          "C7",
+          "S9",
+          "CJ",
+          "D7",
+          "HJ",
+          "H8",
+          "S8",
+          "C9",
+          "H7"
+        ]
+      ],
+      "skat": [
+        "CA",
+        "SJ"
+      ]
+    },
+    "currentPlayer": 1,
+    "soloPlayer": 2,
+    "gameType": "0"
+  },
+  "analysis": [
+    {
+      "evaluation": {
+        "score": 3,
+        "best": [
+          "DJ",
+          "DK",
+          "DA",
+          "H9",
+          "HQ",
+          "HK",
+          "HA",
+          "C10",
+          "CQ"
+        ],
+        "all": {
+          "DJ": 3,
+          "DK": 3,
+          "DA": 3,
+          "H9": 3,
+          "HQ": 3,
+          "HK": 3,
+          "HA": 3,
+          "C10": 3,
+          "CQ": 3,
+          "SK": 2
+        }
+      }
+    },
+    {
+      "move": "SK",
+      "evaluation": {
+        "score": 2,
+        "best": [
+          "S8",
+          "S9"
+        ],
+        "all": {
+          "S8": 2,
+          "S9": 2
+        }
+      }
+    },
+    {
+      "move": "S9",
+      "evaluation": {
+        "score": 3,
+        "best": [
+          "S10",
+          "SQ"
+        ],
+        "all": {
+          "S10": 3,
+          "SQ": 3,
+          "SA": 2,
+          "S7": 0
+        }
+      }
+    },
+    {
+      "move": "SA",
+      "evaluation": {
+        "score": 4,
+        "best": [
+          "D9",
+          "D10",
+          "C8"
+        ],
+        "all": {
+          "D9": 4,
+          "D10": 4,
+          "C8": 4,
+          "DQ": 3,
+          "H10": 3,
+          "CK": 3,
+          "S7": 2,
+          "S10": 0,
+          "SQ": 0
+        }
+      }
+    },
+    {
+      "move": "S7",
+      "evaluation": {
+        "score": 2,
+        "best": [
+          "DJ",
+          "DK",
+          "DA",
+          "H9",
+          "HQ",
+          "HK",
+          "HA",
+          "C10",
+          "CQ"
+        ],
+        "all": {
+          "DJ": 2,
+          "DK": 2,
+          "DA": 2,
+          "H9": 2,
+          "HQ": 2,
+          "HK": 2,
+          "HA": 2,
+          "C10": 2,
+          "CQ": 2
+        }
+      }
+    },
+    {
+      "move": "CQ",
+      "evaluation": {
+        "score": 2,
+        "best": [
+          "S8"
+        ],
+        "all": {
+          "S8": 2
+        }
+      }
+    },
+    {
+      "move": "S8"
+    }
+  ]
+}

@@ -1,17 +1,17 @@
 /*
- *  Copyright 2024 Thomas Rosenau
+ * Copyright 2024 Thomas Rosenau
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  *
  */
 
@@ -20,10 +20,12 @@ import { PrettyLogging } from '../PrettyLogging.mjs';
 import { suitToSymbol } from './Suit.mjs';
 import { Trick } from './Trick.mjs';
 import { CardDistribution } from './CardDistribution.mjs';
-import { Strategy } from '../Strategy.mjs';
 import { GameType } from './GameType.mjs';
-import { NullCard } from './NullCard.mjs';
 
+/**
+ * Represents a Skat game, managing the game's state, actions, and rules.
+ * Handles the flow of the game, including card plays, scoring, and resolving tricks.
+ */
 export class Game extends PrettyLogging {
   soloPlayer;
   currentPlayer;
@@ -34,6 +36,20 @@ export class Game extends PrettyLogging {
   pointsDuo;
   currentTrick;
 
+  /**
+   * Constructs a new Game instance with the specified configuration.
+   *
+   * @param {Object} options - The configuration options for the game.
+   * @param {string} options.soloPlayer - The identifier of the solo player.
+   * @param {string} options.currentPlayer - The identifier of the current player.
+   * @param {string} options.gameType - The type of the game being played.
+   * @param {Object} options.distribution - The card distribution data for the game.
+   * @param {Array<Object>} [options.playedTricks=[]] - The list of already played tricks in the game.
+   * @param {number} [options.pointsSolo=0] - The current points scored by the solo player.
+   * @param {number} [options.pointsDuo=0] - The current points scored by the duo players.
+   * @param {Object} [options.currentTrick] - The data for the current trick being played.
+   * @param {Array<Object>} [options.playedCards=[]] - The list of cards that have already been played.
+   */
   constructor({
     soloPlayer,
     currentPlayer,
@@ -42,7 +58,8 @@ export class Game extends PrettyLogging {
     playedTricks = [],
     pointsSolo = 0,
     pointsDuo = 0,
-    currentTrick
+    currentTrick,
+    playedCards = []
   } = {}) {
     super();
     this.soloPlayer = soloPlayer;
@@ -54,14 +71,14 @@ export class Game extends PrettyLogging {
     this.pointsSolo = Math.max(pointsSolo, minPointsSolo);
     this.pointsDuo = pointsDuo;
     this.currentTrick = new Trick(currentTrick ?? { leadPlayer: this.currentPlayer });
+    playedCards.forEach(cardInput => this.playCard(cardInput));
   }
 
   playCard(cardInput) {
     if (this.isOver()) {
       throw new Error('Cannot play card after game is over');
     }
-    let CardClass = this.gameType === GameType.NULL ? NullCard : Card;
-    let card = new CardClass(cardInput);
+    let card = new (Card(this.gameType))(cardInput);
     this.distribution.removeCard(card, this.currentPlayer);
     this.currentTrick.playCard(card);
     if (this.currentTrick.length === 3) {
@@ -148,11 +165,15 @@ export class Game extends PrettyLogging {
     });
   }
 
+  get playedCardCount() {
+    return this.playedTricks.length * 3 + this.currentTrick.length;
+  }
+
   toString() {
     let trumpString;
-    if (this.gameType === null) {
+    if (this.gameType === GameType.NULL) {
       trumpString = 'Null';
-    } else if (this.gameType === -1) {
+    } else if (this.gameType === GameType.GRAND) {
       trumpString = 'Grand';
     } else {
       trumpString = suitToSymbol(this.gameType);
@@ -171,30 +192,15 @@ export class Game extends PrettyLogging {
       result += `\nPlayer ${this.currentPlayer + 1} to move\n`;
     }
     result += `Score: ${this.pointsSolo}:${this.pointsDuo}`;
+    if (this.gameType !== GameType.NULL && this.isOver() &&
+      (!this.soloHasMadeTrick || !this.duoHasMadeTrick)) {
+      result += ' (black)';
+    }
+
     if (this.playedTricks.length) {
       result += `\n\nHistory:\n${this.playedTricks.join('\n')}`;
     }
     result += '\n-----';
     return result;
-  }
-
-  toHash() {
-    let result = this.distribution.toHash();
-    if (this.currentTrick?.length) {
-      result += `,${this.currentTrick.cards.map(({ figure, suit }) => `${suit}${figure}`).join(',')}`;
-    }
-    return result;
-  }
-
-  getVariationCount() {
-    if (this.playedTricks.length >= 9) {
-      return 1;
-    }
-    let possibleMoves = Strategy.getPossibleMoves(this);
-    return possibleMoves.reduce((count, move) => {
-      let clone = this.clone();
-      clone.playCard(move);
-      return count + clone.getVariationCount();
-    }, 0);
   }
 }

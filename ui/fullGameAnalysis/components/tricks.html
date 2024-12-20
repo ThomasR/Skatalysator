@@ -1,10 +1,30 @@
+<!--
+  ~ Copyright 2024 Thomas Rosenau
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
 <template x-data="$store.game" x-for="(trick, trickIndex) in tricks" :key="trickIndex">
   <div class="trick">
     <template x-for="(card, cardIndex) in trick.cards" :key="cardIndex">
       <div class="card" :data-player-index="1 + (trick.leadPlayer + cardIndex) % 3"
-          :class="{ 'trick-winner': trick.winningPlayer === trick.leadPlayer + cardIndex }"
+          :class="{ 'trick-winner': trick.winningPlayer === (trick.leadPlayer + cardIndex) % 3 }"
       >
-        <img :src="`../svg-cardio/svgs/${$store.settings.cardTheme}/${card.suitName}-${card.name}.svg`">
+        <img :src="`../svg-cardio/svgs/${$store.settings.cardTheme}` +
+                   `${$store.settings.tournamentScheme ? '-tournament' : ''}/` +
+                   `${card.suitName}-${/[0-9]/.test(card.name) ? card.name : $t(`cardLetters.${card.name}`)}.svg`"
+        >
         <template x-if="$store.analysis.cardEvaluation[trickIndex][cardIndex]?.css">
           <div
               class="evaluation" :class="$store.analysis.cardEvaluation[trickIndex][cardIndex].css"

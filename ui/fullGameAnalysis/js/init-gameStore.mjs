@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,14 +15,13 @@
  *
  */
 
-import sample from '../prototype/sample.mjs';
+import sample from '../sample.mjs';
 import { suitNames } from '../../../engine/model/Suit.mjs';
 
 
 const convertCard = card => ({
   suitName: suitNames[card.suit],
-  // TODO: this could just return card.figure if language is English, but then we need to generate English cards
-  name: card.figure === 'J' ? 'B' : card.figure === 'Q' ? 'D' : card.figure
+  name: card.figure
 });
 
 const convertTricks = tricks => tricks.map(trick => ({
@@ -36,6 +35,9 @@ document.addEventListener('alpine:init', () => {
 
   Alpine.store('game', {
     tricks: [],
+    soloPlayer: 0,
+    gameType: null,
+    skat: [],
 
     getGame() {
       return rawGame;
@@ -43,8 +45,13 @@ document.addEventListener('alpine:init', () => {
 
     setGame(game) {
       rawGame = game;
-      let tricks = game.currentTrick?.length ? [...game.playedTricks, game.currentTrick] : game.playedTricks;
+      let tricks = game.currentTrick?.length ?
+        [...game.playedTricks, game.currentTrick] :
+        game.playedTricks;
       this.tricks = convertTricks(tricks);
+      this.soloPlayer = game.soloPlayer;
+      this.gameType = game.gameType;
+      this.skat = game.distribution.skat;
     }
   });
 

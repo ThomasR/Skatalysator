@@ -1,17 +1,17 @@
 /*
- *  Copyright 2024 Thomas Rosenau
+ * Copyright 2024 Thomas Rosenau
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  *
  */
 
@@ -99,7 +99,7 @@ export const text = `<svg
 </svg>
 `;
 
-export const figures = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'B', 'D', 'K'];
+export const figures = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'B', 'J', 'D', 'Q', 'K'];
 
 export const demoPage = 'all';
 
@@ -111,6 +111,12 @@ export const suitSymbolPaths = [ // 13x13
 ];
 
 export const illustration = ({ suit, cardValue, dimensions }) => {
+  if (cardValue === 'J') {
+    cardValue = 'B';
+  }
+  if (cardValue === 'Q') {
+    cardValue = 'D';
+  }
   let modifier = ['\u{1f3fc}', '', '\u{1f3fb}', '\u{1f3fd}'][suit];
   let emoji = {
     B: `\u{1f468}${modifier}\u{200d}\u{1f33e}`,
