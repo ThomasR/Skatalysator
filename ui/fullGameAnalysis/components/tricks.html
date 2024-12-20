@@ -22,7 +22,8 @@
           :class="{ 'trick-winner': trick.winningPlayer === (trick.leadPlayer + cardIndex) % 3 }"
       >
         <img :src="`../svg-cardio/svgs/${$store.settings.cardTheme}` +
-                   `${$store.settings.tournamentScheme ? '-tournament' : ''}/${card.suitName}-${card.name}.svg`"
+                   `${$store.settings.tournamentScheme ? '-tournament' : ''}/` +
+                   `${card.suitName}-${/[0-9]/.test(card.name) ? card.name : $t(`cardLetters.${card.name}`)}.svg`"
         >
         <template x-if="$store.analysis.cardEvaluation[trickIndex][cardIndex]?.css">
           <div

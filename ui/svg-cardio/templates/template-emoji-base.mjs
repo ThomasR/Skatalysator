@@ -99,7 +99,7 @@ export const text = `<svg
 </svg>
 `;
 
-export const figures = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'B', 'D', 'K'];
+export const figures = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'B', 'J', 'D', 'Q', 'K'];
 
 export const demoPage = 'all';
 
@@ -111,6 +111,12 @@ export const suitSymbolPaths = [ // 13x13
 ];
 
 export const illustration = ({ suit, cardValue, dimensions }) => {
+  if (cardValue === 'J') {
+    cardValue = 'B';
+  }
+  if (cardValue === 'Q') {
+    cardValue = 'D';
+  }
   let modifier = ['\u{1f3fc}', '', '\u{1f3fb}', '\u{1f3fd}'][suit];
   let emoji = {
     B: `\u{1f468}${modifier}\u{200d}\u{1f33e}`,

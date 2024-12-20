@@ -24,7 +24,19 @@ export const generate = async () => {
 
   document.title = `${templateName} Skat deck (inline)`;
 
-  let cards = generateDeck({ template, debug: false });
+  let figures = [...template.figures];
+
+  if (figures.includes('J') && figures.includes('B')) {
+    let figureToRemove = document.body.dataset.language === 'de' ? 'J' : 'B';
+    figures.splice(figures.indexOf(figureToRemove), 1);
+  }
+
+  if (figures.includes('D') && figures.includes('Q')) {
+    let figureToRemove = document.body.dataset.language === 'de' ? 'Q' : 'D';
+    figures.splice(figures.indexOf(figureToRemove), 1);
+  }
+
+  let cards = generateDeck({ template: { ...template, figures }, debug: false });
   cards.forEach(card => {
     document.querySelector('main').insertAdjacentHTML('beforeend', card.text);
   });

@@ -62,6 +62,7 @@ export default {
   cardLetters: {
     J: 'B',
     Q: 'D',
-    K: 'K'
+    K: 'K',
+    A: 'A'
   }
 };

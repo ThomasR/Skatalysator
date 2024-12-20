@@ -29,7 +29,7 @@ const getSuitSymbolPositions = ({ innerMaxX, innerMaxY }) => {
 
   let pictureX = -5 / 8 * innerMaxX;
 
-  return {
+  let result = {
     A: [[0, 0]],
     2: [[0, symbolY1], [0, -symbolY1]],
     3: [[0, symbolY1], [0, 0], [0, -symbolY1]],
@@ -44,6 +44,9 @@ const getSuitSymbolPositions = ({ innerMaxX, innerMaxY }) => {
     D: [[pictureX, symbolY1], [-pictureX, -symbolY1]],
     K: [[pictureX, symbolY1], [-pictureX, -symbolY1]]
   };
+  result.J = result.B;
+  result.Q = result.D;
+  return result;
 };
 
 const getDebugPath = ({ totalCardWidth, totalCardHeight, innerMaxX, innerMaxY }) => {

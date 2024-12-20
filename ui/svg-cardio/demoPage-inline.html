@@ -18,20 +18,23 @@
 <!doctype html>
 <html lang="en-US">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="fonts-external.css">
-    <link rel="stylesheet" href="demoPage-base.css">
-    <link rel="stylesheet" href="demoPage-fanned.css">
-    <title>Skat deck</title>
-    <link rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#x1F0CF;</text></svg>">
-    <script type="module">import { generate } from './generator/renderCardsInBrowser.mjs'; generate(); window.generate = generate;</script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="fonts-external.css">
+  <link rel="stylesheet" href="demoPage-base.css">
+  <link rel="stylesheet" href="demoPage-fanned.css">
+  <title>Skat deck</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#x1F0CF;</text></svg>">
+  <script type="module">import { generate } from './generator/renderCardsInBrowser.mjs';
+
+  generate();
+  window.generate = generate;</script>
 </head>
-<body data-template-name="emoji-tournament">
-<aside>
+<body data-template-name="emoji-tournament" data-language="de">
+  <aside>
     <button onclick="document.body.classList.toggle('fanned');">
-        Switch layout
+      Switch layout
     </button>
     <button onclick="
         const decks = ['emoji-crisp', 'emoji-tournament', 'tekeye', 'tekeye-tournament'];
@@ -40,9 +43,16 @@
          document.body.dataset.templateName = decks[(index + 1) % decks.length];
         generate();
     ">
-        Switch deck
+      Switch deck
     </button>
-</aside>
-<main></main>
+    <button onclick="
+      [...document.querySelectorAll('main svg')].forEach(svg => svg.remove());
+      document.body.dataset.language = document.body.dataset.language === 'de' ? 'en' : 'de';
+      generate();
+    ">
+      DE/EN
+    </button>
+  </aside>
+  <main></main>
 </body>
 </html>

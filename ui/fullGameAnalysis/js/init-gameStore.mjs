@@ -21,9 +21,7 @@ import { suitNames } from '../../../engine/model/Suit.mjs';
 
 const convertCard = card => ({
   suitName: suitNames[card.suit],
-  // TODO: this could just return card.figure if language is English,
-  //  but then we need to generate English cards
-  name: card.figure === 'J' ? 'B' : card.figure === 'Q' ? 'D' : card.figure
+  name: card.figure
 });
 
 const convertTricks = tricks => tricks.map(trick => ({

@@ -52,7 +52,7 @@ export const generateDeck = ({ template, fontCSS = '', debug = false }) => {
 
     template.figures.forEach(cardValue => {
 
-      let isPicture = ['B', 'D', 'K'].includes(cardValue);
+      let isPicture = ['B', 'D', 'K', 'J', 'Q'].includes(cardValue);
 
       let suitName = suitNames[suit] || 'card';
 
