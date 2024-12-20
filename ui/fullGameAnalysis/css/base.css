@@ -39,7 +39,6 @@ main {
 
 .trick {
     counter-increment: trick;
-    overflow: hidden;
     width: calc(2.5 * var(--card-width));
     height: calc(2.4 * var(--card-width));
     position: relative;

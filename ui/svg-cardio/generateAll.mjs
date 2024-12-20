@@ -28,7 +28,9 @@ const availableDecks = [
   'emoji-crisp',
   'emoji-tournament',
   'tekeye',
-  'tekeye-tournament'
+  'tekeye-tournament',
+  'minimalist',
+  'minimalist-tournament'
 ];
 
 for (const templateName of availableDecks) {
